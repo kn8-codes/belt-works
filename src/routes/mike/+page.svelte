@@ -1,292 +1,375 @@
+<svelte:head>
+  <title>Mike — belt.works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</svelte:head>
+
 <script>
+  let formData = {
+    client_name: '',
+    client_phone: '',
+    client_zip: '',
+    job_type: '',
+    description: ''
+  };
+  let status = 'idle'; // idle | loading | success | error
+  let errorMsg = '';
+
   const services = [
-    'LVP flooring',
+    'LVP Flooring',
     'Hardwood',
     'Tile',
     'Carpet',
     'Drywall',
     'Bathrooms',
-    'Interior work'
+    'Interior Work'
   ];
 
-  let form = $state({
-    name: '',
-    phone: '',
-    zip: '',
-    jobType: services[0],
-    description: ''
-  });
-
-  let isSubmitting = $state(false);
-  let success = $state(false);
-  let error = $state('');
-
-  /** @param {SubmitEvent} event */
-  async function handleSubmit(event) {
-    event.preventDefault();
-    isSubmitting = true;
-    success = false;
-    error = '';
-
+  async function handleSubmit() {
+    status = 'loading';
+    errorMsg = '';
     try {
-      const response = await fetch('/api/submit-lead', {
+      const res = await fetch('/api/submit-lead', {
         method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          client_name: form.name,
-          client_phone: form.phone,
-          client_zip: form.zip,
-          job_type: form.jobType,
-          description: form.description
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
-
-      if (!response.ok) {
-        throw new Error('Could not send request.');
+      if (res.ok) {
+        status = 'success';
+      } else {
+        const data = await res.json();
+        errorMsg = data.error || 'Something went wrong.';
+        status = 'error';
       }
-
-      success = true;
-      form = {
-        name: '',
-        phone: '',
-        zip: '',
-        jobType: services[0],
-        description: ''
-      };
-    } catch (err) {
-      error = err instanceof Error ? err.message : 'Could not send request.';
-    } finally {
-      isSubmitting = false;
+    } catch (e) {
+      errorMsg = 'Network error. Try again.';
+      status = 'error';
     }
   }
 </script>
 
-<svelte:head>
-  <title>Mike | belt.works</title>
-  <meta
-    name="description"
-    content="Request flooring, drywall, bathroom, and interior work from Mike in the Akron metro area."
-  />
-</svelte:head>
+<main>
+  <nav>
+    <a href="/" class="back">← belt.works</a>
+  </nav>
 
-<div class="page">
-  <section class="hero">
-    <p class="eyebrow">belt.works</p>
-    <h1>Mike</h1>
-    <p class="subhead">Reliable interior work for Akron-area homes.</p>
-  </section>
+  <section class="profile">
+    <div class="profile-inner">
 
-  <section class="info-grid">
-    <div class="card">
-      <h2>Services</h2>
-      <ul>
-        {#each services as service}
-          <li>{service}</li>
-        {/each}
-      </ul>
-    </div>
+      <div class="provider-header">
+        <div class="avatar">M</div>
+        <div>
+          <h1>Mike</h1>
+          <div class="area">Akron, OH metro + 30mi</div>
+          <div class="avail">Booking 2–3 weeks out</div>
+        </div>
+      </div>
 
-    <div class="card">
-      <h2>Service area</h2>
-      <p>Akron, OH metro + 30mi</p>
-
-      <h2>Availability</h2>
-      <p>Booking 2–3 weeks out</p>
-    </div>
-  </section>
-
-  <section class="card form-card">
-    <h2>Request a quote</h2>
-    <form onsubmit={handleSubmit}>
-      <label>
-        <span>Name</span>
-        <input type="text" bind:value={form.name} required />
-      </label>
-
-      <label>
-        <span>Phone</span>
-        <input type="tel" bind:value={form.phone} required />
-      </label>
-
-      <label>
-        <span>Zip</span>
-        <input type="text" bind:value={form.zip} />
-      </label>
-
-      <label>
-        <span>Job type</span>
-        <select bind:value={form.jobType}>
-          {#each services as service}
-            <option value={service}>{service}</option>
+      <div class="services-section">
+        <div class="label">// SERVICES</div>
+        <div class="services">
+          {#each services as s}
+            <span>{s}</span>
           {/each}
-        </select>
-      </label>
+        </div>
+      </div>
 
-      <label>
-        <span>Description</span>
-        <textarea bind:value={form.description} maxlength="500" rows="5"></textarea>
-      </label>
+      <div class="divider"></div>
 
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Sending...' : 'Send Request'}
-      </button>
+      <!-- FORM -->
+      {#if status === 'success'}
+        <div class="success">
+          <div class="success-mark">✓</div>
+          <div class="success-text">Request sent.</div>
+          <div class="success-sub">Mike will call you soon.</div>
+        </div>
+      {:else}
+        <div class="form-section">
+          <div class="label">// REQUEST A JOB</div>
 
-      {#if success}
-        <p class="success">Request sent. Mike will call you soon.</p>
+          <div class="field">
+            <label for="name">Your Name <span class="req">*</span></label>
+            <input
+              id="name"
+              type="text"
+              bind:value={formData.client_name}
+              placeholder="First and last name"
+              disabled={status === 'loading'}
+            />
+          </div>
+
+          <div class="field">
+            <label for="phone">Your Phone <span class="req">*</span></label>
+            <input
+              id="phone"
+              type="tel"
+              bind:value={formData.client_phone}
+              placeholder="10-digit number"
+              disabled={status === 'loading'}
+            />
+          </div>
+
+          <div class="field">
+            <label for="zip">Zip Code</label>
+            <input
+              id="zip"
+              type="text"
+              bind:value={formData.client_zip}
+              placeholder="e.g. 44302"
+              disabled={status === 'loading'}
+            />
+          </div>
+
+          <div class="field">
+            <label for="jobtype">Job Type <span class="req">*</span></label>
+            <select
+              id="jobtype"
+              bind:value={formData.job_type}
+              disabled={status === 'loading'}
+            >
+              <option value="" disabled selected>Select a service</option>
+              {#each services as s}
+                <option value={s}>{s}</option>
+              {/each}
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="desc">Tell Mike what you need <span class="optional">(optional)</span></label>
+            <textarea
+              id="desc"
+              bind:value={formData.description}
+              placeholder="Brief description — square footage, condition, timeline, anything helpful"
+              rows="4"
+              maxlength="500"
+              disabled={status === 'loading'}
+            ></textarea>
+          </div>
+
+          {#if status === 'error'}
+            <div class="error-msg">{errorMsg}</div>
+          {/if}
+
+          <button
+            on:click={handleSubmit}
+            disabled={status === 'loading' || !formData.client_name || !formData.client_phone || !formData.job_type}
+            class:loading={status === 'loading'}
+          >
+            {status === 'loading' ? 'Sending...' : 'Send Request'}
+          </button>
+        </div>
       {/if}
 
-      {#if error}
-        <p class="error">{error}</p>
-      {/if}
-    </form>
+    </div>
   </section>
-</div>
+
+  <footer>
+    <a href="/">belt.works</a> · Built in Akron · 2026
+  </footer>
+</main>
 
 <style>
+  :global(*, *::before, *::after) { box-sizing: border-box; margin: 0; padding: 0; }
   :global(body) {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f6f3ee;
-    color: #1d1d1d;
+    background: #0F0804;
+    color: #F0EDE8;
+    font-family: 'IBM Plex Mono', monospace;
+    min-height: 100vh;
   }
 
-  .page {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 24px 16px 48px;
+  nav {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #2A1A0E;
   }
-
-  .hero {
-    margin-bottom: 24px;
-  }
-
-  .eyebrow {
-    margin: 0 0 8px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+  .back {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: #9A8070;
+    text-decoration: none;
     text-transform: uppercase;
-    color: #805b2d;
+    transition: color 0.15s;
   }
+  .back:hover { color: #C45C1A; }
 
+  .profile {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+  .profile-inner { display: flex; flex-direction: column; gap: 2.5rem; }
+
+  .provider-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .avatar {
+    width: 64px; height: 64px;
+    background: #C45C1A;
+    color: #0F0804;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
   h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    line-height: 1.05;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    line-height: 1;
+    color: #F0EDE8;
   }
-
-  .subhead {
-    margin-top: 12px;
-    font-size: 1.05rem;
-    color: #444;
-  }
-
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  .card {
-    background: #fff;
-    border: 1px solid #ddd5ca;
-    border-radius: 14px;
-    padding: 20px;
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 1.2rem;
-  }
-
-  ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-
-  li + li {
+  .area {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #9A8070;
     margin-top: 6px;
+    text-transform: uppercase;
+  }
+  .avail {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: #C45C1A;
+    border: 1px solid #C45C1A;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    margin-top: 8px;
+    text-transform: uppercase;
   }
 
-  form {
-    display: grid;
-    gap: 14px;
+  .label {
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    color: #C45C1A;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .services span {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9A8070;
+    border: 1px solid #2A1A0E;
+    padding: 0.3rem 0.6rem;
   }
 
+  .divider {
+    height: 1px;
+    background: #2A1A0E;
+  }
+
+  .form-section { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .field { display: flex; flex-direction: column; gap: 0.5rem; }
   label {
-    display: grid;
-    gap: 6px;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9A8070;
   }
+  .req { color: #C45C1A; }
+  .optional { color: #3A2010; }
 
-  span {
-    font-weight: 600;
-  }
-
-  input,
-  select,
-  textarea,
-  button {
-    font: inherit;
-  }
-
-  input,
-  select,
-  textarea {
+  input, select, textarea {
+    background: #160C06;
+    border: 1px solid #2A1A0E;
+    color: #F0EDE8;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    padding: 0.85rem 1rem;
     width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    border: 1px solid #cfc5b8;
-    border-radius: 10px;
-    background: #fff;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
   }
-
-  textarea {
-    resize: vertical;
+  input:focus, select:focus, textarea:focus {
+    border-color: #C45C1A;
   }
+  input::placeholder, textarea::placeholder {
+    color: #3A2010;
+  }
+  select option { background: #160C06; }
+  textarea { resize: vertical; }
 
   button {
-    width: fit-content;
-    padding: 12px 18px;
-    border: 0;
-    border-radius: 10px;
-    background: #1d1d1d;
-    color: #fff;
-    cursor: pointer;
+    background: #C45C1A;
+    color: #0F0804;
+    font-family: 'IBM Plex Mono', monospace;
     font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
   }
-
+  button:hover:not(:disabled) { background: #E8731A; }
   button:disabled {
-    opacity: 0.7;
-    cursor: wait;
+    background: #2A1A0E;
+    color: #3A2010;
+    cursor: not-allowed;
+  }
+  button.loading { opacity: 0.7; }
+
+  .error-msg {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #E84A1A;
+    border: 1px solid #E84A1A;
+    padding: 0.75rem 1rem;
   }
 
   .success {
-    margin: 0;
-    color: #156f3b;
-    font-weight: 600;
+    text-align: center;
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .success-mark {
+    width: 56px; height: 56px;
+    border: 2px solid #C45C1A;
+    color: #C45C1A;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .success-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    color: #F0EDE8;
+  }
+  .success-sub {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: #9A8070;
+    text-transform: uppercase;
   }
 
-  .error {
-    margin: 0;
-    color: #b42318;
-    font-weight: 600;
+  footer {
+    border-top: 1px solid #2A1A0E;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    color: #3A2010;
+    text-transform: uppercase;
   }
-
-  @media (max-width: 640px) {
-    .info-grid {
-      grid-template-columns: 1fr;
-    }
-
-    h1 {
-      font-size: 2rem;
-    }
-
-    button {
-      width: 100%;
-    }
+  footer a {
+    color: #3A2010;
+    text-decoration: none;
   }
+  footer a:hover { color: #C45C1A; }
 </style>
