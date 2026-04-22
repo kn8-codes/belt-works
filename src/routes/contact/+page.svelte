@@ -5,7 +5,75 @@
 </svelte:head>
 
 <script>
+  import { page } from '$app/state';
+
   const roles = ['Tradesperson looking to get listed', 'Client with a question', 'Other'];
+  const typeMap = {
+    tradesperson: 'Tradesperson looking to get listed',
+    client: 'Client with a question',
+    other: 'Other'
+  };
+
+  const selectedType = $derived(page.url.searchParams.get('type') ?? 'tradesperson');
+  const initialType = $derived(
+    selectedType === 'client' || selectedType === 'other' || selectedType === 'tradesperson'
+      ? typeMap[selectedType]
+      : roles[0]
+  );
+
+  let form = $state({
+    name: '',
+    email: '',
+    phone: '',
+    type: roles[0],
+    message: ''
+  });
+
+  let lastInitialType = $state(roles[0]);
+  let isSubmitting = $state(false);
+  let success = $state(false);
+  let error = $state('');
+
+  $effect(() => {
+    if (lastInitialType !== initialType && !form.name && !form.email && !form.phone && !form.message) {
+      form.type = initialType;
+      lastInitialType = initialType;
+    }
+  });
+
+  /** @param {SubmitEvent} event */
+  async function handleSubmit(event) {
+    event.preventDefault();
+    isSubmitting = true;
+    success = false;
+    error = '';
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Could not send message.');
+      }
+
+      success = true;
+      form = {
+        name: '',
+        email: '',
+        phone: '',
+        type: initialType,
+        message: ''
+      };
+    } catch (err) {
+      error = err instanceof Error ? err.message : 'Could not send message.';
+    } finally {
+      isSubmitting = false;
+    }
+  }
 </script>
 
 <main>
@@ -51,25 +119,25 @@
 
       <article class="card fade-in" style="--delay: 500ms">
         <div class="meta">Contact form</div>
-        <form aria-label="Contact belt.works">
+        <form aria-label="Contact belt.works" onsubmit={handleSubmit}>
           <div class="field">
             <label for="name">Name</label>
-            <input id="name" type="text" required placeholder="Your name" />
+            <input id="name" type="text" bind:value={form.name} required placeholder="Your name" />
           </div>
 
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" type="email" required placeholder="you@example.com" />
+            <input id="email" type="email" bind:value={form.email} required placeholder="you@example.com" />
           </div>
 
           <div class="field">
             <label for="phone">Phone</label>
-            <input id="phone" type="tel" placeholder="Optional" />
+            <input id="phone" type="tel" bind:value={form.phone} placeholder="Optional" />
           </div>
 
           <div class="field">
             <label for="iam">I am a</label>
-            <select id="iam">
+            <select id="iam" bind:value={form.type}>
               {#each roles as role}
                 <option value={role}>{role}</option>
               {/each}
@@ -78,10 +146,20 @@
 
           <div class="field">
             <label for="message">Message</label>
-            <textarea id="message" rows="5" required placeholder="Tell us what you need"></textarea>
+            <textarea id="message" rows="5" bind:value={form.message} required placeholder="Tell us what you need"></textarea>
           </div>
 
-          <button type="submit" class="submit">Send Message →</button>
+          {#if success}
+            <p class="success">Message sent. We’ll reach out soon.</p>
+          {/if}
+
+          {#if error}
+            <p class="error">{error}</p>
+          {/if}
+
+          <button type="submit" class="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Sending...' : 'Send Message →'}
+          </button>
         </form>
       </article>
     </div>
@@ -240,6 +318,14 @@
   }
   input::placeholder, textarea::placeholder { color: #3A2010; }
   textarea { resize: vertical; }
+  .success {
+    color: #7fd49a;
+    font-weight: 700;
+  }
+  .error {
+    color: #ff7b72;
+    font-weight: 700;
+  }
   .submit {
     display: inline-flex;
     align-items: center;
@@ -256,6 +342,10 @@
     cursor: pointer;
   }
   .submit:hover { background: #E8731A; }
+  .submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
   footer {
     border-top: 1px solid #2A1A0E;
     padding: 2rem;
