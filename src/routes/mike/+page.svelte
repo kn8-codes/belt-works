@@ -34,7 +34,13 @@
         headers: {
           'content-type': 'application/json'
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify({
+          client_name: form.name,
+          client_phone: form.phone,
+          client_zip: form.zip,
+          job_type: form.jobType,
+          description: form.description
+        })
       });
 
       if (!response.ok) {
