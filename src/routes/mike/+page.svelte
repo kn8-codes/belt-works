@@ -5,15 +5,15 @@
 </svelte:head>
 
 <script>
-  let formData = {
+  let formData = $state({
     client_name: '',
     client_phone: '',
     client_zip: '',
     job_type: '',
     description: ''
-  };
-  let status = 'idle'; // idle | loading | success | error
-  let errorMsg = '';
+  });
+  let status = $state('idle');
+  let errorMsg = $state('');
 
   const services = [
     'LVP Flooring',
@@ -41,7 +41,7 @@
         errorMsg = data.error || 'Something went wrong.';
         status = 'error';
       }
-    } catch (e) {
+    } catch {
       errorMsg = 'Network error. Try again.';
       status = 'error';
     }
@@ -55,7 +55,6 @@
 
   <section class="profile">
     <div class="profile-inner">
-
       <div class="provider-header">
         <div class="avatar">M</div>
         <div>
@@ -76,7 +75,6 @@
 
       <div class="divider"></div>
 
-      <!-- FORM -->
       {#if status === 'success'}
         <div class="success">
           <div class="success-mark">✓</div>
@@ -122,12 +120,8 @@
 
           <div class="field">
             <label for="jobtype">Job Type <span class="req">*</span></label>
-            <select
-              id="jobtype"
-              bind:value={formData.job_type}
-              disabled={status === 'loading'}
-            >
-              <option value="" disabled selected>Select a service</option>
+            <select id="jobtype" bind:value={formData.job_type} disabled={status === 'loading'}>
+              <option value="" disabled>Select a service</option>
               {#each services as s}
                 <option value={s}>{s}</option>
               {/each}
@@ -139,7 +133,7 @@
             <textarea
               id="desc"
               bind:value={formData.description}
-              placeholder="Brief description — square footage, condition, timeline, anything helpful"
+              placeholder="Brief description, square footage, condition, timeline, anything helpful"
               rows="4"
               maxlength="500"
               disabled={status === 'loading'}
@@ -151,7 +145,7 @@
           {/if}
 
           <button
-            on:click={handleSubmit}
+            onclick={handleSubmit}
             disabled={status === 'loading' || !formData.client_name || !formData.client_phone || !formData.job_type}
             class:loading={status === 'loading'}
           >
@@ -159,7 +153,6 @@
           </button>
         </div>
       {/if}
-
     </div>
   </section>
 
@@ -278,6 +271,8 @@
   .optional { color: #3A2010; }
 
   input, select, textarea {
+    appearance: none;
+    -webkit-appearance: none;
     background: #160C06;
     border: 1px solid #2A1A0E;
     color: #F0EDE8;
@@ -287,7 +282,6 @@
     width: 100%;
     outline: none;
     transition: border-color 0.15s;
-    -webkit-appearance: none;
   }
   input:focus, select:focus, textarea:focus {
     border-color: #C45C1A;
