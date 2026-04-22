@@ -5,15 +5,15 @@
 </svelte:head>
 
 <script>
-  let formData = {
+  let formData = $state({
     client_name: '',
     client_phone: '',
     client_zip: '',
     job_type: '',
     description: ''
-  };
-  let status = 'idle'; // idle | loading | success | error
-  let errorMsg = '';
+  });
+  let status = $state('idle');
+  let errorMsg = $state('');
 
   const services = [
     'LVP Flooring',
@@ -25,7 +25,7 @@
     'Interior Work'
   ];
 
-  $: canSubmit = formData.client_name.trim() && formData.client_phone.trim() && formData.job_type && status !== 'loading';
+  const canSubmit = $derived(Boolean(formData.client_name.trim() && formData.client_phone.trim() && formData.job_type && status !== 'loading'));
 
   async function handleSubmit() {
     if (!canSubmit) return;
@@ -50,6 +50,7 @@
     }
   }
 
+  /** @param {KeyboardEvent} e */
   function handleKeydown(e) {
     if (e.key === 'Enter' && canSubmit) handleSubmit();
   }
@@ -57,7 +58,7 @@
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<header role="banner">
+<header>
   <nav aria-label="Site navigation">
     <a href="/" class="back" aria-label="Back to belt.works home">← belt.works</a>
   </nav>
@@ -97,7 +98,7 @@
         <form
           class="form-section fade-in"
           style="--delay: 200ms"
-          on:submit|preventDefault={handleSubmit}
+          onsubmit={(event) => { event.preventDefault(); handleSubmit(); }}
           aria-label="Job request form"
           novalidate
         >
@@ -219,7 +220,7 @@
   </section>
 </main>
 
-<footer role="contentinfo">
+<footer>
   <a href="/">belt.works</a>
   <span aria-hidden="true">·</span>
   Built in Akron
@@ -387,6 +388,7 @@
     width: 100%;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
     -webkit-appearance: none;
     border-radius: 0;
   }
