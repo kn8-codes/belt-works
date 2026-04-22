@@ -1,42 +1,35 @@
-# sv
+# belt.works
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+belt.works is a simple lead intake site for skilled tradespeople. It gives local providers a clean public page, lets customers submit a job request without dealing with an app or portal, saves the lead to the database, and sends the provider a text so they can call the customer back fast.
 
-## Creating a project
+## Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- SvelteKit
+- Supabase
+- Twilio
+- Vercel
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Local dev setup
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.15.1 create --template minimal --types jsdoc --add eslint --install npm belt-works
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Environment variables
 
-To create a production version of your app:
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `TWILIO_ACCOUNT_SID`
+- `TWILIO_AUTH_TOKEN`
+- `TWILIO_FROM_NUMBER`
 
-```sh
-npm run build
-```
+## Routes
 
-You can preview the production build with `npm run preview`.
+- `/` - landing page
+- `/mike` - provider profile
+- `/api/submit-lead` - POST endpoint
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Deploy
+
+Auto-deploys from `main` via Vercel.
