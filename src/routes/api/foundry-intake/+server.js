@@ -27,6 +27,11 @@ export async function POST({ request }) {
     const whatYouDo = String(body.whatYouDo || '').trim();
     const whereYouWork = String(body.whereYouWork || '').trim();
     const biggestHeadache = String(body.biggestHeadache || '').trim();
+    const sourcePath = String(body.sourcePath || '').trim();
+    const sourceUrl = String(body.sourceUrl || '').trim();
+    const referrer = String(body.referrer || '').trim();
+    const submittedAt = String(body.submittedAt || '').trim();
+    const intakeVersion = String(body.intakeVersion || '').trim();
 
     if (!name || !phone || !whatYouDo || !whereYouWork || !biggestHeadache) {
       return json({ error: 'All five fields are required.' }, { status: 400 });
@@ -43,7 +48,14 @@ export async function POST({ request }) {
       `Where do you work: ${whereYouWork}`,
       '',
       'Biggest headache right now:',
-      biggestHeadache
+      biggestHeadache,
+      '',
+      '--- metadata ---',
+      `intakeVersion: ${intakeVersion || 'foundry-short-form-v1'}`,
+      `submittedAt: ${submittedAt || new Date().toISOString()}`,
+      `sourcePath: ${sourcePath || '[blank]'}`,
+      `sourceUrl: ${sourceUrl || '[blank]'}`,
+      `referrer: ${referrer || '[blank]'}`
     ].join('\n');
 
     const { error } = await supabase.from('contact_submissions').insert({

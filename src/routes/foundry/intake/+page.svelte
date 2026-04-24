@@ -16,6 +16,7 @@
   let isSubmitting = $state(false);
   let success = $state(false);
   let error = $state('');
+  let successMessage = $state('');
 
   /** @param {SubmitEvent} event */
   async function handleSubmit(event) {
@@ -28,7 +29,14 @@
       const response = await fetch('/api/foundry-intake', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(form)
+        body: JSON.stringify({
+          ...form,
+          sourcePath: window.location.pathname,
+          sourceUrl: window.location.href,
+          referrer: document.referrer,
+          submittedAt: new Date().toISOString(),
+          intakeVersion: 'foundry-short-form-v1'
+        })
       });
 
       const data = await response.json();
@@ -37,6 +45,7 @@
       }
 
       success = true;
+      successMessage = `Got it. We’ll look this over and reach back out at ${form.phone}.`;
       form = {
         name: '',
         phone: '',
@@ -46,6 +55,7 @@
       };
     } catch (err) {
       error = err instanceof Error ? err.message : 'Could not submit intake.';
+      successMessage = '';
     } finally {
       isSubmitting = false;
     }
@@ -64,11 +74,12 @@
 
     <header class="stack fade-in" style="--delay: 100ms">
       <h1>Quick intake.</h1>
-      <p class="lead">Five fields. No homework packet. Just enough to understand what you do, where you work, and what is making your business harder than it should be.</p>
+      <p class="lead">Five fields. No homework packet. Just enough to understand what you do, where you work, and what is making your business harder than it should be. If this looks useful, we can build something more custom from here.</p>
     </header>
 
     <article class="card fade-in" style="--delay: 200ms">
       <div class="meta">Door opener</div>
+      <p class="intro">This is not a full application. It is the fastest way to get the real problem on the table so we can figure out whether FOUNDRY can actually help.</p>
       <form aria-label="FOUNDRY intake form" onsubmit={handleSubmit}>
         <div class="field-grid">
           <div class="field">
@@ -99,7 +110,7 @@
         </div>
 
         {#if success}
-          <p class="success">Got it. We’ll review this and follow up.</p>
+          <p class="success">{successMessage}</p>
         {/if}
 
         {#if error}
@@ -182,7 +193,7 @@
     font-size: clamp(3rem, 10vw, 5.5rem);
     line-height: 0.95;
   }
-  .lead, .hint {
+  .lead, .hint, .intro {
     color: #9A8070;
     line-height: 1.8;
     font-size: 0.95rem;
@@ -197,6 +208,9 @@
     font-size: 0.7rem;
     letter-spacing: 3px;
     text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .intro {
     margin-bottom: 1rem;
   }
   .field-grid {
