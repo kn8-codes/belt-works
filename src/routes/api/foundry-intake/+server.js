@@ -26,6 +26,9 @@ export async function POST({ request }) {
     const phone = String(body.phone || '').trim();
     const whatYouDo = String(body.whatYouDo || '').trim();
     const whereYouWork = String(body.whereYouWork || '').trim();
+    const idealJobs = String(body.idealJobs || '').trim();
+    const avoidJobs = String(body.avoidJobs || '').trim();
+    const preferredContact = String(body.preferredContact || '').trim();
     const biggestHeadache = String(body.biggestHeadache || '').trim();
     const sourcePath = String(body.sourcePath || '').trim();
     const sourceUrl = String(body.sourceUrl || '').trim();
@@ -46,6 +49,9 @@ export async function POST({ request }) {
       '',
       `What do you do: ${whatYouDo}`,
       `Where do you work: ${whereYouWork}`,
+      `What jobs do you want more of: ${idealJobs || '[blank]'}`,
+      `What jobs do you want less of: ${avoidJobs || '[blank]'}`,
+      `Preferred contact: ${preferredContact || '[blank]'}`,
       '',
       'Biggest headache right now:',
       biggestHeadache,

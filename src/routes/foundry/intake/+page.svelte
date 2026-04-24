@@ -10,6 +10,9 @@
     phone: '',
     whatYouDo: '',
     whereYouWork: '',
+    idealJobs: '',
+    avoidJobs: '',
+    preferredContact: '',
     biggestHeadache: ''
   });
 
@@ -51,6 +54,9 @@
         phone: '',
         whatYouDo: '',
         whereYouWork: '',
+        idealJobs: '',
+        avoidJobs: '',
+        preferredContact: '',
         biggestHeadache: ''
       };
     } catch (err) {
@@ -74,7 +80,7 @@
 
     <header class="stack fade-in" style="--delay: 100ms">
       <h1>Quick intake.</h1>
-      <p class="lead">Five fields. No homework packet. Just enough to understand what you do, where you work, and what is making your business harder than it should be. If this looks useful, we can build something more custom from here.</p>
+      <p class="lead">Short enough to finish in a couple minutes, but detailed enough to tell us what you actually do, what jobs you want, what jobs you hate, and what is making your business harder than it should be. If this looks useful, we can build something more custom from here.</p>
     </header>
 
     <article class="card fade-in" style="--delay: 200ms">
@@ -103,9 +109,24 @@
           </div>
 
           <div class="field field-full">
+            <label for="ideal-jobs">What kind of jobs do you want more of?</label>
+            <textarea id="ideal-jobs" rows="4" bind:value={form.idealJobs} placeholder="Bathrooms, bigger flooring installs, recurring maintenance, drywall repair, higher-budget interior work..."></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label for="avoid-jobs">What kind of jobs do you want less of?</label>
+            <textarea id="avoid-jobs" rows="4" bind:value={form.avoidJobs} placeholder="Tiny repair calls, price shoppers, chaotic remodels, long drives for small jobs..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="preferred-contact">How should we contact you?</label>
+            <input id="preferred-contact" type="text" bind:value={form.preferredContact} placeholder="Text first, call first, evenings, mornings..." />
+          </div>
+
+          <div class="field field-full">
             <label for="biggest-headache">What's your biggest headache right now?</label>
             <textarea id="biggest-headache" rows="6" bind:value={form.biggestHeadache} required placeholder="Bad leads, too much quoting, inconsistent work, scheduling mess, customers wasting your time — whatever the real problem is."></textarea>
-            <p class="hint">This is the important one. It tells us where the real friction is.</p>
+            <p class="hint">This is still the most important field. It tells us where the real friction is.</p>
           </div>
         </div>
 
