@@ -113,6 +113,8 @@
         <div class="meta">FOUNDRY</div>
         <div class="contact-links">
           <p>If you're interested in FOUNDRY, AI infrastructure for small businesses:</p>
+          <a href="/foundry/intake">Open the quick intake form</a>
+          <p>Or email directly:</p>
           <a href="mailto:nate@belt.works">nate@belt.works</a>
         </div>
       </article>
