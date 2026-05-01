@@ -133,39 +133,64 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   .rooms-topbar { align-items: flex-start; flex-direction: column; }
 }
 
+/* ROOMS redraft styles.
+   These rules only support `/rooms`. If the page gets weird, search for this block first. */
 .rooms-redraft { background: radial-gradient(circle at 50% 0%, rgba(215,255,99,.08), transparent 34rem), #070706; }
+
+/* Top bar: title on the left, production/draft badge on the right. */
 .rooms-topbar.redraft { align-items: flex-end; }
 .rooms-topbar.redraft .lead { margin-bottom: 0; }
+
+/* Direction note under the hero. Kept small so the rooms stay the focus. */
 .rooms-option-note { border-bottom: 1px solid var(--line); color: var(--muted); padding: .9rem 1.5rem; line-height: 1.5; }
 .rooms-option-note strong { color: var(--text); }
+
+/* Main wrapper for the room wall and selected-room drill-down. */
 .rooms-hybrid { padding: 1rem; display: grid; gap: 1rem; }
+
+/* Three-room wall. Desktop shows M4, M1, Jeep side by side. */
 .rooms-wall-layout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+
+/* One clickable room card in the wall. */
 .room-wall-card { border: 1px solid var(--line); background: #10100d; color: inherit; text-align: left; padding: 1rem; display: grid; gap: 1rem; cursor: pointer; min-height: 560px; transition: border-color .15s ease, transform .15s ease, background .15s ease; }
 .room-wall-card:hover { transform: translateY(-2px); border-color: var(--muted); }
 .room-wall-card.active { border-color: var(--accent); background: rgba(215,255,99,.055); }
+
+/* The room SVG art inside a wall card. Currently static `<img>`; later this should become inline SVG for animation. */
 .room-wall-card img { width: 100%; align-self: center; border: 1px solid rgba(255,255,255,.06); background: rgba(255,255,255,.02); }
 .room-open-hint { color: var(--dim); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
+
+/* Selected-room drill-down panel below the wall. */
 .room-drilldown { border: 1px solid var(--accent); background: linear-gradient(180deg, rgba(215,255,99,.055), rgba(255,255,255,.015)); }
+
+/* Drill-down header: room name/details on the left, character on the right. */
 .drilldown-main { display: grid; grid-template-columns: minmax(0, 1fr) 130px; gap: 1rem; align-items: center; padding: 1.25rem; border-bottom: 1px solid var(--line); }
 .drilldown-main h2 { font-size: clamp(3rem, 10vw, 7rem); margin-bottom: .4rem; }
 .drilldown-main p { color: var(--muted); line-height: 1.5; max-width: 760px; }
 .drilldown-character { border: 1px solid var(--line); min-height: 120px; display: grid; place-items: center; background: rgba(255,255,255,.03); }
 .drilldown-character img { width: 92px; max-height: 92px; object-fit: contain; }
+
+/* Management grid: current task, queue, files, logs, commits. */
 .drilldown-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; padding: 1rem; }
 .drill-card { border: 1px solid var(--line); background: rgba(5,5,4,.65); padding: 1rem; min-height: 100%; }
 .drill-card.span-two { grid-column: span 2; }
 .drill-card h3 { font-size: clamp(1.2rem, 3vw, 2rem); }
 .drill-card p { color: var(--muted); line-height: 1.5; }
 .terminal-log.tall { min-height: 150px; }
-.wall-detail-strip, .layout-switch, .rooms-focus-layout, .rooms-node-rail, .room-side-panel, .room-focus-card, .focus-art-wrap, .focus-info { }
+
+/* Short explanation below the cockpit. */
 .rooms-short-brief { padding-top: 3rem; }
 .brief-list { display: grid; gap: 1rem; color: var(--muted); line-height: 1.5; }
 .rooms-stats.inline { grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; }
+
+/* Tablet: stack room cards vertically and use two columns for details. */
 @media (max-width: 1100px) {
   .rooms-wall-layout { grid-template-columns: 1fr; }
   .room-wall-card { min-height: 0; }
   .drilldown-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* Phone: everything becomes one column. */
 @media (max-width: 820px) {
   .rooms-topbar.redraft { align-items: flex-start; }
   .drilldown-main, .drilldown-grid { grid-template-columns: 1fr; }

@@ -1,3 +1,10 @@
+// ROOMS sample data.
+// Plain English version: this file is the fake/live-ish data that feeds the `/rooms` page.
+// If Nate wants to change what a room says, start here before touching the Svelte page.
+// Later, Towpath/Supabase can replace this file with real data. Until then, this keeps the UI easy to reason about.
+
+// Small counters shown near the bottom of the ROOMS page.
+// `label` is the caption. `value` is the number/text shown above it.
 export const fleetStats = [
   { label: 'rooms', value: '3' },
   { label: 'live nodes', value: '1' },
@@ -5,8 +12,14 @@ export const fleetStats = [
   { label: 'public mode', value: 'on' }
 ];
 
+// Main room records.
+// Each object below becomes one visible room card on `/rooms`.
+// The `id` value is the safe internal handle used when someone clicks a card.
+// The `asset` SVG is the large room picture.
+// The `character` SVG is the smaller person/avatar in the drill-down panel.
 export const roomNodes = [
   {
+    // M4 is the frontend/design worker.
     id: 'm4',
     name: 'M4',
     machine: 'kn8-m4',
@@ -29,6 +42,7 @@ export const roomNodes = [
     ]
   },
   {
+    // M1 is the backend/data worker.
     id: 'm1',
     name: 'M1',
     machine: 'kn8-mbp',
@@ -51,6 +65,7 @@ export const roomNodes = [
     ]
   },
   {
+    // Jeep is the conductor/operator node.
     id: 'jeep',
     name: 'Jeep',
     machine: 'kn8-jeep',
@@ -74,6 +89,8 @@ export const roomNodes = [
   }
 ];
 
+// Older supporting records from the first ROOMS pass.
+// Not currently the main visual focus, but kept because it documents product areas we may bring back later.
 export const rooms = [
   {
     name: 'Overview',
@@ -109,6 +126,8 @@ export const rooms = [
   }
 ];
 
+// Event ledger copy from an earlier layout.
+// It is not front-and-center now because Nate wanted the rooms to be the point.
 export const roomEvents = [
   {
     time: 'overnight pass',
@@ -136,6 +155,8 @@ export const roomEvents = [
   }
 ];
 
+// Public-safety rules.
+// These matter when ROOMS gets real queue/log data. Do not expose secrets or private operational details.
 export const roomRules = [
   'Each agent gets its own room.',
   'Rooms are navigable: overview first, detail panel second.',

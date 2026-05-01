@@ -1,7 +1,15 @@
 <script>
+  // ROOMS page.
+  // Plain English version: show all three machines as illustrated rooms, then show details for whichever room is clicked.
+  // This file controls the layout and interaction. The actual text/data lives in `src/lib/content/rooms-sample.js`.
   import { fleetStats, roomNodes } from '$lib/content/rooms-sample.js';
 
+  // `selectedId` remembers which room is currently open in the drill-down panel.
+  // `$state(...)` is Svelte 5's way of saying "this value can change and the page should update."
   let selectedId = $state(roomNodes[2].id);
+
+  // `selectedRoom` finds the full data object for the selected room.
+  // If something goes wrong, it falls back to the first room so the page does not crash.
   let selectedRoom = $derived(roomNodes.find((room) => room.id === selectedId) ?? roomNodes[0]);
 </script>
 
@@ -10,7 +18,9 @@
   <meta name="description" content="A public-safe illustrated cockpit for the belt.works agent mesh." />
 </svelte:head>
 
+<!-- Main ROOMS surface. Everything inside this section is the product demo/operator cockpit. -->
 <section class="rooms-shell rooms-redraft">
+  <!-- Top explanation: what this page is and why it exists. -->
   <div class="rooms-topbar redraft">
     <div>
       <p class="eyebrow">ROOMS</p>
@@ -20,13 +30,17 @@
     <div class="rooms-live-tag">live production draft</div>
   </div>
 
+  <!-- Short direction note. This replaces the old A/B layout toggle. -->
   <div class="rooms-option-note">
     <strong>Current direction:</strong> wall first, drill-down second. No separate A/B toggle. The rooms stay visible; the selected room opens below with status, queue, logs, files, and commit history.
   </div>
 
+  <!-- Hybrid layout: room wall on top, selected-room details underneath. -->
   <main class="rooms-hybrid" aria-label="ROOMS fleet wall">
+    <!-- The wall: all three rooms remain visible at once. -->
     <section class="rooms-wall-layout hybrid-wall" aria-label="Visible rooms">
       {#each roomNodes as room (room.id)}
+        <!-- Clicking a card changes `selectedId`, which refreshes the drill-down below. -->
         <button class:active={selectedId === room.id} class="room-wall-card" type="button" onclick={() => (selectedId = room.id)}>
           <span class="room-card-head">
             <span>
@@ -35,6 +49,7 @@
             </span>
             <span class="status" class:warn={room.tone === 'warn'}>{room.status}</span>
           </span>
+          <!-- SVG is currently loaded as an image. To animate internal SVG parts later, inline this SVG as a Svelte component. -->
           <img src={room.asset} alt="{room.name} illustrated room" />
           <span class="room-task">{room.task}</span>
           <span class="room-open-hint">click to inspect</span>
@@ -42,6 +57,7 @@
       {/each}
     </section>
 
+    <!-- Drill-down: details for the selected room. -->
     <section class="room-drilldown" aria-label="Selected room drilldown">
       <div class="drilldown-main">
         <div>
@@ -54,6 +70,7 @@
         </div>
       </div>
 
+      <!-- Management grid: the stuff Nate needs at a glance. -->
       <div class="drilldown-grid">
         <article class="drill-card span-two">
           <div class="room-card-head">
@@ -109,6 +126,7 @@
   </main>
 </section>
 
+<!-- Short explainer section under the cockpit. Keep this small so the rooms remain the main thing. -->
 <section class="section rooms-short-brief">
   <div class="wrap grid two">
     <article class="card large">
