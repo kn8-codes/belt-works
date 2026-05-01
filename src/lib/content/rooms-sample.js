@@ -1,39 +1,46 @@
 // ROOMS sample data.
-// Plain English version: this file is the fake/live-ish data that feeds the `/rooms` page.
-// If Nate wants to change what a room says, start here before touching the Svelte page.
-// Later, Towpath/Supabase can replace this file with real data. Until then, this keeps the UI easy to reason about.
+// Plain English version: this file is the public-safe sample state that feeds `/rooms`.
+// The contract for each public room lives in `src/lib/types/rooms.js`.
+// Keep this sanitized: no real hostnames, no private paths, no raw command output, no client data.
+
+// Import only for editor/JSDoc awareness. It does not run in the browser.
+/** @typedef {import('$lib/types/rooms.js').PublicRoom} PublicRoom */
 
 // Small counters shown near the bottom of the ROOMS page.
-// `label` is the caption. `value` is the number/text shown above it.
 export const fleetStats = [
   { label: 'rooms', value: '3' },
-  { label: 'live nodes', value: '1' },
+  { label: 'working', value: '2' },
   { label: 'queued tasks', value: '8' },
   { label: 'public mode', value: 'on' }
 ];
 
 // Main room records.
-// Each object below becomes one visible room card on `/rooms`.
-// The `id` value is the safe internal handle used when someone clicks a card.
-// The `asset` SVG is the large room picture.
-// The `character` SVG is the smaller person/avatar in the drill-down panel.
+// The first eight fields match the public ROOMS data contract.
+// The remaining fields are display-only sample details for the current static UI.
+/** @type {Array<PublicRoom & {
+ *   asset: string,
+ *   character: string,
+ *   theme: string,
+ *   queue: string[],
+ *   recentArtifacts: string[],
+ *   log: string[],
+ *   commits: Array<{ hash: string, message: string }>
+ * }>} */
 export const roomNodes = [
   {
-    // M4 is the frontend/design worker.
     id: 'm4',
-    name: 'M4',
-    machine: 'kn8-m4',
-    room: 'M4',
-    role: 'frontend worker',
+    displayName: 'Coding Machine',
     status: 'idle',
-    tone: 'warn',
+    role: 'frontend worker',
+    taskLabel: 'UI options and visual passes',
+    progress: 0.38,
+    queueLength: 3,
+    lastSeenAt: '2026-05-01T08:20:00.000Z',
     asset: '/rooms/room-m4.svg',
     character: '/rooms/character-operator.svg',
-    theme: 'M4 is the frontend/UI worker. Screens, options, interface passes.',
-    task: 'UI options and visual passes',
-    progress: 38,
+    theme: 'M4 handles frontend passes, interface options, and visual checks.',
     queue: ['tighten visual layout', 'compare homepage options', 'prepare animation hooks'],
-    recentFiles: ['src/routes/options/+page.svelte', 'src/app.css'],
+    recentArtifacts: ['options route', 'global styles'],
     log: ['heartbeat ping', 'status: ready', 'waiting for dispatch'],
     commits: [
       { hash: '4ddba77', message: 'redraft ROOMS layout options' },
@@ -42,21 +49,19 @@ export const roomNodes = [
     ]
   },
   {
-    // M1 is the backend/data worker.
     id: 'm1',
-    name: 'M1',
-    machine: 'kn8-mbp',
-    room: 'M1',
-    role: 'backend/data worker',
+    displayName: 'Workhorse',
     status: 'working',
-    tone: 'live',
+    role: 'backend/data worker',
+    taskLabel: 'Data shape, content inventory, service glue',
+    progress: 0.64,
+    queueLength: 3,
+    lastSeenAt: '2026-05-01T08:24:00.000Z',
     asset: '/rooms/room-m1.svg',
     character: '/rooms/character-worker.svg',
-    theme: 'M1 is the backend/data worker. Shape data, inspect content, wire services.',
-    task: 'Data shape, content inventory, service glue',
-    progress: 64,
+    theme: 'M1 handles backend checks, data shape, and service wiring.',
     queue: ['normalize room state schema', 'map Towpath events', 'draft public feed rules'],
-    recentFiles: ['docs/rooms-public-data-spec.md', 'src/lib/content/rooms-sample.js'],
+    recentArtifacts: ['public data spec', 'room sample data'],
     log: ['task assigned', 'processing sample state', 'public-safe fields only'],
     commits: [
       { hash: '4ddba77', message: 'redraft ROOMS layout options' },
@@ -65,25 +70,23 @@ export const roomNodes = [
     ]
   },
   {
-    // Jeep is the conductor/operator node.
     id: 'jeep',
-    name: 'Jeep',
-    machine: 'kn8-jeep',
-    room: 'Jeep',
+    displayName: 'Cockpit',
+    status: 'working',
     role: 'conductor',
-    status: 'active',
-    tone: 'live',
+    taskLabel: 'Coordination, review, commit, and deploy',
+    progress: 0.82,
+    queueLength: 2,
+    lastSeenAt: '2026-05-01T08:28:00.000Z',
     asset: '/rooms/room-jeep.svg',
     character: '/rooms/character-driver.svg',
-    theme: 'Jeep is the conductor. Dispatch, worklog, integration, final decisions.',
-    task: 'Belt.works rebuild, worklog, dispatch',
-    progress: 82,
-    queue: ['drop ROOMS into SvelteKit', 'commit demo port', 'keep report current'],
-    recentFiles: ['src/routes/rooms/+page.svelte', 'static/rooms/room-jeep.svg'],
-    log: ['dev server ready', 'rooms uploaded', 'porting static demo'],
+    theme: 'Jeep is the operator surface: dispatch, worklog, integration, final decisions.',
+    queue: ['keep public surface tight', 'prepare production-safe state feed'],
+    recentArtifacts: ['ROOMS route', 'room assets'],
+    log: ['dev server ready', 'rooms checked', 'public state locked'],
     commits: [
-      { hash: '4ddba77', message: 'redraft ROOMS layout options' },
-      { hash: 'a8066db', message: 'port ROOMS demo into SvelteKit' },
+      { hash: '8cbc7f3', message: 'comment ROOMS for maintainability' },
+      { hash: 'c43e10b', message: 'combine ROOMS wall with drilldown' },
       { hash: '8cbcc14', message: 'expand ROOMS cockpit proof' }
     ]
   }
@@ -101,11 +104,11 @@ export const rooms = [
     nextMove: 'Wire state from Towpath once static shape holds.'
   },
   {
-    name: 'FOUNDRY Intake',
-    slug: 'foundry-intake',
+    name: 'Intake',
+    slug: 'contact-intake',
     status: 'draft route',
     purpose: 'Turn a messy problem into a scoped build conversation.',
-    visibleWork: ['problem intake', 'client-fit copy', 'Mike-facing path'],
+    visibleWork: ['problem intake', 'client-fit copy', 'plain contact path'],
     nextMove: 'Connect approved intake fields to storage and notification.'
   },
   {
@@ -113,7 +116,7 @@ export const rooms = [
     slug: 'proof-registry',
     status: 'static proof',
     purpose: 'Show work as evidence instead of making claims.',
-    visibleWork: ['Belt.works', 'ROOMS', 'FOUNDRY', 'Towpath'],
+    visibleWork: ['Belt.works', 'ROOMS', 'Intake', 'Towpath'],
     nextMove: 'Add screenshots, decisions, and before/after notes.'
   },
   {
@@ -126,8 +129,6 @@ export const rooms = [
   }
 ];
 
-// Event ledger copy from an earlier layout.
-// It is not front-and-center now because Nate wanted the rooms to be the point.
 export const roomEvents = [
   {
     time: 'overnight pass',
@@ -146,21 +147,13 @@ export const roomEvents = [
     room: 'ROOMS Cockpit',
     event: 'Uploaded static ROOMS demo mined for art direction, room assets, state model, and drill-down behavior.',
     publicSafe: true
-  },
-  {
-    time: 'current pass',
-    room: 'ROOMS Cockpit',
-    event: 'React/static HTML shape ported into SvelteKit route using local SVG assets.',
-    publicSafe: true
   }
 ];
 
-// Public-safety rules.
-// These matter when ROOMS gets real queue/log data. Do not expose secrets or private operational details.
 export const roomRules = [
   'Each agent gets its own room.',
   'Rooms are navigable: overview first, detail panel second.',
-  'Keep operator labels visible: m4, m1, jeep.',
+  'Use sanitized display names, not real hostnames.',
   'No secrets.',
   'No private chat logs.',
   'No client data.',

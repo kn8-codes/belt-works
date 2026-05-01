@@ -44,14 +44,14 @@
         <button class:active={selectedId === room.id} class="room-wall-card" type="button" onclick={() => (selectedId = room.id)}>
           <span class="room-card-head">
             <span>
-              <span class="meta">{room.machine}</span>
-              <strong>{room.name}</strong>
+              <span class="meta">{room.displayName}</span>
+              <strong>{room.id.toUpperCase()}</strong>
             </span>
-            <span class="status" class:warn={room.tone === 'warn'}>{room.status}</span>
+            <span class="status" class:warn={room.status === 'idle' || room.status === 'blocked'}>{room.status}</span>
           </span>
           <!-- SVG is currently loaded as an image. To animate internal SVG parts later, inline this SVG as a Svelte component. -->
-          <img src={room.asset} alt="{room.name} illustrated room" />
-          <span class="room-task">{room.task}</span>
+          <img src={room.asset} alt="{room.id.toUpperCase()} illustrated room" />
+          <span class="room-task">{room.taskLabel}</span>
           <span class="room-open-hint">click to inspect</span>
         </button>
       {/each}
@@ -62,11 +62,11 @@
       <div class="drilldown-main">
         <div>
           <p class="meta">Selected room</p>
-          <h2>{selectedRoom.name}</h2>
+          <h2>{selectedRoom.displayName}</h2>
           <p>{selectedRoom.theme}</p>
         </div>
         <div class="drilldown-character">
-          <img src={selectedRoom.character} alt="{selectedRoom.name} character" />
+          <img src={selectedRoom.character} alt="{selectedRoom.displayName} character" />
         </div>
       </div>
 
@@ -76,14 +76,14 @@
           <div class="room-card-head">
             <div>
               <p class="meta">current work</p>
-              <h3>{selectedRoom.task}</h3>
+              <h3>{selectedRoom.taskLabel}</h3>
             </div>
-            <span class="status" class:warn={selectedRoom.tone === 'warn'}>{selectedRoom.status}</span>
+            <span class="status" class:warn={selectedRoom.status === 'idle' || selectedRoom.status === 'blocked'}>{selectedRoom.status}</span>
           </div>
           <div class="progress-wrap" aria-label="Task progress">
-            <span style={`width: ${selectedRoom.progress}%`}></span>
+            <span style={`width: ${Math.round(selectedRoom.progress * 100)}%`}></span>
           </div>
-          <p class="form-note">{selectedRoom.progress}% complete. This is sample state until live Towpath data is wired.</p>
+          <p class="form-note">{Math.round(selectedRoom.progress * 100)}% complete. Queue length: {selectedRoom.queueLength}. Last seen: {selectedRoom.lastSeenAt}.</p>
         </article>
 
         <article class="drill-card">
@@ -96,10 +96,10 @@
         </article>
 
         <article class="drill-card">
-          <p class="meta">Recent files</p>
+          <p class="meta">Recent artifacts</p>
           <ul class="mini-list">
-            {#each selectedRoom.recentFiles as file (file)}
-              <li>{file}</li>
+            {#each selectedRoom.recentArtifacts as artifact (artifact)}
+              <li>{artifact}</li>
             {/each}
           </ul>
         </article>
