@@ -1,34 +1,121 @@
 <script>
-  import { roomEvents, roomNodes, roomRules, rooms } from '$lib/content/rooms-sample.js';
+  import { fleetStats, roomEvents, roomNodes, roomRules, rooms } from '$lib/content/rooms-sample.js';
+
+  let selectedId = $state(roomNodes[2].id);
+
+  let selectedRoom = $derived(roomNodes.find((room) => room.id === selectedId) ?? roomNodes[0]);
 </script>
 
 <svelte:head>
   <title>ROOMS | belt.works</title>
-  <meta name="description" content="A public-safe cockpit for the belt.works agent mesh and working rooms." />
+  <meta name="description" content="A public-safe illustrated cockpit for the belt.works agent mesh." />
 </svelte:head>
 
-<section class="route-title">
-  <div class="wrap">
-    <p class="eyebrow">ROOMS</p>
-    <h1>A cockpit, not a fantasy dashboard.</h1>
-    <p class="lead">ROOMS is the public-safe view of the lab: what rooms exist, what they are for, and what the mesh is allowed to show. No secrets. No private logs. No client data.</p>
-    <div class="kicker-row">
-      <span class="pill">static proof</span>
-      <span class="pill">sanitized</span>
-      <span class="pill">live feed later</span>
+<section class="rooms-shell">
+  <div class="rooms-topbar">
+    <div>
+      <p class="eyebrow">ROOMS</p>
+      <h1>Every node becomes a place.</h1>
     </div>
+    <div class="rooms-live-tag">public demo</div>
+  </div>
+
+  <div class="rooms-dashboard">
+    <aside class="rooms-sidebar" aria-label="ROOMS overview">
+      <div class="rooms-brand-block">
+        <p class="meta">fleet cockpit</p>
+        <p>Illustrated rooms make the mesh legible without exposing the machine room.</p>
+      </div>
+
+      <div class="rooms-stats">
+        {#each fleetStats as stat (stat.label)}
+          <div class="rooms-stat">
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </div>
+        {/each}
+      </div>
+
+      <div class="rooms-nav-list">
+        {#each roomNodes as room (room.id)}
+          <button class:active={selectedId === room.id} type="button" onclick={() => (selectedId = room.id)}>
+            <span class="rooms-dot {room.tone}"></span>
+            <span>
+              <strong>{room.name}</strong>
+              <small>{room.room}</small>
+            </span>
+          </button>
+        {/each}
+      </div>
+    </aside>
+
+    <main class="rooms-stage" aria-label="ROOMS visual stage">
+      <div class="rooms-grid-stage">
+        {#each roomNodes as room (room.id)}
+          <button class:active={selectedId === room.id} class="illustrated-room" type="button" onclick={() => (selectedId = room.id)}>
+            <span class="room-card-head">
+              <span>
+                <span class="meta">{room.machine}</span>
+                <strong>{room.room}</strong>
+              </span>
+              <span class="status" class:warn={room.tone === 'warn'}>{room.status}</span>
+            </span>
+            <img src={room.asset} alt="{room.name} illustrated room" loading="lazy" />
+            <span class="room-task">{room.task}</span>
+          </button>
+        {/each}
+      </div>
+    </main>
+
+    <aside class="rooms-detail" aria-label="Selected room detail">
+      <div class="detail-character">
+        <img src={selectedRoom.character} alt="{selectedRoom.name} character" />
+      </div>
+      <p class="meta">{selectedRoom.machine} / {selectedRoom.role}</p>
+      <h2>{selectedRoom.room}</h2>
+      <p>{selectedRoom.theme}</p>
+
+      <div class="progress-wrap" aria-label="Task progress">
+        <span style={`width: ${selectedRoom.progress}%`}></span>
+      </div>
+      <p class="form-note">{selectedRoom.progress}% — {selectedRoom.task}</p>
+
+      <div>
+        <p class="meta">Queue</p>
+        <ul class="mini-list">
+          {#each selectedRoom.queue as item (item)}
+            <li>{item}</li>
+          {/each}
+        </ul>
+      </div>
+
+      <div>
+        <p class="meta">Recent files</p>
+        <ul class="mini-list">
+          {#each selectedRoom.recentFiles as file (file)}
+            <li>{file}</li>
+          {/each}
+        </ul>
+      </div>
+
+      <div class="terminal-log">
+        {#each selectedRoom.log as line (line)}
+          <p>→ {line}</p>
+        {/each}
+      </div>
+    </aside>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap section-head">
     <div>
-      <p class="eyebrow">Working rooms</p>
-      <h2>The lab gets rooms before it gets mythology.</h2>
+      <p class="eyebrow">Product shape</p>
+      <h2>Rooms are the interface. Cards are the receipt.</h2>
     </div>
-    <p class="copy">Each room has a job. If it does not produce proof, intake, research, data, or operations value, it does not need a room yet.</p>
+    <p class="copy">The uploaded demo had the right idea: room scenes, character identity, state labels, logs, and drill-down behavior. This pass ports that shape into SvelteKit without dragging React into the stack.</p>
   </div>
-  <div class="wrap room-grid">
+  <div class="wrap room-grid compact">
     {#each rooms as room (room.slug)}
       <article class="card large room-card">
         <div class="room-card__top">
@@ -46,28 +133,6 @@
           </ul>
         </div>
         <p><strong>Next:</strong> {room.nextMove}</p>
-      </article>
-    {/each}
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap section-head">
-    <div>
-      <p class="eyebrow">Mesh</p>
-      <h2>Show node roles. Not the machine room.</h2>
-    </div>
-    <p class="copy">The public page can show sanitized roles and coarse status. It should not expose hostnames, keys, file paths, raw logs, private tasks, or client material.</p>
-  </div>
-  <div class="wrap grid">
-    {#each roomNodes as node (node.name)}
-      <article class="card large">
-        <div class="meta">{node.role}</div>
-        <h3>{node.name}</h3>
-        <p><span class:warn={node.tone === 'warn'} class="status">{node.status}</span></p>
-        <p><strong>Task:</strong> {node.task}</p>
-        <p><strong>Last seen:</strong> {node.lastSeen}</p>
-        <p>{node.event}</p>
       </article>
     {/each}
   </div>

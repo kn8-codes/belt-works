@@ -1,41 +1,72 @@
+export const fleetStats = [
+  { label: 'rooms', value: '3' },
+  { label: 'live nodes', value: '1' },
+  { label: 'queued tasks', value: '8' },
+  { label: 'public mode', value: 'on' }
+];
+
 export const roomNodes = [
   {
-    name: 'Jeep',
-    role: 'conductor',
-    status: 'online',
-    tone: 'live',
-    lastSeen: 'live session',
-    task: 'Belt.works rebuild, worklog, dispatch',
-    event: 'Site rebuild committed. ROOMS static proof layer is being expanded.'
-  },
-  {
+    id: 'm4',
     name: 'M4',
+    machine: 'kn8-m4',
+    room: 'Control Room',
     role: 'frontend worker',
-    status: 'ready',
+    status: 'idle',
     tone: 'warn',
-    lastSeen: 'earlier session',
+    asset: '/rooms/room-m4.svg',
+    character: '/rooms/character-operator.svg',
+    theme: 'pastel/deep pink command center',
     task: 'UI options and visual passes',
-    event: 'Available for focused interface work when dispatched.'
+    progress: 38,
+    queue: ['tighten visual layout', 'compare homepage options', 'prepare animation hooks'],
+    recentFiles: ['src/routes/options/+page.svelte', 'src/app.css'],
+    log: ['heartbeat ping', 'status: ready', 'waiting for dispatch']
   },
   {
+    id: 'm1',
     name: 'M1',
+    machine: 'kn8-mbp',
+    room: 'Kitchen Workshop',
     role: 'backend/data worker',
-    status: 'ready',
-    tone: 'warn',
-    lastSeen: 'earlier session',
+    status: 'working',
+    tone: 'live',
+    asset: '/rooms/room-m1.svg',
+    character: '/rooms/character-worker.svg',
+    theme: 'purple workshop with bench logic',
     task: 'Data shape, content inventory, service glue',
-    event: 'Available for structured data and integration work when dispatched.'
+    progress: 64,
+    queue: ['normalize room state schema', 'map Towpath events', 'draft public feed rules'],
+    recentFiles: ['docs/rooms-public-data-spec.md', 'src/lib/content/rooms-sample.js'],
+    log: ['task assigned', 'processing sample state', 'public-safe fields only']
+  },
+  {
+    id: 'jeep',
+    name: 'Jeep',
+    machine: 'kn8-jeep',
+    room: 'Garage / Driver Seat',
+    role: 'conductor',
+    status: 'active',
+    tone: 'live',
+    asset: '/rooms/room-jeep.svg',
+    character: '/rooms/character-driver.svg',
+    theme: 'dark green field node, no cats',
+    task: 'Belt.works rebuild, worklog, dispatch',
+    progress: 82,
+    queue: ['drop ROOMS into SvelteKit', 'commit demo port', 'keep report current'],
+    recentFiles: ['src/routes/rooms/+page.svelte', 'static/rooms/room-jeep.svg'],
+    log: ['dev server ready', 'rooms uploaded', 'porting static demo']
   }
 ];
 
 export const rooms = [
   {
-    name: 'Front Door',
-    slug: 'front-door',
+    name: 'Overview',
+    slug: 'overview',
     status: 'live draft',
-    purpose: 'Explain what Belt.works is before the visitor gets bored.',
-    visibleWork: ['Homepage', 'work registry', 'method', 'service routes'],
-    nextMove: 'Pick the strongest homepage option and cut the rest.'
+    purpose: 'Show the fleet as inhabited rooms instead of generic status cards.',
+    visibleWork: ['room art', 'node status', 'task queue', 'drill-down panel'],
+    nextMove: 'Wire state from Towpath once static shape holds.'
   },
   {
     name: 'FOUNDRY Intake',
@@ -43,7 +74,7 @@ export const rooms = [
     status: 'draft route',
     purpose: 'Turn a messy problem into a scoped build conversation.',
     visibleWork: ['problem intake', 'client-fit copy', 'Mike-facing path'],
-    nextMove: 'Wire storage and notification after copy direction is approved.'
+    nextMove: 'Connect approved intake fields to storage and notification.'
   },
   {
     name: 'Proof Registry',
@@ -52,38 +83,6 @@ export const rooms = [
     purpose: 'Show work as evidence instead of making claims.',
     visibleWork: ['Belt.works', 'ROOMS', 'FOUNDRY', 'Towpath'],
     nextMove: 'Add screenshots, decisions, and before/after notes.'
-  },
-  {
-    name: 'ROOMS Cockpit',
-    slug: 'rooms-cockpit',
-    status: 'being dropped in',
-    purpose: 'Public-safe view of the agent mesh and what each room is for.',
-    visibleWork: ['node cards', 'room cards', 'event ledger', 'public rules'],
-    nextMove: 'Replace sample records with sanitized live feed once the shape holds.'
-  },
-  {
-    name: 'Data Yard',
-    slug: 'data-yard',
-    status: 'placeholder',
-    purpose: 'Expose useful public datasets and collection methods.',
-    visibleWork: ['data.belt.works route', 'ROOMS sample data'],
-    nextMove: 'Choose first public dataset worth maintaining.'
-  },
-  {
-    name: 'Intel Desk',
-    slug: 'intel-desk',
-    status: 'placeholder',
-    purpose: 'Turn research into short useful briefings.',
-    visibleWork: ['intel.belt.works route', 'research route'],
-    nextMove: 'Define one briefing format and publish the first ugly example.'
-  },
-  {
-    name: 'IOC Bench',
-    slug: 'ioc-bench',
-    status: 'placeholder',
-    purpose: 'Track indicators, signatures, and field notes without theatrics.',
-    visibleWork: ['ioc.belt.works route'],
-    nextMove: 'Keep it empty until there is public-safe material.'
   },
   {
     name: 'Mesh Ops',
@@ -104,12 +103,6 @@ export const roomEvents = [
   },
   {
     time: 'overnight pass',
-    room: 'Proof Registry',
-    event: 'Work and service routes added so the site has a skeleton, not just a hero.',
-    publicSafe: true
-  },
-  {
-    time: 'overnight pass',
     room: 'ROOMS Cockpit',
     event: 'Static public-safe mesh view created. Live feed comes later.',
     publicSafe: true
@@ -117,17 +110,25 @@ export const roomEvents = [
   {
     time: 'current pass',
     room: 'ROOMS Cockpit',
-    event: 'Rooms expanded from node cards into a decision surface for the whole lab.',
+    event: 'Uploaded static ROOMS demo mined for art direction, room assets, state model, and drill-down behavior.',
+    publicSafe: true
+  },
+  {
+    time: 'current pass',
+    room: 'ROOMS Cockpit',
+    event: 'React/static HTML shape ported into SvelteKit route using local SVG assets.',
     publicSafe: true
   }
 ];
 
 export const roomRules = [
+  'Each agent gets its own room.',
+  'Rooms are navigable: overview first, detail panel second.',
+  'Keep operator labels visible: m4, m1, jeep.',
   'No secrets.',
   'No private chat logs.',
   'No client data.',
   'No sensitive local paths.',
   'No raw command output.',
-  'Status labels over theater.',
   'Static proof first. Live feed later.'
 ];
