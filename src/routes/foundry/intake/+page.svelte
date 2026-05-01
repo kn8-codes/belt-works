@@ -1,9 +1,3 @@
-<svelte:head>
-  <title>FOUNDRY Intake | belt.works</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
-</svelte:head>
-
 <script>
   let form = $state({
     name: '',
@@ -15,7 +9,6 @@
     preferredContact: '',
     biggestHeadache: ''
   });
-
   let isSubmitting = $state(false);
   let success = $state(false);
   let error = $state('');
@@ -27,7 +20,6 @@
     isSubmitting = true;
     success = false;
     error = '';
-
     try {
       const response = await fetch('/api/foundry-intake', {
         method: 'POST',
@@ -38,27 +30,14 @@
           sourceUrl: window.location.href,
           referrer: document.referrer,
           submittedAt: new Date().toISOString(),
-          intakeVersion: 'foundry-short-form-v1'
+          intakeVersion: 'foundry-problem-intake-v2'
         })
       });
-
       const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Could not submit intake.');
-      }
-
+      if (!response.ok) throw new Error(data.error || 'Could not submit intake.');
       success = true;
-      successMessage = `Got it. We’ll look this over and reach back out at ${form.phone}.`;
-      form = {
-        name: '',
-        phone: '',
-        whatYouDo: '',
-        whereYouWork: '',
-        idealJobs: '',
-        avoidJobs: '',
-        preferredContact: '',
-        biggestHeadache: ''
-      };
+      successMessage = `Got it. We will look this over and reach back out at ${form.phone}.`;
+      form = { name: '', phone: '', whatYouDo: '', whereYouWork: '', idealJobs: '', avoidJobs: '', preferredContact: '', biggestHeadache: '' };
     } catch (err) {
       error = err instanceof Error ? err.message : 'Could not submit intake.';
       successMessage = '';
@@ -68,224 +47,47 @@
   }
 </script>
 
-<main>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<svelte:head>
+  <title>FOUNDRY Intake | belt.works</title>
+  <meta name="description" content="FOUNDRY intake: turn messy problem context into a scoped build." />
+</svelte:head>
 
-  <nav aria-label="Page navigation">
-    <a href="/" class="back">← belt.works</a>
-  </nav>
+<section class="route-title">
+  <div class="wrap">
+    <p class="eyebrow">FOUNDRY intake</p>
+    <h1>Start with the mess.</h1>
+    <p class="lead">This is not a quote generator. It is the first pass at context: problem, constraint, useful first version.</p>
+  </div>
+</section>
 
-  <section class="page-shell" id="main-content">
-    <div class="section-label fade-in" style="--delay: 0ms">// FOUNDRY</div>
-
-    <header class="stack fade-in" style="--delay: 100ms">
-      <h1>Quick intake.</h1>
-      <p class="lead">Short enough to finish in a couple minutes, but detailed enough to tell us what you actually do, what jobs you want, what jobs you hate, and what is making your business harder than it should be. If this looks useful, we can build something more custom from here.</p>
-    </header>
-
-    <article class="card fade-in" style="--delay: 200ms">
-      <div class="meta">Door opener</div>
-      <p class="intro">This is not a full application. It is the fastest way to get the real problem on the table so we can figure out whether FOUNDRY can actually help.</p>
-      <form aria-label="FOUNDRY intake form" onsubmit={handleSubmit}>
-        <div class="field-grid">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" type="text" bind:value={form.name} required placeholder="Your name" />
-          </div>
-
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input id="phone" type="tel" bind:value={form.phone} required placeholder="Best number to reach you" />
-          </div>
-
-          <div class="field">
-            <label for="what-you-do">What do you do?</label>
-            <input id="what-you-do" type="text" bind:value={form.whatYouDo} required placeholder="Flooring, drywall, bathrooms, landscaping..." />
-          </div>
-
-          <div class="field">
-            <label for="where-you-work">Where do you work?</label>
-            <input id="where-you-work" type="text" bind:value={form.whereYouWork} required placeholder="City, service area, or neighborhoods" />
-          </div>
-
-          <div class="field field-full">
-            <label for="ideal-jobs">What kind of jobs do you want more of?</label>
-            <textarea id="ideal-jobs" rows="4" bind:value={form.idealJobs} placeholder="Bathrooms, bigger flooring installs, recurring maintenance, drywall repair, higher-budget interior work..."></textarea>
-          </div>
-
-          <div class="field field-full">
-            <label for="avoid-jobs">What kind of jobs do you want less of?</label>
-            <textarea id="avoid-jobs" rows="4" bind:value={form.avoidJobs} placeholder="Tiny repair calls, price shoppers, chaotic remodels, long drives for small jobs..."></textarea>
-          </div>
-
-          <div class="field">
-            <label for="preferred-contact">How should we contact you?</label>
-            <input id="preferred-contact" type="text" bind:value={form.preferredContact} placeholder="Text first, call first, evenings, mornings..." />
-          </div>
-
-          <div class="field field-full">
-            <label for="biggest-headache">What's your biggest headache right now?</label>
-            <textarea id="biggest-headache" rows="6" bind:value={form.biggestHeadache} required placeholder="Bad leads, too much quoting, inconsistent work, scheduling mess, customers wasting your time — whatever the real problem is."></textarea>
-            <p class="hint">This is still the most important field. It tells us where the real friction is.</p>
-          </div>
-        </div>
-
-        {#if success}
-          <p class="success">{successMessage}</p>
-        {/if}
-
-        {#if error}
-          <p class="error">{error}</p>
-        {/if}
-
-        <button type="submit" class="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Sending...' : 'Send Intake →'}
-        </button>
-      </form>
+<section class="section">
+  <div class="wrap grid two">
+    <article class="card large">
+      <p class="eyebrow">What happens next</p>
+      <ul class="list">
+        <li>We read the context.</li>
+        <li>We cut the scope down to the first useful version.</li>
+        <li>We identify the risky part before pretending it is easy.</li>
+        <li>If it makes sense, it becomes a brief and build plan.</li>
+      </ul>
     </article>
-  </section>
-</main>
-
-<style>
-  :global(*, *::before, *::after) { box-sizing: border-box; margin: 0; padding: 0; }
-  :global(body) {
-    background: #0F0804;
-    color: #F0EDE8;
-    font-family: 'IBM Plex Mono', monospace;
-    min-height: 100vh;
-  }
-  :global(a:focus-visible), :global(button:focus-visible), :global(input:focus-visible), :global(textarea:focus-visible) {
-    outline: 2px solid #C45C1A;
-    outline-offset: 3px;
-  }
-  .skip-link {
-    position: absolute;
-    left: 1rem;
-    top: -3rem;
-    background: #C45C1A;
-    color: #0F0804;
-    padding: 0.75rem 1rem;
-    text-decoration: none;
-    z-index: 20;
-    font-weight: 700;
-  }
-  .skip-link:focus { top: 1rem; }
-  .fade-in {
-    opacity: 0;
-    transform: translateY(18px);
-    animation: fadeUp 0.55s ease forwards;
-    animation-delay: var(--delay, 0ms);
-  }
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  nav {
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid #2A1A0E;
-  }
-  .back {
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    color: #9A8070;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  .back:hover { color: #C45C1A; }
-  .page-shell {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-    display: grid;
-    gap: 1.5rem;
-  }
-  .section-label {
-    font-size: 0.7rem;
-    letter-spacing: 4px;
-    color: #C45C1A;
-    text-transform: uppercase;
-  }
-  h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 2px;
-    color: #F0EDE8;
-    font-size: clamp(3rem, 10vw, 5.5rem);
-    line-height: 0.95;
-  }
-  .lead, .hint, .intro {
-    color: #9A8070;
-    line-height: 1.8;
-    font-size: 0.95rem;
-  }
-  .card {
-    border: 1px solid #2A1A0E;
-    background: #160C06;
-    padding: 1.5rem;
-  }
-  .meta {
-    color: #C45C1A;
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .intro {
-    margin-bottom: 1rem;
-  }
-  .field-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-  }
-  .field-full { grid-column: 1 / -1; }
-  label {
-    color: #F0EDE8;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  input, textarea {
-    width: 100%;
-    border: 1px solid #3B2413;
-    background: #1E120A;
-    color: #F0EDE8;
-    padding: 0.95rem 1rem;
-    font: inherit;
-    border-radius: 0;
-  }
-  textarea { resize: vertical; }
-  .submit {
-    margin-top: 1rem;
-    background: #C45C1A;
-    color: #0F0804;
-    border: none;
-    padding: 1rem 1.4rem;
-    font: inherit;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-  }
-  .submit:disabled {
-    opacity: 0.65;
-    cursor: wait;
-  }
-  .success, .error {
-    margin-top: 1rem;
-    font-size: 0.92rem;
-  }
-  .success { color: #B7E4C7; }
-  .error { color: #F2A6A6; }
-  @media (max-width: 700px) {
-    .field-grid { grid-template-columns: 1fr; }
-    .page-shell { padding-inline: 1rem; }
-    nav { padding-inline: 1rem; }
-  }
-</style>
+    <article class="card large">
+      {#if success}
+        <p class="form-success">{successMessage}</p>
+      {:else}
+        <form onsubmit={handleSubmit}>
+          <label>Your name<input bind:value={form.name} required /></label>
+          <label>Best phone or contact<input bind:value={form.phone} required /></label>
+          <label>What are you trying to do?<textarea bind:value={form.whatYouDo} rows="3" required></textarea></label>
+          <label>Where does this need to work?<textarea bind:value={form.whereYouWork} rows="3" required></textarea></label>
+          <label>What would a useful first version do?<textarea bind:value={form.idealJobs} rows="3"></textarea></label>
+          <label>What should we avoid building?<textarea bind:value={form.avoidJobs} rows="3"></textarea></label>
+          <label>Preferred contact window<input bind:value={form.preferredContact} /></label>
+          <label>Biggest headache right now<textarea bind:value={form.biggestHeadache} rows="4" required></textarea></label>
+          {#if error}<p class="form-error">{error}</p>{/if}
+          <button class="button" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send intake'}</button>
+        </form>
+      {/if}
+    </article>
+  </div>
+</section>
