@@ -7,7 +7,7 @@
   <div class="wrap">
     <p class="eyebrow">Direction</p>
     <h1>The work either holds up or it does not.</h1>
-    <p class="lead">That is the useful standard. Not scale. Not theater. Not a story about grit. Working software, checked against real problems.</p>
+    <p class="lead">That is the useful standard. Not growth theater. Not grit branding. Work that can be checked. Working software, checked against real problems.</p>
   </div>
 </section>
 

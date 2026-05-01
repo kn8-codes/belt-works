@@ -39,7 +39,7 @@
       <p>Everything else waits unless it earns its way back.</p>
     </article>
     <article class="mono-panel">
-      <p><strong>Money:</strong> Mike client / FOUNDRY</p>
+      <p><strong>Money:</strong> Client work / intake</p>
       <p><strong>Proof:</strong> belt.works / ROOMS</p>
       <p><strong>Infrastructure:</strong> Towpath / mesh</p>
       <p><strong>Rule:</strong> If it does not support survival, evidence, or method, it is drift.</p>

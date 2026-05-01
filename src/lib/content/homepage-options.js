@@ -6,7 +6,7 @@ export const homepageOptions = [
     thesis: 'Use the locked line, explain the lab, show current work, then route people to intake.',
     hero: 'We build software that works.',
     secondary: 'Research first. Software as evidence.',
-    bestFor: 'The main public site. Broad enough to hold projects, services, ROOMS, and FOUNDRY.',
+    bestFor: 'The main public site. Broad enough to hold projects, services, ROOMS, and intake.',
     risk: 'Can feel general until the work registry gets stronger.'
   },
   {
@@ -16,7 +16,7 @@ export const homepageOptions = [
     thesis: 'Lead with the transaction and make the site work harder for client conversion.',
     hero: 'Bring the problem here.',
     secondary: 'We scope it, build the first useful version, and make it work.',
-    bestFor: 'FOUNDRY and first paid client work.',
+    bestFor: 'First paid client work and problem intake.',
     risk: 'Can slide back into agency lead-gen if it is not watched.'
   },
   {

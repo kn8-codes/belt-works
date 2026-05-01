@@ -9,7 +9,7 @@
     <h1>Indicators and actor data should be an output, not a burden.</h1>
     <p class="lead">Status: early property stub. This page names the lane without pretending the service is fully live.</p>
     <div class="actions">
-      <a class="button" href="/foundry/intake">Bring a problem</a>
+      <a class="button" href="/contact">Bring a problem</a>
       <a class="button secondary" href="/services">Back to services</a>
     </div>
   </div>

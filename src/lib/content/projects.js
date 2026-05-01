@@ -10,15 +10,6 @@ export const projects = [
     notes: 'Current priority. Voice is locked. Structure is being rebuilt.'
   },
   {
-    slug: 'foundry',
-    name: 'FOUNDRY',
-    type: 'money',
-    status: 'intake path',
-    summary: 'A way to turn messy client context into a brief, scope, tickets, and software that can ship.',
-    href: '/foundry/intake',
-    notes: 'Closest to revenue. Keep it plain and scoped.'
-  },
-  {
     slug: 'rooms',
     name: 'ROOMS',
     type: 'proof',
@@ -57,7 +48,7 @@ export const projects = [
     slug: 'hosp-or-not',
     name: 'hosp-or-not',
     type: 'proof artifact',
-    status: 'keep small',
+    status: 'shipped',
     summary: 'Small shipped proof. Useful as evidence if it stays honest and bounded.',
     notes: 'Do not turn it into an empire.'
   },
@@ -81,4 +72,4 @@ export const projects = [
   }
 ];
 
-export const featuredProjects = projects.filter((project) => ['belt-works', 'foundry', 'rooms', 'towpath'].includes(project.slug));
+export const featuredProjects = projects.filter((project) => ['belt-works', 'rooms', 'towpath', 'hosp-or-not'].includes(project.slug));

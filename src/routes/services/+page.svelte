@@ -14,7 +14,7 @@
     <h1>Small enough to ship. Useful enough to matter.</h1>
     <p class="lead">No package menu. No agency costume. Bring a problem. We scope the first useful version.</p>
     <div class="actions">
-      <a class="button" href="/foundry/intake">Start intake</a>
+      <a class="button" href="/contact">Bring a problem</a>
       <a class="button secondary" href="/method">See the method</a>
     </div>
   </div>

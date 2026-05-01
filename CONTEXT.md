@@ -75,7 +75,7 @@ General interest: any problem with a software path. If there's a software soluti
 ## The three layers
 
 ```
-Survival    → out of the kitchen, stable income, FOUNDRY/belt.works clients
+Survival    → out of the kitchen, stable income, belt.works clients
 Evidence    → shipped software people use, BoomMates changing something real
 Method      → the mesh, the agents, the infrastructure, the process itself
 ```
@@ -168,7 +168,7 @@ Hard cap:     $200/mo
 | **BoomMates** | Civic housing platform, Akron-first. Foundational. | On hold until Civic Assembly winds down. |
 | **GREYMARKET** | MAC.BID auction arbitrage agent | Python stub built, eBay OAuth blocker |
 | **ShopFloor** | Shop floor management app — M4's autonomous project | Unknown state, needs a push |
-| **FOUNDRY** | Client intake methodology — voice → transcript → agent context | Live, 1 client (Mike) |
+| **intake** | Client intake methodology — voice → transcript → agent context | Live, 1 client (client) |
 | **ROOMS** | Spatial agent dashboard | Live on mock data, needs GitHub API wiring |
 
 ### Backburner
@@ -208,7 +208,7 @@ What it needs:
 
 Three jobs:
 1. Explain what belt.works is
-2. Funnel people who want to work with you → FOUNDRY intake
+2. Funnel people who want to work with you → intake intake
 3. Funnel people to the tools → Intel, IOC, data.belt.works
 
 Design: Dark. Technical. Minimal. Show the actual hardware. Don't oversell.
@@ -228,7 +228,6 @@ belt.works would exist anywhere. It wouldn't be called belt.works.
 ## Key Relationships
 
 - **Nate** — operator, human in the loop. Cook. Builder. Old-school hacker. Akron OH.
-- **Mike** — first FOUNDRY client. Personalization business (DTG + laser/CNC). Site build in progress. ~$400 upfront, ~$125/mo.
 - **BoomMates** — tied to Unify Akron Civic Assembly. Proposal #30 (citations database) is infrastructure BoomMates would consume.
 - **Unify Akron Civic Assembly** — Nate is a delegate. Session 7 tonight: 2026-04-30.
 
@@ -244,7 +243,7 @@ belt.works would exist anywhere. It wouldn't be called belt.works.
 - Do not lose the "research is what we do" framing — that's the lede
 - Do not treat the jeep node as optional — it is load-bearing
 - Do not conflate the Obsidian folder (cut) with OBDsidian the jeep project
-- Do not treat FOUNDRY/belt.works as a side project — it's the umbrella
+- Do not treat belt.works as a side project — it's the umbrella
 - Do not motivate, inspire, or frame anything aspirationally
 
 ---

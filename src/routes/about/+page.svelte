@@ -23,7 +23,7 @@
       <ul class="list">
         <li>Not a startup pitch.</li>
         <li>Not an agency package menu.</li>
-        <li>Not an Akron underdog story.</li>
+        <li>Akron is where the work happens. It is not the pitch.</li>
         <li>Not a content machine.</li>
       </ul>
     </article>

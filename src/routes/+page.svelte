@@ -1,5 +1,4 @@
 <script>
-  import MailingListForm from '$lib/components/MailingListForm.svelte';
   import ProjectCard from '$lib/components/ProjectCard.svelte';
   import { featuredProjects } from '$lib/content/projects.js';
   import { services } from '$lib/content/services.js';
@@ -16,7 +15,7 @@
     <h1>We build software that works.</h1>
     <p class="lead lede-tight">You bring the problem. We turn the mess into a scope, build the smallest useful thing, and keep the work honest.</p>
     <div class="actions">
-      <a class="button" href="/foundry/intake">Bring a problem</a>
+      <a class="button" href="/contact">Bring a problem</a>
       <a class="button secondary" href="/work">See the work</a>
     </div>
   </div>
@@ -34,7 +33,7 @@
     <article class="card large">
       <div class="meta">money</div>
       <h3>Client work gets scoped hard.</h3>
-      <p>FOUNDRY is the intake path. Voice, context, spec, tickets, build. No bloated proposal theater.</p>
+      <p>Intake stays plain. Context, scope, tickets, build. No bloated proposal theater.</p>
     </article>
     <article class="card large">
       <div class="meta">proof</div>
@@ -79,15 +78,3 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap grid two">
-    <article class="card large">
-      <p class="eyebrow">Mailing list</p>
-      <h2>One useful note a month.</h2>
-      <p>Work shipped. Notes from the lab. Things that broke. No content machine.</p>
-    </article>
-    <article class="card large">
-      <MailingListForm />
-    </article>
-  </div>
-</section>

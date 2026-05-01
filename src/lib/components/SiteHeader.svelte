@@ -6,7 +6,7 @@
       <a href="/method">method</a>
       <a href="/services">services</a>
       <a href="/rooms">rooms</a>
-      <a href="/foundry/intake">bring a problem</a>
+      <a href="/contact">bring a problem</a>
     </nav>
   </div>
 </header>
