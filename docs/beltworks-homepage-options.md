@@ -1,43 +1,29 @@
-# Belt.works Homepage Options
+# Belt.works Homepage Direction
 
-Purpose: give Nate choices without stopping work.
+Updated: 2026-05-01
 
-## Option A — Lab front door
+## Chosen direction
 
-Lead with the locked line and make the site explain the lab.
+Use the direct transaction:
 
-- Hero: "We build software that works."
-- Secondary: "Research first. Software as evidence."
-- Best for: broad umbrella, current public site.
-- Risk: may feel too general until work registry is strong.
+> We build software that works. You bring the problem.
 
-## Option B — Bring a problem
+Support line:
 
-Lead with client transaction.
+> Research first. Software as evidence.
 
-- Hero: "Bring the problem here."
-- Secondary: "We scope it, build the smallest useful version, and make it work."
-- Best for: FOUNDRY/client conversion.
-- Risk: could pull the site toward agency/lead-gen again.
+## Homepage jobs
 
-## Option C — Proof wall
+- Say what Belt.works is without hype.
+- Point to proof.
+- Point to services.
+- Point to ROOMS.
+- Route serious inquiries to `/contact`.
 
-Lead with visible projects and status labels.
+## Avoid
 
-- Hero: "The work either holds up or it does not."
-- Secondary: project cards above the fold.
-- Best for: credibility with builders/collaborators.
-- Risk: needs more finished proof to avoid looking thin.
-
-## Option D — ROOMS/mesh proof
-
-Lead with the agent mesh as the differentiator.
-
-- Hero: "The machines are working. Here is what they are doing."
-- Secondary: live/sanitized ROOMS preview.
-- Best for: proving the operating model.
-- Risk: too inward-facing for customers who just need software.
-
-## Overnight decision
-
-Build Option A first. It is the safest umbrella. Keep B, C, and D as pivots once Nate sees the shape.
+- Startup theater.
+- Agency filler.
+- Fake newsletter promises.
+- Retired intake labels.
+- Stale client-demo language.

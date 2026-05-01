@@ -1,29 +1,24 @@
-# NEXT.md
+# Next
 
-## What's done
+Updated: 2026-05-01
 
-- Landing page built
-- Mike provider profile built
-- Lead request form wired
-- SMS backend route built
-- Supabase schema/workflow in place for lead capture
+## Belt.works
 
-## What's next
+- Verify cleanup branch locally.
+- Push cleanup to production only when Nate says go live.
+- Keep `/contact` as the single public bring-a-problem path.
+- Keep retired intake/client-demo material out of public routes, docs, and copy.
+- Browser-check `/`, `/work`, `/services`, `/rooms`, and `/contact`.
+- Confirm removed routes stay gone.
 
-- End-to-end SMS test
-- A2P 10DLC registration approval
-- About page
-- Privacy page
-- Logo
+## ROOMS
 
-## Known issues
+- Keep the wall + drilldown shape.
+- Convert room SVGs inline when animation work starts.
+- Wire only public-safe state into the UI.
 
-- No active known issues at the moment
-- Previous warnings in `src/routes/mike/+page.svelte` were cleaned up
+## Jeep operations
 
-## V2 ideas
-
-- AI lead qualification
-- Provider portal
-- LiveKit voice intake
-- Stripe 3% fee
+- Preserve disk. Avoid big downloads/build artifacts.
+- Reclaim safe caches before heavy work.
+- Prepare flash-drive offload when a drive is mounted.
