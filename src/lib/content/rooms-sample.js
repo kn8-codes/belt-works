@@ -21,7 +21,12 @@ export const roomNodes = [
     progress: 38,
     queue: ['tighten visual layout', 'compare homepage options', 'prepare animation hooks'],
     recentFiles: ['src/routes/options/+page.svelte', 'src/app.css'],
-    log: ['heartbeat ping', 'status: ready', 'waiting for dispatch']
+    log: ['heartbeat ping', 'status: ready', 'waiting for dispatch'],
+    commits: [
+      { hash: '4ddba77', message: 'redraft ROOMS layout options' },
+      { hash: 'a8066db', message: 'port static demo into SvelteKit' },
+      { hash: 'a4a4ecc', message: 'rebuild Belt.works front door' }
+    ]
   },
   {
     id: 'm1',
@@ -38,7 +43,12 @@ export const roomNodes = [
     progress: 64,
     queue: ['normalize room state schema', 'map Towpath events', 'draft public feed rules'],
     recentFiles: ['docs/rooms-public-data-spec.md', 'src/lib/content/rooms-sample.js'],
-    log: ['task assigned', 'processing sample state', 'public-safe fields only']
+    log: ['task assigned', 'processing sample state', 'public-safe fields only'],
+    commits: [
+      { hash: '4ddba77', message: 'redraft ROOMS layout options' },
+      { hash: '8cbcc14', message: 'expand ROOMS cockpit proof' },
+      { hash: 'a4a4ecc', message: 'rebuild Belt.works front door' }
+    ]
   },
   {
     id: 'jeep',
@@ -55,7 +65,12 @@ export const roomNodes = [
     progress: 82,
     queue: ['drop ROOMS into SvelteKit', 'commit demo port', 'keep report current'],
     recentFiles: ['src/routes/rooms/+page.svelte', 'static/rooms/room-jeep.svg'],
-    log: ['dev server ready', 'rooms uploaded', 'porting static demo']
+    log: ['dev server ready', 'rooms uploaded', 'porting static demo'],
+    commits: [
+      { hash: '4ddba77', message: 'redraft ROOMS layout options' },
+      { hash: 'a8066db', message: 'port ROOMS demo into SvelteKit' },
+      { hash: '8cbcc14', message: 'expand ROOMS cockpit proof' }
+    ]
   }
 ];
 
