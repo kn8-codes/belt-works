@@ -1,22 +1,42 @@
 import { json } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '$lib/server/supabase.js';
 
-const supabaseUrl = env.SUPABASE_URL;
-const supabaseServiceRoleKey = env.SUPABASE_SERVICE_ROLE_KEY;
+const LIMITS = {
+  name: 200,
+  email: 200,
+  phone: 200,
+  type: 200,
+  message: 5000
+};
 
-const supabase = supabaseUrl && supabaseServiceRoleKey
-  ? createClient(supabaseUrl, supabaseServiceRoleKey)
-  : null;
+/**
+ * Convert unknown form input to a trimmed string and enforce a hard maximum length.
+ * Rejecting over-long input is boring. Boring is correct here: this is a public form.
+ * @param {unknown} value
+ * @param {number} max
+ */
+function clean(value, max) {
+  const text = String(value || '').trim();
+  if (text.length > max) {
+    throw new Error(`Field exceeds ${max} characters.`);
+  }
+  return text;
+}
 
 export async function POST({ request }) {
   try {
     const body = await request.json();
-    const name = String(body.name || '').trim();
-    const email = String(body.email || '').trim();
-    const phone = String(body.phone || '').trim();
-    const type = String(body.type || '').trim();
-    const message = String(body.message || '').trim();
+
+    // Honeypot. Real users never see this field. Bots often fill every input.
+    if (String(body.website || '').trim()) {
+      return json({ error: 'Invalid submission' }, { status: 400 });
+    }
+
+    const name = clean(body.name, LIMITS.name);
+    const email = clean(body.email, LIMITS.email);
+    const phone = clean(body.phone, LIMITS.phone);
+    const type = clean(body.type, LIMITS.type);
+    const message = clean(body.message, LIMITS.message);
 
     if (!name || !email || !message) {
       return json({ error: 'name, email, and message are required' }, { status: 400 });
@@ -30,7 +50,7 @@ export async function POST({ request }) {
       name,
       email,
       phone: phone || null,
-      type: type || null,
+      type: type || 'Problem / project',
       message
     });
 
@@ -41,6 +61,8 @@ export async function POST({ request }) {
     return json({ ok: true }, { status: 200 });
   } catch (error) {
     console.error('contact submission error', error);
-    return json({ error: 'Internal server error' }, { status: 500 });
+    const message = error instanceof Error ? error.message : 'Internal server error';
+    const status = message.startsWith('Field exceeds') ? 400 : 500;
+    return json({ error: message }, { status });
   }
 }

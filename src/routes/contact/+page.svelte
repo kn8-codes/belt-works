@@ -1,5 +1,7 @@
 <script>
-  let form = $state({ name: '', email: '', phone: '', type: 'Problem / project', message: '' });
+  // Single public intake form for belt.works.
+  // This replaces the old named intake process and keeps the CTA plain: bring a problem.
+  let form = $state({ name: '', email: '', phone: '', type: 'Problem / project', message: '', website: '' });
   let isSubmitting = $state(false);
   let success = $state(false);
   let error = $state('');
@@ -21,7 +23,7 @@
         throw new Error(data.error || 'Could not send message.');
       }
       success = true;
-      form = { name: '', email: '', phone: '', type: 'Problem / project', message: '' };
+      form = { name: '', email: '', phone: '', type: 'Problem / project', message: '', website: '' };
     } catch (err) {
       error = err instanceof Error ? err.message : 'Could not send message.';
     } finally {
@@ -32,7 +34,7 @@
 
 <svelte:head>
   <title>Contact | belt.works</title>
-  <meta name="description" content="Contact belt.works. Bring a problem." />
+  <meta name="description" content="Bring belt.works a problem. Software lab intake for work that needs to hold up." />
 </svelte:head>
 
 <section class="route-title">
@@ -56,13 +58,17 @@
     </article>
     <article class="card large">
       {#if success}
-        <p class="form-success">Got it. We will look it over.</p>
+        <p class="form-success">Got it. Someone will read this.</p>
       {:else}
         <form onsubmit={handleSubmit}>
-          <label>Name<input bind:value={form.name} required /></label>
-          <label>Email<input bind:value={form.email} type="email" required /></label>
-          <label>Phone<input bind:value={form.phone} /></label>
-          <label>Message<textarea bind:value={form.message} rows="6" required></textarea></label>
+          <label>Name<input bind:value={form.name} maxlength="200" required /></label>
+          <label>Email<input bind:value={form.email} type="email" autocomplete="email" maxlength="200" required /></label>
+          <label>Phone<input bind:value={form.phone} autocomplete="tel" maxlength="200" /></label>
+          <label>Message<textarea bind:value={form.message} rows="6" maxlength="5000" required></textarea></label>
+
+          <!-- Honeypot: hidden from humans, tempting to bots. Server rejects if filled. -->
+          <label class="hp-field" aria-hidden="true">Website<input bind:value={form.website} tabindex="-1" autocomplete="off" /></label>
+
           {#if error}<p class="form-error">{error}</p>{/if}
           <button class="button" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send it'}</button>
         </form>

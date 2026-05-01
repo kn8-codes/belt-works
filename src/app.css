@@ -197,3 +197,13 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   .drill-card.span-two { grid-column: auto; }
   .rooms-stats.inline { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
+
+
+/* Public-form honeypot. Hidden from humans; bots may fill it. */
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
