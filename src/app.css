@@ -60,6 +60,13 @@ h3 { font-size: 1.15rem; line-height: 1.15; margin-bottom: .6rem; }
 .button:hover { transform: translateY(-1px); }
 .list { display: grid; gap: .75rem; padding: 0; margin: 0; list-style: none; }
 .list li { border-left: 2px solid var(--line); padding-left: .85rem; color: var(--muted); line-height: 1.5; }
+.mini-list { display: grid; gap: .4rem; padding-left: 1.1rem; margin: 0 0 1rem; color: var(--muted); line-height: 1.45; }
+.room-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.room-card { display: grid; gap: 1rem; }
+.room-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+.ledger { display: grid; gap: .75rem; }
+.ledger-row { border: 1px solid var(--line); background: rgba(255,255,255,.02); padding: 1rem; }
+.ledger-row p:last-child { margin-bottom: 0; color: var(--muted); line-height: 1.5; }
 .mono-panel { border: 1px solid var(--line); background: #090907; padding: 1rem; color: var(--muted); overflow: auto; }
 .mono-panel strong { color: var(--text); }
 .route-title { padding: clamp(3rem, 9vw, 6rem) 0 2rem; }
@@ -76,8 +83,12 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 .form-error { color: var(--danger); }
 .form-success { color: var(--accent); }
 
+@media (max-width: 1100px) {
+  .room-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (max-width: 820px) {
-  .section-head, .grid, .grid.two { grid-template-columns: 1fr; }
+  .section-head, .grid, .grid.two, .room-grid { grid-template-columns: 1fr; }
   .nav { align-items: flex-start; flex-direction: column; padding: .9rem 0; }
   .nav-links { justify-content: flex-start; }
 }
