@@ -44,13 +44,29 @@ function sshStatus(nodeKey) {
   const node = NODES[nodeKey];
   if (!node) return null;
 
+  // Use the same SSH config as towpath dispatch: no BatchMode so agent keys work.
+  // PATH must include /opt/homebrew/bin for M1/M4 where openclaw is installed via npm.
+  // For Jeep (local), openclaw status hangs — use health only with a shorter timeout.
+  const isLocal = !node.host;
+  const remoteCmd = isLocal
+    ? 'openclaw health --json 2>/dev/null'
+    : 'export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH; openclaw health --json 2>/dev/null; echo "---STATUS---"; openclaw status --json 2>/dev/null || echo "{}"';
   const cmd = node.host
-    ? `ssh -o BatchMode=yes -o ConnectTimeout=8 ${node.host} "openclaw status --json 2>/dev/null"`
-    : `openclaw status --json 2>/dev/null`;
+    ? `ssh -o ConnectTimeout=8 ${node.host} "${remoteCmd}"`
+    : `${remoteCmd}`;
 
   try {
-    const stdout = execSync(cmd, { encoding: 'utf-8', timeout: 15000 });
-    const parsed = JSON.parse(stdout);
+    const timeout = isLocal ? 15000 : 15000;
+    const stdout = execSync(cmd, { encoding: 'utf-8', timeout, shell: '/bin/bash' });
+    let health = {}, status = {};
+    if (isLocal) {
+      health = JSON.parse(stdout || '{}');
+    } else {
+      const [healthPart, statusPart] = stdout.split('---STATUS---');
+      health = JSON.parse(healthPart || '{}');
+      status = JSON.parse(statusPart || '{}');
+    }
+    const parsed = { ...health, ...status, runtimeVersion: status.runtimeVersion || health.runtimeVersion };
 
     // Extract public-safe fields
     const tasks = parsed.tasks || {};
@@ -60,9 +76,9 @@ function sshStatus(nodeKey) {
     const failures = tasks.failures || 0;
 
     // Determine status bucket
-    let status = 'idle';
-    if (failures > 0) status = 'blocked';
-    else if (active > 0 || queued > 0) status = 'working';
+    let nodeStatus = 'idle';
+    if (failures > 0) nodeStatus = 'blocked';
+    else if (active > 0 || queued > 0) nodeStatus = 'working';
 
     // Get version
     const version = parsed.runtimeVersion || 'unknown';
@@ -88,12 +104,12 @@ function sshStatus(nodeKey) {
     }
 
     // Fake progress: working nodes show 0.6, idle 0.1
-    const progress = status === 'working' ? 0.6 : 0.1;
+    const progress = nodeStatus === 'working' ? 0.6 : 0.1;
 
     return {
       id: nodeKey,
       displayName: node.label,
-      status,
+      status: nodeStatus,
       role: node.role,
       taskLabel,
       progress,
@@ -105,7 +121,7 @@ function sshStatus(nodeKey) {
       theme: `${node.label} runs OpenClaw ${version}. ${node.role}.`,
       queue: queued > 0 ? [`${queued} queued task${queued > 1 ? 's' : ''}`] : ['no queued tasks'],
       recentArtifacts: [`OpenClaw ${version}`],
-      log: [`version ${version}`, `status: ${status}`, `tasks: ${active} active, ${queued} queued`],
+      log: [`version ${version}`, `status: ${nodeStatus}`, `tasks: ${active} active, ${queued} queued`],
       commits: [{ hash: version.replace(/\./g, ''), message: `OpenClaw ${version}` }]
     };
   } catch (err) {
