@@ -2,17 +2,16 @@
   // ROOMS page.
   // Plain English version: show all three machines as illustrated rooms, then show details for whichever room is clicked.
   // This file controls the layout and interaction. The actual text/data lives in `src/lib/content/rooms-sample.js`.
-  // Data comes from +page.server.js (live SSH fetch) or falls back to static sample.
-  let { data } = $props();
-  let nodes = $derived(data?.nodes ?? []);
+  // Data comes from static sample (live SSH fetch was causing 500s on Vercel).
+  // TODO: build proper API route or Supabase heartbeat for real fleet data.
+  import { fleetStats, roomNodes } from '$lib/content/rooms-sample.js';
 
   // `selectedId` remembers which room is currently open in the drill-down panel.
-  // `$state(...)` is Svelte 5's way of saying "this value can change and the page should update."
-  let selectedId = $state(nodes[2]?.id ?? 'jeep');
+  let selectedId = $state(roomNodes[2].id);
 
   // `selectedRoom` finds the full data object for the selected room.
   // If something goes wrong, it falls back to the first room so the page does not crash.
-  let selectedRoom = $derived(nodes.find((room) => room.id === selectedId) ?? nodes[0] ?? {});
+  let selectedRoom = $derived(roomNodes.find((room) => room.id === selectedId) ?? roomNodes[0]);
 </script>
 
 <svelte:head>
@@ -41,7 +40,7 @@
   <main class="rooms-hybrid" aria-label="ROOMS fleet wall">
     <!-- The wall: all three rooms remain visible at once. -->
     <section class="rooms-wall-layout hybrid-wall" aria-label="Visible rooms">
-      {#each nodes as room (room.id)}
+      {#each roomNodes as room (room.id)}
         <!-- Clicking a card changes `selectedId`, which refreshes the drill-down below. -->
         <button class:active={selectedId === room.id} class="room-wall-card" type="button" onclick={() => (selectedId = room.id)}>
           <span class="room-card-head">
