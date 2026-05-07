@@ -1,8 +1,50 @@
 <svelte:head>
-  <title>belt.works — You do the work. We handle everything else.</title>
+  <title>belt.works — Elegant solutions from first principles.</title>
+  <meta name="description" content="Elegant solutions from first principles." />
+  <meta property="og:title" content="belt.works — Elegant solutions from first principles." />
+  <meta property="og:description" content="Elegant solutions from first principles." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.belt.works/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 </svelte:head>
+
+<script>
+  const currentWork = [
+    {
+      label: 'proof',
+      name: 'belt.works',
+      description: 'The public face of the lab. Research, proof, services, and intake all point through here.',
+      status: 'active rebuild',
+      note: 'Current priority. Voice is locked. Structure is being rebuilt.',
+      links: [
+        { href: '/', text: 'open' },
+        { href: 'https://github.com/kn8-codes/belt-works', text: 'github', external: true }
+      ]
+    },
+    {
+      label: 'proof artifact',
+      name: 'hosp-or-not',
+      description: 'Small, finished, real. The only kind of proof that counts.',
+      status: 'shipped',
+      note: ''
+    },
+    {
+      label: 'in development',
+      name: 'Shop Floor',
+      description: 'TBD (Nate will provide)',
+      status: 'in development',
+      note: ''
+    },
+    {
+      label: 'proof',
+      name: 'GREYMARKET',
+      description: 'TBD (Nate will provide)',
+      status: 'live',
+      note: ''
+    }
+  ];
+</script>
 
 <main>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -21,75 +63,54 @@
         <span class="wordmark"><span class="rust">belt</span>.works</span>
       </div>
 
-      <h1 class="fade-in" style="--delay: 100ms">You do the work.<br>We handle everything else.</h1>
-      <p class="sub fade-in" style="--delay: 200ms">belt.works puts AI to work for skilled tradespeople in the Rust Belt. More leads. No missed calls. A presence that looks like you mean business.</p>
-      <a href="#how-it-works" class="cta fade-in" style="--delay: 300ms" aria-label="See how belt.works works">See How It Works</a>
+      <p class="tagline fade-in" style="--delay: 80ms">Elegant solutions from first principles.</p>
+      <h1 class="fade-in" style="--delay: 160ms">We build software that works.</h1>
+      <p class="sub fade-in" style="--delay: 240ms">You bring the problem. We turn mess into scope and get to work.</p>
+      <div class="hero-actions fade-in" style="--delay: 320ms">
+        <a href="/contact" class="cta" aria-label="Bring a problem to belt.works">Bring a problem</a>
+        <a href="#current-work" class="text-link" aria-label="See current work">See the work</a>
+      </div>
     </div>
     <div class="hero-rule"></div>
   </section>
 
-  <section class="content-section" id="how-it-works" aria-label="How belt.works works">
-    <div class="section-label fade-in" style="--delay: 0ms">// HOW IT WORKS</div>
-    <div class="steps-grid">
-      <article class="card fade-in" style="--delay: 100ms">
-        <div class="step-number">01</div>
-        <h2>You get listed</h2>
-        <p>We build your profile. Services, area, availability. Clients find you, not the other way around.</p>
-      </article>
-      <article class="card fade-in" style="--delay: 200ms">
-        <div class="step-number">02</div>
-        <h2>Leads come to you</h2>
-        <p>When someone needs work done, they fill out a request. You get a text message. That's it. No app. No portal. No login.</p>
-      </article>
-      <article class="card fade-in" style="--delay: 300ms">
-        <div class="step-number">03</div>
-        <h2>You close the job</h2>
-        <p>Call the lead. Do the work. Get paid. We take 3% of what you close. Nothing until you win.</p>
-      </article>
+  <section class="content-section" id="current-work" aria-label="Current work section">
+    <div class="section-label fade-in" style="--delay: 0ms">// CURRENT WORK</div>
+    <header class="section-copy fade-in" style="--delay: 100ms">
+      <h2>Finished means finished.</h2>
+      <p>Status labels stay visible. Everything else gets named honestly.</p>
+    </header>
+
+    <div class="work-grid">
+      {#each currentWork as project, index (project.name)}
+        <article class="card fade-in" style={`--delay: ${200 + index * 80}ms`}>
+          <div class="meta-row">
+            <div class="meta">{project.label}</div>
+            <div class="status-badge">{project.status}</div>
+          </div>
+          <h3>{project.name}</h3>
+          <p>{project.description}</p>
+          {#if project.note}
+            <p class="note">{project.note}</p>
+          {/if}
+          {#if project.links}
+            <div class="links">
+              {#each project.links as link}
+                <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>{link.text}</a>
+              {/each}
+            </div>
+          {/if}
+        </article>
+      {/each}
     </div>
   </section>
 
-  <section class="content-section" aria-label="Provider proof section">
-    <div class="section-label fade-in" style="--delay: 0ms">// ALREADY WORKING</div>
-    <p class="intro fade-in" style="--delay: 100ms">Mike is a flooring and drywall contractor in Akron, Ohio. Single operator. Fully booked. Now his leads come to him.</p>
-
-    <article class="card provider-card fade-in" style="--delay: 200ms" aria-label="Mike provider card">
-      <div class="card-header">
-        <div class="avatar" aria-hidden="true">M</div>
-        <div>
-          <div class="card-name">Mike</div>
-          <div class="card-area">Akron, OH metro + 30mi</div>
-        </div>
-        <div class="avail-badge">Booking 2–3 weeks out</div>
-      </div>
-      <div class="services">
-        <span>LVP Flooring</span>
-        <span>Hardwood</span>
-        <span>Tile</span>
-        <span>Carpet</span>
-        <span>Drywall</span>
-        <span>Bathrooms</span>
-        <span>Interior Work</span>
-      </div>
-      <a href="/mike" class="card-cta" aria-label="Request a job from Mike">Request a Job →</a>
-    </article>
-  </section>
-
-  <section class="content-section" aria-label="Why belt.works exists">
-    <div class="section-label fade-in" style="--delay: 0ms">// WHY THIS EXISTS</div>
-    <div class="copy-block fade-in" style="--delay: 100ms">
-      <p>Most AI tools are built for people who already have everything figured out.</p>
-      <p>belt.works is built for people who are good at their trade and tired of losing work because they didn't answer a call, didn't have a website, or didn't know how to get found.</p>
-      <p>You don't need to understand AI to benefit from it. You just need to show up and do the work.</p>
-      <p>We handle the rest.</p>
-    </div>
-  </section>
-
-  <section class="content-section cta-section" aria-label="Get listed call to action">
+  <section class="content-section cta-section" aria-label="Bring the problem here">
     <div class="card fade-in" style="--delay: 0ms">
-      <h2>Ready to get more work?</h2>
-      <p>There's no contract. No upfront cost. We get paid when you get paid.</p>
-      <a href="/contact" class="cta" aria-label="Get listed with belt.works">Get Listed →</a>
+      <div class="section-label">// SERVICES</div>
+      <h2>Bring the problem here.</h2>
+      <p>The front door is plain: describe the mess, what has to work, and what failure costs. Then we decide what is worth building first.</p>
+      <a href="/contact" class="cta" aria-label="Open the contact page">Open contact →</a>
     </div>
   </section>
 
@@ -103,7 +124,7 @@
       <span class="sep">·</span>
       <a href="/contact">Contact</a>
     </nav>
-    <div class="footer-line">belt.works · Built in Akron · 2026</div>
+    <div class="footer-line">belt.works · Akron, Ohio · Elegant solutions from first principles.</div>
   </footer>
 </main>
 
@@ -153,7 +174,7 @@
     position: relative;
   }
   .hero-inner, .content-section, footer {
-    max-width: 820px;
+    max-width: 900px;
     width: 100%;
     margin: 0 auto;
   }
@@ -162,7 +183,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
   .wordmark {
     font-family: 'Bebas Neue', sans-serif;
@@ -170,7 +191,21 @@
     letter-spacing: 2px;
   }
   .rust { color: #C45C1A; }
-  h1, h2 {
+  .tagline,
+  .section-label,
+  .meta,
+  .status-badge,
+  .links a,
+  .text-link {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+  }
+  .tagline {
+    color: #C45C1A;
+    margin-bottom: 1rem;
+  }
+  h1, h2, h3 {
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 2px;
     color: #F0EDE8;
@@ -178,31 +213,41 @@
   h1 {
     font-size: clamp(3.6rem, 11vw, 7rem);
     line-height: 0.94;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    max-width: 10ch;
   }
   h2 {
-    font-size: 2rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1;
     margin-bottom: 0.85rem;
   }
-  .sub, .intro, .copy-block p, .card p {
+  h3 {
+    font-size: 1.9rem;
+    line-height: 1;
+    margin-bottom: 0.85rem;
+  }
+  .sub, .section-copy p, .card p {
     color: #9A8070;
     line-height: 1.75;
     font-size: 0.95rem;
   }
   .sub {
     max-width: 560px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
-  .cta, .card-cta {
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .cta, .text-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 48px;
     text-decoration: none;
     font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
     transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
   .cta {
@@ -211,6 +256,11 @@
     padding: 1rem 2.25rem;
   }
   .cta:hover { background: #E8731A; }
+  .text-link {
+    color: #C45C1A;
+    padding: 0.75rem 0;
+  }
+  .text-link:hover { color: #E8731A; }
   .hero-rule {
     position: absolute;
     bottom: 0;
@@ -223,13 +273,15 @@
     padding: 5rem 2rem;
   }
   .section-label {
-    font-size: 0.7rem;
-    letter-spacing: 4px;
     color: #C45C1A;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
+    margin-bottom: 1rem;
   }
-  .steps-grid {
+  .section-copy {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .work-grid {
     display: grid;
     gap: 1rem;
   }
@@ -248,76 +300,36 @@
     height: 100%;
     background: #C45C1A;
   }
-  .step-number {
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: #C45C1A;
-    margin-bottom: 0.9rem;
-  }
-  .provider-card { margin-top: 1.5rem; }
-  .card-header {
+  .meta-row {
     display: flex;
-    align-items: flex-start;
+    justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
   }
-  .avatar {
-    width: 48px;
-    height: 48px;
-    background: #C45C1A;
-    color: #0F0804;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .card-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    line-height: 1;
-  }
-  .card-area {
-    font-size: 0.7rem;
-    color: #9A8070;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-  .avail-badge {
-    margin-left: auto;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
+  .meta { color: #9A8070; }
+  .status-badge {
     color: #C45C1A;
     border: 1px solid #C45C1A;
-    padding: 0.3rem 0.7rem;
-    text-transform: uppercase;
+    padding: 0.35rem 0.65rem;
     white-space: nowrap;
   }
-  .services {
+  .note {
+    color: #D0B08B;
+    margin-top: 0.75rem;
+  }
+  .links {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .services span {
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #9A8070;
-    border: 1px solid #2A1A0E;
-    padding: 0.3rem 0.6rem;
-  }
-  .card-cta {
-    color: #C45C1A;
-  }
-  .card-cta:hover { color: #E8731A; }
-  .copy-block {
-    display: grid;
     gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
   }
+  .links a {
+    color: #C45C1A;
+    text-decoration: none;
+  }
+  .links a:hover { color: #E8731A; }
   .cta-section .card {
     display: grid;
     gap: 1rem;
@@ -340,14 +352,13 @@
   }
   footer a:hover { color: #C45C1A; }
   .sep { margin: 0 0.75rem; color: #3A2010; }
-  .footer-line { color: #3A2010; }
+  .footer-line { color: #9A8070; }
   @media (min-width: 768px) {
-    .steps-grid {
-      grid-template-columns: repeat(3, 1fr);
+    .work-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   @media (max-width: 480px) {
-    .avail-badge { margin-left: 0; }
     .fade-in { animation: none; opacity: 1; transform: none; }
   }
   @media (prefers-reduced-motion: reduce) {
