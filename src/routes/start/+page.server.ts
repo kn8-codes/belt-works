@@ -11,6 +11,8 @@ const TWILIO_FROM = env.TWILIO_FROM ?? env.TWILIO_FROM_NUMBER;
 const TWILIO_TO = env.TWILIO_TO;
 const NOTIFY_EMAIL = env.NOTIFY_EMAIL;
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function getSupabase() {
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
     throw new Error('Supabase server config missing. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.');
@@ -19,18 +21,18 @@ function getSupabase() {
   return createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 }
 
-function requireNotificationsConfig() {
-  if (!TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_FROM || !TWILIO_TO) {
-    throw new Error('Twilio config missing. Set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM, and TWILIO_TO.');
-  }
+function hasTwilioConfig() {
+  return Boolean(TWILIO_ACCOUNT_SID && TWILIO_AUTH_TOKEN && TWILIO_FROM && TWILIO_TO);
+}
 
-  if (!NOTIFY_EMAIL) {
-    throw new Error('NOTIFY_EMAIL is required for the email fallback.');
-  }
+function hasEmailConfig() {
+  return Boolean(NOTIFY_EMAIL);
 }
 
 async function sendTwilioSms(name: string, email: string, whatTheyWant: string) {
-  requireNotificationsConfig();
+  if (!hasTwilioConfig()) {
+    throw new Error('Twilio config missing.');
+  }
 
   const auth = Buffer.from(`${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`).toString('base64');
   const params = new URLSearchParams();
@@ -65,7 +67,9 @@ async function sendTwilioSms(name: string, email: string, whatTheyWant: string) 
 }
 
 async function sendEmailFallback(name: string, email: string, whatTheyWant: string) {
-  requireNotificationsConfig();
+  if (!hasEmailConfig()) {
+    throw new Error('Email fallback config missing.');
+  }
 
   const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(NOTIFY_EMAIL!)}`, {
     method: 'POST',
@@ -104,6 +108,46 @@ export const actions: Actions = {
       });
     }
 
+    if (name.length < 2) {
+      return fail(400, {
+        success: false,
+        message: 'Use the name you actually go by so I know who is reaching out.',
+        values: { name, email, what_they_want: whatTheyWant }
+      });
+    }
+
+    if (!EMAIL_RE.test(email)) {
+      return fail(400, {
+        success: false,
+        message: 'Use a real email address so I can get back to you.',
+        values: { name, email, what_they_want: whatTheyWant }
+      });
+    }
+
+    if (name.length > 120) {
+      return fail(400, {
+        success: false,
+        message: 'Name is too long. Keep it under 120 characters.',
+        values: { name, email, what_they_want: whatTheyWant }
+      });
+    }
+
+    if (email.length > 160) {
+      return fail(400, {
+        success: false,
+        message: 'Email is too long. Keep it under 160 characters.',
+        values: { name, email, what_they_want: whatTheyWant }
+      });
+    }
+
+    if (whatTheyWant.length > 140) {
+      return fail(400, {
+        success: false,
+        message: 'Keep the project note under 140 characters.',
+        values: { name, email, what_they_want: whatTheyWant }
+      });
+    }
+
     try {
       const supabase = getSupabase();
 
@@ -123,8 +167,12 @@ export const actions: Actions = {
       }
 
       const notifications = await Promise.allSettled([
-        sendTwilioSms(name, email, whatTheyWant),
-        sendEmailFallback(name, email, whatTheyWant)
+        hasTwilioConfig()
+          ? sendTwilioSms(name, email, whatTheyWant)
+          : Promise.reject(new Error('Twilio config missing.')),
+        hasEmailConfig()
+          ? sendEmailFallback(name, email, whatTheyWant)
+          : Promise.reject(new Error('Email fallback config missing.'))
       ]);
 
       const notified = notifications.some((result) => result.status === 'fulfilled');
@@ -134,16 +182,6 @@ export const actions: Actions = {
       const smsError = notifications[0].status === 'rejected' ? notifications[0].reason : null;
       const emailError = notifications[1].status === 'rejected' ? notifications[1].reason : null;
 
-      if (!notified) {
-        return fail(500, {
-          success: false,
-          message: 'Your note was saved, but notifications failed. Try again in a bit.',
-          values: { name, email, what_they_want: whatTheyWant },
-          smsPending: Boolean(smsError),
-          emailPending: Boolean(emailError)
-        });
-      }
-
       return {
         success: true,
         message: "I'll be in touch within 24 hours.",
@@ -152,6 +190,24 @@ export const actions: Actions = {
       };
     } catch (error) {
       console.error('start lead submission error', error);
+
+      const maybeError = error as { code?: string; message?: string };
+
+      if (maybeError?.code === '42P01') {
+        return fail(500, {
+          success: false,
+          message: 'The leads table is missing in Supabase. Run the migration first.',
+          values: { name, email, what_they_want: whatTheyWant }
+        });
+      }
+
+      if (maybeError?.message?.includes('Supabase server config missing')) {
+        return fail(500, {
+          success: false,
+          message: 'Supabase is not configured in Vercel yet.',
+          values: { name, email, what_they_want: whatTheyWant }
+        });
+      }
 
       return fail(500, {
         success: false,
