@@ -76,7 +76,7 @@
 
   <section class="block hook-block fade-in" style="--delay: 80ms">
     <p class="eyebrow">belt.works/start</p>
-    <h1>You built the clientele. You should own it.</h1>
+    <h1>You built the reputation — you should own it.</h1>
     <p class="subhead">
       belt.works builds community-first tools for people who are done building someone else's thing.
     </p>
@@ -98,7 +98,7 @@
 
   <section class="block ask-block fade-in" style="--delay: 240ms">
     <div class="ask-copy">
-      <h2>Let's talk.</h2>
+      <h2>Let's work.</h2>
       <p>Tell me what you're building or what's broken. I'll tell you if we can help.</p>
     </div>
 
@@ -125,7 +125,7 @@
       </label>
 
       <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Sending…' : 'Get in touch'}
+        {isSubmitting ? 'Sending…' : "Let's do this"}
       </button>
 
       {#if form?.success}
