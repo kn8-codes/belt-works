@@ -26,23 +26,25 @@
 
   let isSubmitting = $state(false);
 
-  $effect(() => {
-    fields = {
-      name: form?.values?.name ?? (form?.success ? '' : fields.name),
-      email: form?.values?.email ?? (form?.success ? '' : fields.email),
-      what_they_want: form?.values?.what_they_want ?? (form?.success ? '' : fields.what_they_want)
-    };
-  });
-
   function enhanceLeadForm() {
     isSubmitting = true;
 
-    return async ({ result }: { result: any }) => {
+    return async ({ result, formElement }: { result: any; formElement: HTMLFormElement }) => {
       isSubmitting = false;
       await applyAction(result);
 
       if (result.type === 'success') {
         fields = { name: '', email: '', what_they_want: '' };
+        formElement.reset();
+        return;
+      }
+
+      if (result.type === 'failure' && result.data?.values) {
+        fields = {
+          name: result.data.values.name ?? '',
+          email: result.data.values.email ?? '',
+          what_they_want: result.data.values.what_they_want ?? ''
+        };
       }
     };
   }
@@ -105,12 +107,29 @@
     <form method="POST" class="lead-form" use:enhance={enhanceLeadForm}>
       <label>
         <span>Name</span>
-        <input name="name" type="text" bind:value={fields.name} required autocomplete="name" />
+        <input
+          name="name"
+          type="text"
+          bind:value={fields.name}
+          required
+          minlength="2"
+          maxlength="120"
+          autocomplete="name"
+          aria-describedby={form?.message ? 'start-form-status' : undefined}
+        />
       </label>
 
       <label>
         <span>Email</span>
-        <input name="email" type="email" bind:value={fields.email} required autocomplete="email" />
+        <input
+          name="email"
+          type="email"
+          bind:value={fields.email}
+          required
+          maxlength="160"
+          autocomplete="email"
+          aria-describedby={form?.message ? 'start-form-status' : undefined}
+        />
       </label>
 
       <label>
@@ -121,20 +140,23 @@
           bind:value={fields.what_they_want}
           maxlength="140"
           placeholder="Optional"
+          aria-describedby="start-what-count"
         />
       </label>
+
+      <p id="start-what-count" class="field-note">{fields.what_they_want.length}/140</p>
 
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Sending…' : "Let's do this"}
       </button>
 
       {#if form?.success}
-        <p class="status success">Thanks. {form.message}</p>
+        <p id="start-form-status" class="status success" aria-live="polite">Thanks. {form.message}</p>
         {#if form.smsPending || form.emailPending}
           <p class="status note">One notification path is still catching up, but your note is in.</p>
         {/if}
       {:else if form?.message}
-        <p class="status error">{form.message}</p>
+        <p id="start-form-status" class="status error" aria-live="assertive">{form.message}</p>
       {/if}
     </form>
   </section>
@@ -304,6 +326,10 @@
     font: inherit;
   }
 
+  .lead-form input:invalid:focus {
+    border-color: #ff9a7a;
+  }
+
   .lead-form input::placeholder {
     color: #7d7268;
   }
@@ -332,6 +358,12 @@
   .lead-form button:disabled {
     opacity: 0.7;
     cursor: wait;
+  }
+
+  .field-note {
+    margin: -0.3rem 0 0;
+    font-size: 0.78rem;
+    color: #8d8177;
   }
 
   .status.success {
