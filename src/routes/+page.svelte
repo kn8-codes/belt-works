@@ -2,20 +2,7 @@
   import ProjectCard from '$lib/components/ProjectCard.svelte';
   import { featuredProjects } from '$lib/content/projects.js';
   import { services } from '$lib/content/services.js';
-</script>
 
-<svelte:head>
-  <title>belt.works — Elegant solutions from first principles.</title>
-  <meta name="description" content="Elegant solutions from first principles." />
-  <meta property="og:title" content="belt.works — Elegant solutions from first principles." />
-  <meta property="og:description" content="Elegant solutions from first principles." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.belt.works/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
-</svelte:head>
-
-<script>
   const currentWork = [
     {
       label: 'proof',
@@ -52,6 +39,17 @@
   ];
 </script>
 
+<svelte:head>
+  <title>belt.works — Elegant solutions from first principles.</title>
+  <meta name="description" content="Elegant solutions from first principles." />
+  <meta property="og:title" content="belt.works — Elegant solutions from first principles." />
+  <meta property="og:description" content="Elegant solutions from first principles." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.belt.works/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</svelte:head>
+
 <main>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -77,8 +75,8 @@
         <a href="#current-work" class="text-link" aria-label="See current work">See the work</a>
       </div>
     </div>
-  </div>
-</section>
+    <div class="hero-rule"></div>
+  </section>
 
   <section class="content-section" id="current-work" aria-label="Current work section">
     <div class="section-label fade-in" style="--delay: 0ms">// CURRENT WORK</div>
