@@ -16,7 +16,7 @@
       name: 'belt.works',
       description: 'The public face of the lab. Research, proof, services, and intake all point through here.',
       status: 'active rebuild',
-      note: 'Current priority. Voice is locked. Structure is being rebuilt.',
+      note: '',
       links: [
         { href: '/', text: 'open' },
         { href: 'https://github.com/kn8-codes/belt-works', text: 'github', external: true }
@@ -32,14 +32,14 @@
     {
       label: 'in development',
       name: 'Shop Floor',
-      description: 'TBD (Nate will provide)',
+      description: 'City-level repair and survival infrastructure for working people. Starting in Akron.',
       status: 'in development',
       note: ''
     },
     {
       label: 'proof',
       name: 'GREYMARKET',
-      description: 'TBD (Nate will provide)',
+      description: 'Terminal-style arbitrage system for auction websites.',
       status: 'live',
       note: ''
     }
