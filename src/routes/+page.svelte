@@ -1,3 +1,9 @@
+<script>
+  import ProjectCard from '$lib/components/ProjectCard.svelte';
+  import { featuredProjects } from '$lib/content/projects.js';
+  import { services } from '$lib/content/services.js';
+</script>
+
 <svelte:head>
   <title>belt.works — Elegant solutions from first principles.</title>
   <meta name="description" content="Elegant solutions from first principles." />
@@ -71,8 +77,8 @@
         <a href="#current-work" class="text-link" aria-label="See current work">See the work</a>
       </div>
     </div>
-    <div class="hero-rule"></div>
-  </section>
+  </div>
+</section>
 
   <section class="content-section" id="current-work" aria-label="Current work section">
     <div class="section-label fade-in" style="--delay: 0ms">// CURRENT WORK</div>
@@ -102,8 +108,47 @@
           {/if}
         </article>
       {/each}
+<section class="section">
+  <div class="wrap section-head">
+    <div>
+      <p class="eyebrow">What this is</p>
+      <h2>A software research lab.</h2>
     </div>
-  </section>
+    <p class="lead">Some work becomes tools. Some becomes services. Some becomes client work. The rule is simple: the software has to hold up.</p>
+  </div>
+  <div class="wrap grid three">
+    <article class="card large">
+      <div class="meta">money</div>
+      <h3>Client work gets scoped hard.</h3>
+      <p>Intake stays plain. Context, scope, tickets, build. No bloated proposal theater.</p>
+    </article>
+    <article class="card large">
+      <div class="meta">proof</div>
+      <h3>Projects show the method.</h3>
+      <p>ROOMS, data tools, civic software, and old experiments stay useful when they produce evidence.</p>
+    </article>
+    <article class="card large">
+      <div class="meta">infrastructure</div>
+      <h3>The mesh does the boring work.</h3>
+      <p>Jeep, M1, and M4 coordinate agent sessions, logs, diffs, checks, and handoffs.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap section-head">
+    <div>
+      <p class="eyebrow">Proof</p>
+      <h2>Current work.</h2>
+    </div>
+    <p class="lead">Status labels stay visible. Finished means finished. Everything else gets named honestly.</p>
+  </div>
+  <div class="wrap grid">
+    {#each featuredProjects as project (project.slug)}
+      <ProjectCard item={project} />
+    {/each}
+  </div>
+</section>
 
   <section class="content-section cta-section" aria-label="Bring the problem here">
     <div class="card fade-in" style="--delay: 0ms">
