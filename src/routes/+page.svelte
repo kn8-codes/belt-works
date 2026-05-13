@@ -1,8 +1,8 @@
 <svelte:head>
-  <title>belt.works — Elegant solutions from first principles.</title>
-  <meta name="description" content="Elegant solutions from first principles." />
-  <meta property="og:title" content="belt.works — Elegant solutions from first principles." />
-  <meta property="og:description" content="Elegant solutions from first principles." />
+  <title>belt.works — Bespoke software · $17/hour · Actually delivers</title>
+  <meta name="description" content="Freelance software development, automation, AI integrations. $17/hour. Generalist. Actually delivers." />
+  <meta property="og:title" content="belt.works — Bespoke software · $17/hour" />
+  <meta property="og:description" content="Freelance software development, automation, AI integrations. $17/hour. Generalist. Actually delivers." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.belt.works/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,38 +10,57 @@
 </svelte:head>
 
 <script>
-  const currentWork = [
+  const services = [
+    {
+      name: 'Web development',
+      description: 'Custom sites, dashboards, tools. No templates. Built to last.'
+    },
+    {
+      name: 'Automation & scripting',
+      description: 'If you\'re doing it by hand more than twice, I can automate it.'
+    },
+    {
+      name: 'AI integrations',
+      description: 'Agents, pipelines, GPT wrappers. I make the tools do the work.'
+    },
+    {
+      name: 'Security consulting',
+      description: 'Threat modeling, audits, hardening. I find the gaps before someone else does.'
+    },
+    {
+      name: 'Bespoke software',
+      description: 'If it doesn\'t exist and you need it, I\'ll build it.'
+    }
+  ];
+
+  const proofWork = [
+    {
+      label: 'shipped',
+      name: 'hosp-or-not',
+      description: 'Small, finished, real. The only kind of proof that counts.',
+      status: 'shipped'
+    },
+    {
+      label: 'live',
+      name: 'GREYMARKET',
+      description: 'Terminal-style arbitrage system for auction websites.',
+      status: 'live'
+    },
     {
       label: 'proof',
       name: 'belt.works',
       description: 'The public face of the lab. Research, proof, services, and intake all point through here.',
       status: 'active rebuild',
-      note: '',
       links: [
         { href: '/', text: 'open' },
         { href: 'https://github.com/kn8-codes/belt-works', text: 'github', external: true }
       ]
     },
     {
-      label: 'proof artifact',
-      name: 'hosp-or-not',
-      description: 'Small, finished, real. The only kind of proof that counts.',
-      status: 'shipped',
-      note: ''
-    },
-    {
       label: 'in development',
       name: 'Shop Floor',
       description: 'City-level repair and survival infrastructure for working people. Starting in Akron.',
-      status: 'in development',
-      note: ''
-    },
-    {
-      label: 'proof',
-      name: 'GREYMARKET',
-      description: 'Terminal-style arbitrage system for auction websites.',
-      status: 'live',
-      note: ''
+      status: 'in development'
     }
   ];
 </script>
@@ -63,36 +82,55 @@
         <span class="wordmark"><span class="rust">belt</span>.works</span>
       </div>
 
-      <p class="tagline fade-in" style="--delay: 80ms">Elegant solutions from first principles.</p>
-      <h1 class="fade-in" style="--delay: 160ms">We build software that works.</h1>
-      <p class="sub fade-in" style="--delay: 240ms">You bring the problem. We turn mess into scope and get to work.</p>
-      <div class="hero-actions fade-in" style="--delay: 320ms">
-        <a href="/contact" class="cta" aria-label="Bring a problem to belt.works">Bring a problem</a>
-        <a href="#current-work" class="text-link" aria-label="See current work">See the work</a>
+      <p class="tagline fade-in" style="--delay: 80ms">Bespoke Software · Automation · AI Integrations</p>
+      <h1 class="fade-in" style="--delay: 160ms">I build software that works.</h1>
+      <p class="pricing fade-in" style="--delay: 240ms">$17/hour. Generalist. Actually delivers.</p>
+      <p class="sub fade-in" style="--delay: 300ms">You bring the problem. I turn mess into scope and get to work.</p>
+      <div class="hero-actions fade-in" style="--delay: 380ms">
+        <a href="/hire" class="cta" aria-label="Start a project">Start a project</a>
+        <a href="#services" class="text-link" aria-label="See services">What I do</a>
+        <a href="#proof" class="text-link" aria-label="See proof of work">Proof of work</a>
       </div>
     </div>
     <div class="hero-rule"></div>
   </section>
 
-  <section class="content-section" id="current-work" aria-label="Current work section">
-    <div class="section-label fade-in" style="--delay: 0ms">// CURRENT WORK</div>
+  <section class="content-section" id="services" aria-label="Services">
+    <div class="section-label fade-in" style="--delay: 0ms">// WHAT I DO</div>
+    <header class="section-copy fade-in" style="--delay: 100ms">
+      <h2>Services</h2>
+      <p>Rate: $17/hour, billed weekly. Scope gets locked before work starts.</p>
+    </header>
+
+    <div class="services-grid">
+      {#each services as service, index}
+        <article class="card fade-in" style={`--delay: ${200 + index * 80}ms`}>
+          <h3>{service.name}</h3>
+          <p>{service.description}</p>
+        </article>
+      {/each}
+    </div>
+
+    <div class="section-cta fade-in" style="--delay: 600ms">
+      <a href="/services" class="text-link">See full service details →</a>
+    </div>
+  </section>
+
+  <section class="content-section" id="proof" aria-label="Proof of work">
+    <div class="section-label fade-in" style="--delay: 0ms">// PROOF</div>
     <header class="section-copy fade-in" style="--delay: 100ms">
       <h2>Finished means finished.</h2>
-      <p>Status labels stay visible. Everything else gets named honestly.</p>
+      <p>These projects show the method. Some are client work. Some are experiments that became tools. All of them shipped.</p>
     </header>
 
     <div class="work-grid">
-      {#each currentWork as project, index (project.name)}
+      {#each proofWork as project, index (project.name)}
         <article class="card fade-in" style={`--delay: ${200 + index * 80}ms`}>
           <div class="meta-row">
-            <div class="meta">{project.label}</div>
             <div class="status-badge">{project.status}</div>
           </div>
           <h3>{project.name}</h3>
           <p>{project.description}</p>
-          {#if project.note}
-            <p class="note">{project.note}</p>
-          {/if}
           {#if project.links}
             <div class="links">
               {#each project.links as link}
@@ -107,10 +145,10 @@
 
   <section class="content-section cta-section" aria-label="Bring the problem here">
     <div class="card fade-in" style="--delay: 0ms">
-      <div class="section-label">// SERVICES</div>
+      <div class="section-label">// START HERE</div>
       <h2>Bring the problem here.</h2>
-      <p>The front door is plain: describe the mess, what has to work, and what failure costs. Then we decide what is worth building first.</p>
-      <a href="/contact" class="cta" aria-label="Open the contact page">Open contact →</a>
+      <p>Describe the mess, what has to work, and what failure costs. Then we decide what is worth building first.</p>
+      <a href="/hire" class="cta" aria-label="Start a project">Start a project →</a>
     </div>
   </section>
 
@@ -118,13 +156,13 @@
     <nav aria-label="Footer navigation">
       <a href="/about">About</a>
       <span class="sep">·</span>
-      <a href="/vision">Vision</a>
+      <a href="/services">Services</a>
       <span class="sep">·</span>
-      <a href="/privacy">Privacy</a>
+      <a href="/hire">Hire</a>
       <span class="sep">·</span>
       <a href="/contact">Contact</a>
     </nav>
-    <div class="footer-line">belt.works · Akron, Ohio · Elegant solutions from first principles.</div>
+    <div class="footer-line">belt.works · Akron, Ohio · $17/hour · Actually delivers</div>
   </footer>
 </main>
 
@@ -205,6 +243,12 @@
     color: #C45C1A;
     margin-bottom: 1rem;
   }
+  .pricing {
+    font-size: 1.15rem;
+    color: #E8731A;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
   h1, h2, h3 {
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 2px;
@@ -222,9 +266,9 @@
     margin-bottom: 0.85rem;
   }
   h3 {
-    font-size: 1.9rem;
-    line-height: 1;
-    margin-bottom: 0.85rem;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
   }
   .sub, .section-copy p, .card p {
     color: #9A8070;
@@ -281,7 +325,11 @@
     gap: 0.75rem;
     margin-bottom: 1.5rem;
   }
-  .work-grid {
+  .section-cta {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .services-grid, .work-grid {
     display: grid;
     gap: 1rem;
   }
@@ -314,10 +362,6 @@
     border: 1px solid #C45C1A;
     padding: 0.35rem 0.65rem;
     white-space: nowrap;
-  }
-  .note {
-    color: #D0B08B;
-    margin-top: 0.75rem;
   }
   .links {
     display: flex;
@@ -354,6 +398,9 @@
   .sep { margin: 0 0.75rem; color: #3A2010; }
   .footer-line { color: #9A8070; }
   @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     .work-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }

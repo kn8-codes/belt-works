@@ -1,9 +1,9 @@
 <svelte:head>
-  <title>About belt.works</title>
+  <title>About — belt.works</title>
+  <meta name="description" content="Twenty years solving problems under pressure. Freelance software development, automation, AI integrations. Based in Akron, Ohio." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 </svelte:head>
-
 
 <main>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -13,33 +13,67 @@
   </nav>
 
   <section class="page-shell" id="main-content">
-    <div class="section-label fade-in" style="--delay: 0ms">// ABOUT BELT.WORKS</div>
+    <div class="section-label fade-in" style="--delay: 0ms">// ABOUT</div>
     
-<header class="stack fade-in" style="--delay: 100ms">
-  <h1>Built for the people who actually build things.</h1>
-  <p class="lead">belt.works is a platform for skilled tradespeople who want to grow their business without becoming marketing experts, tech consultants, or social media managers.</p>
-</header>
-<div class="card-list">
-  <article class="card fade-in" style="--delay: 200ms"><p>We use AI to do the things that eat your time, fielding inquiries, qualifying leads, maintaining a web presence, so you can stay focused on the work you're actually good at.</p></article>
-  <article class="card fade-in" style="--delay: 300ms"><div class="meta">How it works</div><p>You get a profile page on belt.works. When a client needs work done, they find your page, fill out a request, and you get a text message with their name, number, and what they need. You call them. You close the job. We take 3% of what you earn from belt.works leads. Nothing until you win.</p></article>
-  <article class="card fade-in" style="--delay: 400ms"><div class="meta">Who it's for</div><p>Single operators and small crews in the skilled trades, flooring, drywall, plumbing, electrical, HVAC, carpentry, and everything in between. If you work with your hands and you're losing jobs because leads fall through the cracks, belt.works is for you.</p></article>
-  <article class="card fade-in" style="--delay: 500ms"><div class="meta">Where we operate</div><p>We started in Akron, Ohio. We're expanding across the Rust Belt. If you're in Northeast Ohio, Western Pennsylvania, or anywhere in between, we want to hear from you.</p></article>
-  <article class="card fade-in" style="--delay: 600ms"><div class="meta">Who runs it</div><p>belt.works is operated by FOUNDRY, a one-person AI infrastructure shop based in Akron. We build the tools, maintain the platform, and manage every client relationship personally. You're not dealing with a corporation. You're dealing with someone who grew up in the same towns you work in.</p></article>
-</div>
+    <header class="stack fade-in" style="--delay: 100ms">
+      <h1>Twenty years solving problems under pressure.</h1>
+      <p class="lead">Some of it in kitchens, some of it in code. Same discipline either way: you show up, you do the work, you don't cut corners.</p>
+    </header>
 
+    <div class="card-list">
+      <article class="card fade-in" style="--delay: 200ms">
+        <div class="meta">What I do</div>
+        <p>I build bespoke software, automation pipelines, AI integrations, and security tooling. I work alone but I work fast — I've got a mesh of AI agents that handle the repetitive parts so I can focus on the hard problems.</p>
+      </article>
+
+      <article class="card fade-in" style="--delay: 300ms">
+        <div class="meta">How it works</div>
+        <p>Rate: $17/hour, billed weekly. Scope gets locked before work starts. No proposal theater, no bloated contracts. Just clear work for fair money.</p>
+        <p>You bring the problem, I turn mess into scope, and we get to work. When it's done, it's done.</p>
+      </article>
+
+      <article class="card fade-in" style="--delay: 400ms">
+        <div class="meta">Where I work</div>
+        <p>Based in Akron, Ohio. I work remotely with clients anywhere. If you're in the Rust Belt or anywhere else that got left behind when tech went coastal, I get it. I'm from here.</p>
+      </article>
+
+      <article class="card fade-in" style="--delay: 500ms">
+        <div class="meta">Why this rate</div>
+        <p>$17/hour isn't coastal rates. It's real-world rates for real-world work. I'm not competing with agencies. I'm competing with the friction of doing it yourself or hiring someone who doesn't show up.</p>
+        <p>I've been cooking for almost 20 years. I don't need to do it anymore. I'm too smart for that — I have too much experience and knowledge to waste it in a kitchen. But I know what fair money looks like, and I know what showing up means.</p>
+      </article>
+
+      <article class="card fade-in" style="--delay: 600ms">
+        <div class="meta">What I believe</div>
+        <p>Software should work. Not kinda work. Not work if you hold it right. Just work.</p>
+        <p>The goal isn't money. It never has been. The goal is to make people's lives better and easier and more fulfilling. Technological achievement matters. Being the person who built something that helped — that matters.</p>
+        <p>One day I'll have enough money to just sit around and do bug bounties all day or build civic tech for communities. Right now I need to make this sustainable. So I take freelance work, I ship fast, and I keep the rate fair.</p>
+      </article>
+
+      <article class="card fade-in" style="--delay: 700ms">
+        <div class="meta">The method</div>
+        <p>Elegant solutions from first principles. That's not marketing copy. That's the standard.</p>
+        <p>I don't build empires. I build tools that work. I don't cut corners. I don't ship half-finished garbage. Finished means finished.</p>
+        <p>If you want someone who shows up and actually delivers, start here.</p>
+      </article>
+    </div>
+
+    <div class="cta-wrapper fade-in" style="--delay: 800ms">
+      <a href="/hire" class="cta">Start a project →</a>
+    </div>
   </section>
 
   <footer>
     <nav aria-label="Footer navigation">
       <a href="/about">About</a>
       <span class="sep">·</span>
-      <a href="/vision">Vision</a>
+      <a href="/services">Services</a>
       <span class="sep">·</span>
-      <a href="/privacy">Privacy</a>
+      <a href="/hire">Hire</a>
       <span class="sep">·</span>
       <a href="/contact">Contact</a>
     </nav>
-    <div class="footer-line">belt.works · Built in Akron · 2026</div>
+    <div class="footer-line">belt.works · Akron, Ohio · $17/hour · Actually delivers</div>
   </footer>
 </main>
 
@@ -99,31 +133,39 @@
     gap: 1.5rem;
   }
   .section-label {
-    font-size: 0.7rem;
-    letter-spacing: 4px;
     color: #C45C1A;
     text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+  }
+  .stack {
+    display: grid;
+    gap: 1rem;
   }
   h1 {
     font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
     letter-spacing: 2px;
     color: #F0EDE8;
-    font-size: clamp(3rem, 10vw, 5.5rem);
-    line-height: 0.95;
-  }
-  p {
-    color: #9A8070;
-    line-height: 1.8;
-    font-size: 0.95rem;
   }
   .lead {
-    max-width: 56rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #D0B08B;
+  }
+  .card-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
   }
   .card {
     border: 1px solid #2A1A0E;
     background: #160C06;
     padding: 1.75rem;
     position: relative;
+    display: grid;
+    gap: 0.85rem;
   }
   .card::before {
     content: '';
@@ -134,17 +176,37 @@
     height: 100%;
     background: #C45C1A;
   }
-  .stack, .card-list {
-    display: grid;
-    gap: 1.25rem;
-  }
   .meta {
     color: #C45C1A;
-    font-size: 0.7rem;
-    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
   }
+  .card p {
+    color: #9A8070;
+    line-height: 1.75;
+    font-size: 0.95rem;
+  }
+  .cta-wrapper {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    background: #C45C1A;
+    color: #0F0804;
+    padding: 1rem 2.25rem;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    transition: background 0.15s;
+  }
+  .cta:hover { background: #E8731A; }
   footer {
     border-top: 1px solid #2A1A0E;
     padding: 2rem;
@@ -156,8 +218,6 @@
   }
   footer nav {
     margin-bottom: 0.9rem;
-    border: 0;
-    padding: 0;
   }
   footer a {
     color: #9A8070;
@@ -165,7 +225,7 @@
   }
   footer a:hover { color: #C45C1A; }
   .sep { margin: 0 0.75rem; color: #3A2010; }
-  .footer-line { color: #3A2010; }
+  .footer-line { color: #9A8070; }
   @media (max-width: 480px) {
     .fade-in { animation: none; opacity: 1; transform: none; }
   }
@@ -173,5 +233,3 @@
     .fade-in { animation: none; opacity: 1; transform: none; }
   }
 </style>
-
-
