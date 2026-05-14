@@ -161,14 +161,14 @@
     min-height: 100vh;
   }
   :global(a:focus-visible), :global(button:focus-visible), :global(input:focus-visible), :global(select:focus-visible), :global(textarea:focus-visible) {
-    outline: 2px solid #C45C1A;
+    outline: 2px solid #d7ff63;
     outline-offset: 3px;
   }
   .skip-link {
     position: absolute;
     left: 1rem;
     top: -3rem;
-    background: #C45C1A;
+    background: #d7ff63;
     color: #0F0804;
     padding: 0.75rem 1rem;
     text-decoration: none;
@@ -199,7 +199,7 @@
     text-decoration: none;
     text-transform: uppercase;
   }
-  .back:hover { color: #C45C1A; }
+  .back:hover { color: #d7ff63; }
   .page-shell {
     max-width: 750px;
     margin: 0 auto;
@@ -208,7 +208,7 @@
     gap: 2rem;
   }
   .section-label {
-    color: #C45C1A;
+    color: #d7ff63;
     text-transform: uppercase;
     letter-spacing: 0.16em;
     font-size: 0.72rem;
@@ -242,7 +242,7 @@
     left: 0;
     width: 3px;
     height: 100%;
-    background: #C45C1A;
+    background: #d7ff63;
   }
   .intake-form {
     display: grid;
@@ -253,7 +253,7 @@
     gap: 0.5rem;
   }
   label {
-    color: #C45C1A;
+    color: #d7ff63;
     text-transform: uppercase;
     letter-spacing: 0.16em;
     font-size: 0.72rem;
@@ -269,7 +269,7 @@
   }
   input:focus, textarea:focus {
     outline: none;
-    border-color: #C45C1A;
+    border-color: #d7ff63;
   }
   textarea {
     resize: vertical;
@@ -280,7 +280,7 @@
     line-height: 1.5;
   }
   .cta {
-    background: #C45C1A;
+    background: #d7ff63;
     color: #0F0804;
     padding: 1rem 2rem;
     border: none;
@@ -297,7 +297,7 @@
     justify-content: center;
     min-height: 48px;
   }
-  .cta:hover:not(:disabled) { background: #E8731A; }
+  .cta:hover:not(:disabled) { background: #b8e040; }
   .cta:disabled {
     opacity: 0.6;
     cursor: not-allowed;
@@ -319,10 +319,10 @@
     left: 0;
     width: 3px;
     height: 100%;
-    background: #C45C1A;
+    background: #d7ff63;
   }
   .meta {
-    color: #C45C1A;
+    color: #d7ff63;
     text-transform: uppercase;
     letter-spacing: 0.16em;
     font-size: 0.72rem;
@@ -339,7 +339,7 @@
   }
   .success-icon {
     font-size: 4rem;
-    color: #C45C1A;
+    color: #d7ff63;
     margin-bottom: 1rem;
   }
   .success-actions {
@@ -350,7 +350,7 @@
     flex-wrap: wrap;
   }
   .text-link {
-    color: #C45C1A;
+    color: #d7ff63;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -358,7 +358,7 @@
     padding: 0.75rem 0;
     font-weight: 700;
   }
-  .text-link:hover { color: #E8731A; }
+  .text-link:hover { color: #b8e040; }
   footer {
     border-top: 1px solid #2A1A0E;
     padding: 2rem;
@@ -375,7 +375,7 @@
     color: #9A8070;
     text-decoration: none;
   }
-  footer a:hover { color: #C45C1A; }
+  footer a:hover { color: #d7ff63; }
   .sep { margin: 0 0.75rem; color: #3A2010; }
   .footer-line { color: #9A8070; }
   @media (min-width: 640px) {

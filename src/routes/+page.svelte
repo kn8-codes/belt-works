@@ -57,14 +57,14 @@
     <div class="hero-inner" id="main-content">
       <div class="mark fade-in" style="--delay: 0ms">
         <svg viewBox="0 0 80 36" width="80" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="2" y="8" width="76" height="20" rx="3" fill="none" stroke="#C45C1A" stroke-width="3.5"/>
-          <rect x="2" y="4" width="18" height="28" rx="3" fill="none" stroke="#C45C1A" stroke-width="3.5"/>
-          <line x1="11" y1="4" x2="11" y2="32" stroke="#C45C1A" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="42" cy="18" r="2" fill="#C45C1A"/>
-          <circle cx="54" cy="18" r="2" fill="#C45C1A"/>
-          <circle cx="66" cy="18" r="2" fill="#C45C1A"/>
+          <rect x="2" y="8" width="76" height="20" rx="3" fill="none" stroke="#d7ff63" stroke-width="3.5"/>
+          <rect x="2" y="4" width="18" height="28" rx="3" fill="none" stroke="#d7ff63" stroke-width="3.5"/>
+          <line x1="11" y1="4" x2="11" y2="32" stroke="#d7ff63" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="42" cy="18" r="2" fill="#d7ff63"/>
+          <circle cx="54" cy="18" r="2" fill="#d7ff63"/>
+          <circle cx="66" cy="18" r="2" fill="#d7ff63"/>
         </svg>
-        <span class="wordmark"><span class="rust">belt</span>.works</span>
+        <span class="wordmark"><span class="accent">belt</span>.works</span>
       </div>
 
       <p class="tagline fade-in" style="--delay: 80ms">Elegant solutions from first principles.</p>
@@ -181,14 +181,14 @@
     min-height: 100vh;
   }
   :global(a:focus-visible), :global(button:focus-visible), :global(input:focus-visible), :global(select:focus-visible), :global(textarea:focus-visible) {
-    outline: 2px solid #C45C1A;
+    outline: 2px solid #d7ff63;
     outline-offset: 3px;
   }
   .skip-link {
     position: absolute;
     left: 1rem;
     top: -3rem;
-    background: #C45C1A;
+    background: #d7ff63;
     color: #0F0804;
     padding: 0.75rem 1rem;
     text-decoration: none;
@@ -233,7 +233,7 @@
     font-size: 2rem;
     letter-spacing: 2px;
   }
-  .rust { color: #C45C1A; }
+  .accent { color: #d7ff63; }
   .tagline,
   .section-label,
   .meta,
@@ -245,7 +245,7 @@
     font-size: 0.72rem;
   }
   .tagline {
-    color: #C45C1A;
+    color: #d7ff63;
     margin-bottom: 1rem;
   }
   h1, h2, h3 {
@@ -294,16 +294,16 @@
     transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
   .cta {
-    background: #C45C1A;
+    background: #d7ff63;
     color: #0F0804;
     padding: 1rem 2.25rem;
   }
-  .cta:hover { background: #E8731A; }
+  .cta:hover { background: #b8e040; }
   .text-link {
-    color: #C45C1A;
+    color: #d7ff63;
     padding: 0.75rem 0;
   }
-  .text-link:hover { color: #E8731A; }
+  .text-link:hover { color: #b8e040; }
   .hero-rule {
     position: absolute;
     bottom: 0;
@@ -316,7 +316,7 @@
     padding: 5rem 2rem;
   }
   .section-label {
-    color: #C45C1A;
+    color: #d7ff63;
     margin-bottom: 1rem;
   }
   .section-copy {
@@ -341,7 +341,7 @@
     left: 0;
     width: 3px;
     height: 100%;
-    background: #C45C1A;
+    background: #d7ff63;
   }
   .meta-row {
     display: flex;
@@ -353,8 +353,8 @@
   }
   .meta { color: #9A8070; }
   .status-badge {
-    color: #C45C1A;
-    border: 1px solid #C45C1A;
+    color: #d7ff63;
+    border: 1px solid #d7ff63;
     padding: 0.35rem 0.65rem;
     white-space: nowrap;
   }
@@ -369,10 +369,10 @@
     flex-wrap: wrap;
   }
   .links a {
-    color: #C45C1A;
+    color: #d7ff63;
     text-decoration: none;
   }
-  .links a:hover { color: #E8731A; }
+  .links a:hover { color: #b8e040; }
   .cta-section .card {
     display: grid;
     gap: 1rem;
@@ -393,7 +393,7 @@
     color: #9A8070;
     text-decoration: none;
   }
-  footer a:hover { color: #C45C1A; }
+  footer a:hover { color: #d7ff63; }
   .sep { margin: 0 0.75rem; color: #3A2010; }
   .footer-line { color: #9A8070; }
   @media (min-width: 768px) {
