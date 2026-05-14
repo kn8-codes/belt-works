@@ -82,7 +82,7 @@
         <div class="meta">Call to action</div>
         <p>If you want to talk through a rough idea, a broken workflow, or a small AI tool that should probably exist by now, start with the FOUNDRY intake or send a direct note.</p>
         <div class="cta-row">
-          <a class="cta" href={resolve('/foundry/intake')}>Open Intake</a>
+          <a class="cta" href={resolve('/contact')}>Open Intake</a>
           <a class="cta secondary" href={resolve('/contact?type=other')}>Contact belt.works</a>
         </div>
       </article>

@@ -3,409 +3,207 @@
   import { featuredProjects } from '$lib/content/projects.js';
   import { services } from '$lib/content/services.js';
 
-  const currentWork = [
+  const primaryServices = services.filter((service) =>
+    ['custom-software', 'automation', 'ecommerce'].includes(service.slug)
+  );
+
+  const process = [
     {
-      label: 'proof',
-      name: 'belt.works',
-      description: 'The public face of the lab. Research, proof, services, and intake all point through here.',
-      status: 'active rebuild',
-      note: '',
-      links: [
-        { href: '/', text: 'open' },
-        { href: 'https://github.com/kn8-codes/belt-works', text: 'github', external: true }
-      ]
+      step: '01',
+      title: 'Intake stays plain.',
+      copy: 'What has to work, what is currently broken, who uses it, and what failure costs.'
     },
     {
-      label: 'proof artifact',
-      name: 'hosp-or-not',
-      description: 'Small, finished, real. The only kind of proof that counts.',
-      status: 'shipped',
-      note: ''
+      step: '02',
+      title: 'Scope gets cut down.',
+      copy: 'The first useful version ships before the project turns into proposal theater.'
     },
     {
-      label: 'in development',
-      name: 'Shop Floor',
-      description: 'City-level repair and survival infrastructure for working people. Starting in Akron.',
-      status: 'in development',
-      note: ''
-    },
-    {
-      label: 'proof',
-      name: 'GREYMARKET',
-      description: 'Terminal-style arbitrage system for auction websites.',
-      status: 'live',
-      note: ''
+      step: '03',
+      title: 'Builds leave evidence.',
+      copy: 'Working software, clean handoff notes, visible status, and fewer mystery boxes.'
     }
   ];
 </script>
 
 <svelte:head>
-  <title>belt.works — Elegant solutions from first principles.</title>
-  <meta name="description" content="Elegant solutions from first principles." />
-  <meta property="og:title" content="belt.works — Elegant solutions from first principles." />
-  <meta property="og:description" content="Elegant solutions from first principles." />
+  <title>belt.works — Software, automation, and web systems from Akron.</title>
+  <meta
+    name="description"
+    content="belt.works scopes and builds practical software, automation, and web systems for real business problems. Built in Akron, Ohio."
+  />
+  <meta property="og:title" content="belt.works — Software that works." />
+  <meta
+    property="og:description"
+    content="Bring the problem. We scope it, build the first useful version, and make it work."
+  />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.belt.works/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 </svelte:head>
 
-<main>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-
-  <section class="hero" aria-label="belt.works introduction">
-    <div class="hero-inner" id="main-content">
-      <div class="mark fade-in" style="--delay: 0ms">
-        <svg viewBox="0 0 80 36" width="80" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="2" y="8" width="76" height="20" rx="3" fill="none" stroke="#d7ff63" stroke-width="3.5"/>
-          <rect x="2" y="4" width="18" height="28" rx="3" fill="none" stroke="#d7ff63" stroke-width="3.5"/>
-          <line x1="11" y1="4" x2="11" y2="32" stroke="#d7ff63" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="42" cy="18" r="2" fill="#d7ff63"/>
-          <circle cx="54" cy="18" r="2" fill="#d7ff63"/>
-          <circle cx="66" cy="18" r="2" fill="#d7ff63"/>
-        </svg>
-        <span class="wordmark"><span class="accent">belt</span>.works</span>
-      </div>
-
-      <p class="tagline fade-in" style="--delay: 80ms">Elegant solutions from first principles.</p>
-      <h1 class="fade-in" style="--delay: 160ms">We build software that works.</h1>
-      <p class="sub fade-in" style="--delay: 240ms">You bring the problem. We turn mess into scope and get to work.</p>
-      <div class="hero-actions fade-in" style="--delay: 320ms">
-        <a href="/contact" class="cta" aria-label="Bring a problem to belt.works">Bring a problem</a>
-        <a href="#current-work" class="text-link" aria-label="See current work">See the work</a>
-      </div>
-    </div>
-    <div class="hero-rule"></div>
-  </section>
-
-  <section class="content-section" id="current-work" aria-label="Current work section">
-    <div class="section-label fade-in" style="--delay: 0ms">// CURRENT WORK</div>
-    <header class="section-copy fade-in" style="--delay: 100ms">
-      <h2>Finished means finished.</h2>
-      <p>Status labels stay visible. Everything else gets named honestly.</p>
-    </header>
-
-    <div class="work-grid">
-      {#each currentWork as project, index (project.name)}
-        <article class="card fade-in" style={`--delay: ${200 + index * 80}ms`}>
-          <div class="meta-row">
-            <div class="meta">{project.label}</div>
-            <div class="status-badge">{project.status}</div>
-          </div>
-          <h3>{project.name}</h3>
-          <p>{project.description}</p>
-          {#if project.note}
-            <p class="note">{project.note}</p>
-          {/if}
-          {#if project.links}
-            <div class="links">
-              {#each project.links as link}
-                <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>{link.text}</a>
-              {/each}
-            </div>
-          {/if}
-        </article>
-      {/each}
-<section class="section">
-  <div class="wrap section-head">
+<section class="hero home-hero" aria-label="belt.works introduction">
+  <div class="wrap home-hero__grid">
     <div>
-      <p class="eyebrow">What this is</p>
-      <h2>A software research lab.</h2>
+      <p class="eyebrow">belt.works · Akron, Ohio</p>
+      <h1>Software that earns its keep.</h1>
+      <p class="lead lede-tight">
+        Custom tools, automations, and web systems for businesses with broken manual workflows.
+        Bring the mess. We turn it into narrow scope and build the useful part first.
+      </p>
+      <div class="actions">
+        <a class="button" href="/contact">Bring a problem</a>
+        <a class="button secondary" href="#services">See services</a>
+      </div>
     </div>
-    <p class="lead">Some work becomes tools. Some becomes services. Some becomes client work. The rule is simple: the software has to hold up.</p>
-  </div>
-  <div class="wrap grid three">
-    <article class="card large">
-      <div class="meta">money</div>
-      <h3>Client work gets scoped hard.</h3>
-      <p>Intake stays plain. Context, scope, tickets, build. No bloated proposal theater.</p>
-    </article>
-    <article class="card large">
-      <div class="meta">proof</div>
-      <h3>Projects show the method.</h3>
-      <p>ROOMS, data tools, civic software, and old experiments stay useful when they produce evidence.</p>
-    </article>
-    <article class="card large">
-      <div class="meta">infrastructure</div>
-      <h3>The mesh does the boring work.</h3>
-      <p>Jeep, M1, and M4 coordinate agent sessions, logs, diffs, checks, and handoffs.</p>
-    </article>
+
+    <aside class="card large proof-panel" aria-label="belt.works operating notes">
+      <p class="meta">how this works</p>
+      <ul class="proof-list">
+        <li>No bloated proposal theater.</li>
+        <li>No vague AI sparkle dust. God help us all.</li>
+        <li>Small systems, automation, funnels, and tools that survive contact with work.</li>
+      </ul>
+    </aside>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="services" aria-label="Services">
+  <div class="wrap section-head">
+    <div>
+      <p class="eyebrow">Services</p>
+      <h2>Useful work. Scoped hard.</h2>
+    </div>
+    <p class="lead">
+      Freelance work lives here now: custom software, automation, and web systems for people who need
+      the machine to stop wasting their time.
+    </p>
+  </div>
+
+  <div class="wrap grid three">
+    {#each primaryServices as service (service.slug)}
+      <ProjectCard item={service} />
+    {/each}
+  </div>
+</section>
+
+<section class="section" aria-label="Method">
+  <div class="wrap section-head">
+    <div>
+      <p class="eyebrow">Method</p>
+      <h2>Less mysticism. More receipts.</h2>
+    </div>
+    <p class="lead">
+      The point is not to admire the stack. The point is to reduce friction, make the workflow legible,
+      and ship the first thing that proves the rest is worth building.
+    </p>
+  </div>
+
+  <div class="wrap grid three">
+    {#each process as item (item.step)}
+      <article class="card large">
+        <div class="meta">{item.step}</div>
+        <h3>{item.title}</h3>
+        <p>{item.copy}</p>
+      </article>
+    {/each}
+  </div>
+</section>
+
+<section class="section" id="current-work" aria-label="Current work">
   <div class="wrap section-head">
     <div>
       <p class="eyebrow">Proof</p>
       <h2>Current work.</h2>
     </div>
-    <p class="lead">Status labels stay visible. Finished means finished. Everything else gets named honestly.</p>
+    <p class="lead">
+      A few artifacts stay visible because talk is cheap and GitHub is less forgiving than a landing
+      page.
+    </p>
   </div>
-  <div class="wrap grid">
+
+  <div class="wrap grid current-work-grid">
     {#each featuredProjects as project (project.slug)}
       <ProjectCard item={project} />
     {/each}
   </div>
 </section>
 
-  <section class="content-section cta-section" aria-label="Bring the problem here">
-    <div class="card fade-in" style="--delay: 0ms">
-      <div class="section-label">// SERVICES</div>
+<section class="section final-cta" aria-label="Contact call to action">
+  <div class="wrap">
+    <article class="card large final-cta__card">
+      <p class="eyebrow">Start here</p>
       <h2>Bring the problem here.</h2>
-      <p>The front door is plain: describe the mess, what has to work, and what failure costs. Then we decide what is worth building first.</p>
-      <a href="/contact" class="cta" aria-label="Open the contact page">Open contact →</a>
-    </div>
-  </section>
-
-  <footer>
-    <nav aria-label="Footer navigation">
-      <a href="/about">About</a>
-      <span class="sep">·</span>
-      <a href="/vision">Vision</a>
-      <span class="sep">·</span>
-      <a href="/privacy">Privacy</a>
-      <span class="sep">·</span>
-      <a href="/contact">Contact</a>
-    </nav>
-    <div class="footer-line">belt.works · Akron, Ohio · Elegant solutions from first principles.</div>
-  </footer>
-</main>
+      <p class="lead">
+        Describe the mess, what has to work, and what failure costs. Then we decide what is worth
+        building first.
+      </p>
+      <div class="actions">
+        <a class="button" href="/contact">Start an intake</a>
+      </div>
+    </article>
+  </div>
+</section>
 
 <style>
-  :global(*, *::before, *::after) { box-sizing: border-box; margin: 0; padding: 0; }
-  :global(html) { scroll-behavior: smooth; }
-  :global(body) {
-    background: #0F0804;
-    color: #F0EDE8;
-    font-family: 'IBM Plex Mono', monospace;
-    min-height: 100vh;
+  .home-hero {
+    padding-top: clamp(4.5rem, 10vw, 8rem);
   }
-  :global(a:focus-visible), :global(button:focus-visible), :global(input:focus-visible), :global(select:focus-visible), :global(textarea:focus-visible) {
-    outline: 2px solid #d7ff63;
-    outline-offset: 3px;
+
+  .home-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: end;
   }
-  .skip-link {
-    position: absolute;
-    left: 1rem;
-    top: -3rem;
-    background: #d7ff63;
-    color: #0F0804;
-    padding: 0.75rem 1rem;
-    text-decoration: none;
-    z-index: 20;
-    font-weight: 700;
+
+  .proof-panel {
+    align-self: end;
+    background:
+      linear-gradient(180deg, rgba(215, 255, 99, 0.08), rgba(255, 255, 255, 0.015)),
+      var(--panel);
   }
-  .skip-link:focus { top: 1rem; }
-  .fade-in {
-    opacity: 0;
-    transform: translateY(18px);
-    animation: fadeUp 0.55s ease forwards;
-    animation-delay: var(--delay, 0ms);
+
+  .proof-list {
+    display: grid;
+    gap: 0.85rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: var(--muted);
+    line-height: 1.5;
   }
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+  .proof-list li {
+    border-left: 2px solid var(--accent);
+    padding-left: 0.85rem;
+  }
+
+  .final-cta {
+    border-bottom: 0;
+  }
+
+  .current-work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .final-cta__card {
+    background:
+      radial-gradient(circle at 0% 0%, rgba(215, 255, 99, 0.12), transparent 22rem),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012));
+  }
+
+  .final-cta__card .lead {
+    max-width: 720px;
+  }
+
+  @media (max-width: 820px) {
+    .home-hero__grid {
+      grid-template-columns: 1fr;
+      align-items: start;
     }
-  }
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 2rem;
-    position: relative;
-  }
-  .hero-inner, .content-section, footer {
-    max-width: 900px;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .hero-inner { padding: 6rem 0 4rem; }
-  .mark {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-  }
-  .wordmark {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 2px;
-  }
-  .accent { color: #d7ff63; }
-  .tagline,
-  .section-label,
-  .meta,
-  .status-badge,
-  .links a,
-  .text-link {
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: 0.72rem;
-  }
-  .tagline {
-    color: #d7ff63;
-    margin-bottom: 1rem;
-  }
-  h1, h2, h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 2px;
-    color: #F0EDE8;
-  }
-  h1 {
-    font-size: clamp(3.6rem, 11vw, 7rem);
-    line-height: 0.94;
-    margin-bottom: 1.25rem;
-    max-width: 10ch;
-  }
-  h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1;
-    margin-bottom: 0.85rem;
-  }
-  h3 {
-    font-size: 1.9rem;
-    line-height: 1;
-    margin-bottom: 0.85rem;
-  }
-  .sub, .section-copy p, .card p {
-    color: #9A8070;
-    line-height: 1.75;
-    font-size: 0.95rem;
-  }
-  .sub {
-    max-width: 560px;
-    margin-bottom: 2rem;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .cta, .text-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-  }
-  .cta {
-    background: #d7ff63;
-    color: #0F0804;
-    padding: 1rem 2.25rem;
-  }
-  .cta:hover { background: #b8e040; }
-  .text-link {
-    color: #d7ff63;
-    padding: 0.75rem 0;
-  }
-  .text-link:hover { color: #b8e040; }
-  .hero-rule {
-    position: absolute;
-    bottom: 0;
-    left: 2rem;
-    right: 2rem;
-    height: 1px;
-    background: #2A1A0E;
-  }
-  .content-section {
-    padding: 5rem 2rem;
-  }
-  .section-label {
-    color: #d7ff63;
-    margin-bottom: 1rem;
-  }
-  .section-copy {
-    display: grid;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-  .work-grid {
-    display: grid;
-    gap: 1rem;
-  }
-  .card {
-    border: 1px solid #2A1A0E;
-    background: #160C06;
-    padding: 1.75rem;
-    position: relative;
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: #d7ff63;
-  }
-  .meta-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: center;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-  }
-  .meta { color: #9A8070; }
-  .status-badge {
-    color: #d7ff63;
-    border: 1px solid #d7ff63;
-    padding: 0.35rem 0.65rem;
-    white-space: nowrap;
-  }
-  .note {
-    color: #D0B08B;
-    margin-top: 0.75rem;
-  }
-  .links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-  }
-  .links a {
-    color: #d7ff63;
-    text-decoration: none;
-  }
-  .links a:hover { color: #b8e040; }
-  .cta-section .card {
-    display: grid;
-    gap: 1rem;
-  }
-  footer {
-    border-top: 1px solid #2A1A0E;
-    padding: 2rem;
-    text-align: center;
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    color: #3A2010;
-    text-transform: uppercase;
-  }
-  footer nav {
-    margin-bottom: 0.9rem;
-  }
-  footer a {
-    color: #9A8070;
-    text-decoration: none;
-  }
-  footer a:hover { color: #d7ff63; }
-  .sep { margin: 0 0.75rem; color: #3A2010; }
-  .footer-line { color: #9A8070; }
-  @media (min-width: 768px) {
-    .work-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    .current-work-grid {
+      grid-template-columns: 1fr;
     }
-  }
-  @media (max-width: 480px) {
-    .fade-in { animation: none; opacity: 1; transform: none; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    :global(html) { scroll-behavior: auto; }
-    .fade-in { animation: none; opacity: 1; transform: none; }
   }
 </style>

@@ -6,6 +6,7 @@ export const projects = [
     status: 'active rebuild',
     summary: 'The public face of the lab. Research, proof, services, and intake all point through here.',
     href: '/',
+    actionLabel: 'view site',
     github: 'https://github.com/kn8-codes/belt-works',
     notes: 'Current priority. Voice is locked. Structure is being rebuilt.'
   },
@@ -16,6 +17,7 @@ export const projects = [
     status: 'mock data',
     summary: 'A public, sanitized cockpit for the agent mesh. Status first. Control later.',
     href: '/rooms',
+    actionLabel: 'view rooms',
     notes: 'Good proof because it makes the work visible.'
   },
   {

@@ -13,7 +13,7 @@
   {/if}
   <div class="actions">
     {#if item.href}
-      <a class="button secondary" href={item.href}>open</a>
+      <a class="button secondary" href={item.href}>{item.actionLabel ?? 'view details'}</a>
     {/if}
     {#if item.github}
       <a class="button secondary" href={item.github} target="_blank" rel="noreferrer">github</a>
