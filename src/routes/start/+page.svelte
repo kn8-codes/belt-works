@@ -12,7 +12,7 @@
   />
 </svelte:head>
 
-<script lang="ts">
+<script>
   import { applyAction, enhance } from '$app/forms';
   import { resolve } from '$app/paths';
 
@@ -29,7 +29,10 @@
   function enhanceLeadForm() {
     isSubmitting = true;
 
-    return async ({ result, formElement }: { result: any; formElement: HTMLFormElement }) => {
+    /** @param {{ result: any; formElement: HTMLFormElement }} submission */
+    return async (submission) => {
+      const { result, formElement } = submission;
+
       isSubmitting = false;
       await applyAction(result);
 
@@ -86,7 +89,7 @@
 
   <section class="block proof-block fade-in" style="--delay: 160ms" aria-label="Current belt.works projects">
     <div class="tiles">
-      {#each projects as project}
+      {#each projects as project (project.name)}
         <article class="tile">
           <div class="tile-topline">
             <h2>{project.name}</h2>

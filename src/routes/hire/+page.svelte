@@ -14,9 +14,10 @@
     budget: ''
   };
 
-  let submitted = false;
-  let submitting = false;
+  let submitted = $state(false);
+  let submitting = $state(false);
 
+  /** @param {SubmitEvent} event */
   async function handleSubmit(event) {
     event.preventDefault();
     submitting = true;
@@ -47,7 +48,7 @@
       </header>
 
       <div class="card fade-in" style="--delay: 200ms">
-        <form on:submit={handleSubmit} class="intake-form">
+        <form onsubmit={handleSubmit} class="intake-form">
           <div class="form-group">
             <label for="name">Your name</label>
             <input 

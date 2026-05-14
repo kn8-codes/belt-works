@@ -5,7 +5,8 @@ export const services = [
     type: 'service',
     status: 'available by scope',
     summary: 'Small systems for real business problems. Intake first. Scope second. Build third.',
-    href: '/contact'
+    href: '/contact',
+    actionLabel: 'start intake'
   },
   {
     slug: 'automation',
@@ -13,7 +14,8 @@ export const services = [
     type: 'service',
     status: 'available by scope',
     summary: 'Agent workflows, internal tools, and boring automation where it saves time or money.',
-    href: '/contact'
+    href: '/contact',
+    actionLabel: 'start intake'
   },
   {
     slug: 'ecommerce',
@@ -21,7 +23,8 @@ export const services = [
     type: 'service',
     status: 'first client lane',
     summary: 'Catalog, upload, proofing, Stripe checkout, and an admin path that does not become a monster.',
-    href: '/contact'
+    href: '/contact',
+    actionLabel: 'start intake'
   },
   {
     slug: 'data',
@@ -29,7 +32,8 @@ export const services = [
     type: 'property',
     status: 'candidate service',
     summary: 'Scrape messy sources, normalize them, expose something useful. One dataset at a time.',
-    href: '/data'
+    href: '/data',
+    actionLabel: 'view property'
   },
   {
     slug: 'intel',
@@ -37,7 +41,8 @@ export const services = [
     type: 'property',
     status: 'research lane',
     summary: 'OSINT and threat-intel research. Useful if it produces structured outputs, not noise.',
-    href: '/intel'
+    href: '/intel',
+    actionLabel: 'view property'
   },
   {
     slug: 'ioc',
@@ -45,6 +50,7 @@ export const services = [
     type: 'property',
     status: 'output layer',
     summary: 'Indicators, actor profiles, and security data. Should follow intel work, not become a separate burden.',
-    href: '/ioc'
+    href: '/ioc',
+    actionLabel: 'view property'
   }
 ];
