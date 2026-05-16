@@ -1,0 +1,35 @@
+name: Update mesh status
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-mesh-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Pull latest public GitHub activity
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USER: kn8-codes
+          MESH_STATUS_WINDOW_HOURS: 6
+          MESH_STATUS_TARGET_PRS: 1
+        run: node scripts/update-mesh-status.mjs
+
+      - name: Commit mesh status snapshot
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: 'chore: update mesh status snapshot'
+          file_pattern: src/lib/content/mesh-status.json
