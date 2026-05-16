@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-16T08:21:24.394Z",
+  "source": "GitHub public events for kn8-codes",
+  "polling": {
+    "cadenceHours": 6,
+    "windowHours": 6,
+    "targetPrsPerWindow": 1
+  },
+  "health": {
+    "commitsLastWindow": 0,
+    "prsLastWindow": 2,
+    "prTargetMet": true,
+    "label": "target met"
+  },
+  "recentCommits": [],
+  "recentPullRequests": [
+    {
+      "repo": "kn8-codes/belt-works",
+      "number": 4,
+      "title": "PR #4",
+      "state": "opened",
+      "action": "opened",
+      "url": "https://github.com/kn8-codes/belt-works/pull/4",
+      "createdAt": "2026-05-16T08:17:51Z"
+    },
+    {
+      "repo": "kn8-codes/belt-works",
+      "number": 3,
+      "title": "PR #3",
+      "state": "opened",
+      "action": "opened",
+      "url": "https://github.com/kn8-codes/belt-works/pull/3",
+      "createdAt": "2026-05-16T08:16:17Z"
+    },
+    {
+      "repo": "kn8-codes/belt-works",
+      "number": 2,
+      "title": "PR #2",
+      "state": "opened",
+      "action": "opened",
+      "url": "https://github.com/kn8-codes/belt-works/pull/2",
+      "createdAt": "2026-05-14T20:50:50Z"
+    },
+    {
+      "repo": "kn8-codes/belt-works",
+      "number": 1,
+      "title": "PR #1",
+      "state": "opened",
+      "action": "opened",
+      "url": "https://github.com/kn8-codes/belt-works/pull/1",
+      "createdAt": "2026-05-07T23:10:32Z"
+    }
+  ]
+}

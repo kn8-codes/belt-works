@@ -1,5 +1,10 @@
 <script>
+  import meshStatusRaw from '$lib/content/mesh-status.json';
   import { fleetStats, roomNodes } from '$lib/content/rooms-sample.js';
+
+  const meshStatus = /** @type {any} */ (meshStatusRaw);
+  const recentPullRequests = /** @type {Array<any>} */ (meshStatus.recentPullRequests);
+  const recentCommits = /** @type {Array<any>} */ (meshStatus.recentCommits);
 
   let selectedId = $state(roomNodes[1].id);
   let selectedNode = $derived(roomNodes.find((node) => node.id === selectedId) ?? roomNodes[0]);
@@ -21,9 +26,9 @@
       </p>
     </div>
     <div class="mesh-health-card" aria-label="Mesh health summary">
-      <span class="status">public mode</span>
-      <strong>{roomNodes.filter((node) => node.status === 'working').length}/{roomNodes.length}</strong>
-      <p>nodes currently marked working</p>
+      <span class="status" class:warn={!meshStatus.health.prTargetMet}>{meshStatus.health.label}</span>
+      <strong>{meshStatus.health.prsLastWindow}/{meshStatus.polling.targetPrsPerWindow}</strong>
+      <p>pull requests opened or updated in the last {meshStatus.polling.windowHours} hours</p>
     </div>
   </div>
 
@@ -34,6 +39,14 @@
         <span>{stat.label}</span>
       </div>
     {/each}
+    <div class="rooms-stat">
+      <strong>{meshStatus.health.commitsLastWindow}</strong>
+      <span>commits / {meshStatus.polling.windowHours}h</span>
+    </div>
+    <div class="rooms-stat">
+      <strong>{meshStatus.polling.cadenceHours}h</strong>
+      <span>polling cadence</span>
+    </div>
   </div>
 
   <main class="mesh-console" aria-label="Mesh cockpit">
@@ -101,7 +114,7 @@
         </article>
 
         <article class="drill-card">
-          <p class="meta">recent commits</p>
+          <p class="meta">node commits</p>
           <ul class="mini-list">
             {#each selectedNode.commits as commit (commit.hash)}
               <li><strong>{commit.hash}</strong> — {commit.message}</li>
@@ -116,12 +129,52 @@
 <section class="section">
   <div class="wrap grid two">
     <article class="card large">
+      <p class="eyebrow">GitHub pulse</p>
+      <h2>Recent public motion.</h2>
+      <p>
+        Snapshot generated from {meshStatus.source} at {meshStatus.generatedAt}. The target is at least one pull request across
+        the public project mesh every {meshStatus.polling.windowHours} hours.
+      </p>
+    </article>
+    <div class="brief-list">
+      <article class="mono-panel">
+        <p><strong>Recent pull requests</strong></p>
+        {#if recentPullRequests.length}
+          <ul class="mini-list flush">
+            {#each recentPullRequests as pr (`${pr.repo}-${pr.number}-${pr.createdAt}`)}
+              <li><a href={pr.url}>{pr.repo} #{pr.number}</a> — {pr.title} ({pr.action})</li>
+            {/each}
+          </ul>
+        {:else}
+          <p>No public pull request events in the current GitHub event window.</p>
+        {/if}
+      </article>
+
+      <article class="mono-panel">
+        <p><strong>Recent commits</strong></p>
+        {#if recentCommits.length}
+          <ul class="mini-list flush">
+            {#each recentCommits as commit (`${commit.repo}-${commit.sha}`)}
+              <li><a href={commit.url}>{commit.repo}@{commit.sha}</a> — {commit.message}</li>
+            {/each}
+          </ul>
+        {:else}
+          <p>No public push commits in the current GitHub event window.</p>
+        {/if}
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid two">
+    <article class="card large">
       <p class="eyebrow">Public boundary</p>
       <h2>Status without leaking the shop.</h2>
     </article>
     <div class="brief-list">
       <p>Show commit movement, queue shape, and node availability. Hide hostnames, private paths, client data, raw logs, and secrets.</p>
-      <p>Next step: replace the static sample with a scheduled GitHub commit snapshot every six hours.</p>
+      <p>A scheduled GitHub Action refreshes the public snapshot every six hours.</p>
     </div>
   </div>
 </section>
