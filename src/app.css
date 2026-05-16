@@ -198,6 +198,36 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
   .rooms-stats.inline { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 
+/* Mesh status cockpit. This is the credible public replacement for the illustrated ROOMS prototype. */
+.mesh-shell { border-bottom: 1px solid var(--line); background: radial-gradient(circle at 70% 0%, rgba(215,255,99,.1), transparent 32rem), #070706; }
+.mesh-hero { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 2rem; align-items: end; padding: clamp(2rem, 6vw, 5rem) max(1rem, calc((100vw - 1120px) / 2)); border-bottom: 1px solid var(--line); }
+.mesh-hero h1 { max-width: 960px; font-size: clamp(2.8rem, 8vw, 6.5rem); }
+.mesh-health-card { border: 1px solid var(--accent); background: rgba(215,255,99,.055); padding: 1rem; }
+.mesh-health-card strong { display: block; margin: .85rem 0 .25rem; font-size: clamp(2rem, 6vw, 4rem); line-height: .9; }
+.mesh-health-card p { color: var(--muted); line-height: 1.45; margin-bottom: 0; }
+.mesh-stat-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; padding: 1rem max(1rem, calc((100vw - 1120px) / 2)); border-bottom: 1px solid var(--line); }
+.mesh-console { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 1rem; padding: 1rem max(1rem, calc((100vw - 1120px) / 2)); }
+.mesh-node-list { display: grid; gap: .75rem; align-content: start; }
+.mesh-node-list button { color: inherit; text-align: left; border: 1px solid var(--line); background: rgba(255,255,255,.02); padding: 1rem; cursor: pointer; }
+.mesh-node-list button:hover { border-color: var(--muted); }
+.mesh-node-list button.active { border-color: var(--accent); background: rgba(215,255,99,.055); }
+.mesh-progress-label { display: block; color: var(--dim); font-size: .78rem; margin-top: 1rem; text-transform: uppercase; letter-spacing: .08em; }
+.mesh-detail { border: 1px solid var(--line); background: rgba(255,255,255,.018); }
+.mesh-detail-head { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 1rem; align-items: center; padding: 1.25rem; border-bottom: 1px solid var(--line); }
+.mesh-detail-head h2 { font-size: clamp(2.5rem, 8vw, 6rem); margin-bottom: .4rem; }
+.mesh-detail-head p { color: var(--muted); line-height: 1.5; max-width: 760px; }
+.mesh-node-id { border: 1px solid var(--accent); color: var(--accent); min-height: 96px; display: grid; place-items: center; font-size: 1.6rem; font-weight: 900; letter-spacing: .12em; }
+.mesh-grid { padding: 1rem; }
+
+@media (max-width: 1100px) {
+  .mesh-hero, .mesh-console { grid-template-columns: 1fr; }
+  .mesh-stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 820px) {
+  .mesh-detail-head { grid-template-columns: 1fr; }
+  .mesh-stat-strip { grid-template-columns: 1fr; }
+}
 
 /* Public-form honeypot. Hidden from humans; bots may fill it. */
 .hp-field {
