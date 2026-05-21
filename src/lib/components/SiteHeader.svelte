@@ -4,6 +4,7 @@
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="/work">work</a>
       <a href="/method">method</a>
+      <a href="/blog">blog</a>
       <a href="/services">services</a>
       <a href="/contact">bring a problem</a>
     </nav>
