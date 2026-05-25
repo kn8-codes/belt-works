@@ -14,6 +14,7 @@ The Belt.works repo now contains first-pass ShopFloor support framing:
 - The footer links to `/support` gently.
 - The homepage current-work cards now include ShopFloor and point to `/blog/shopfloor`.
 - The key line is live in both `/support` and `/blog/shopfloor`: “ShopFloor is free to use because barriers to help are bugs.”
+- `content/posts/a11y.md` now contains Nate's final A11y post, rendered at `/blog/a11y`.
 
 ## Verification
 
@@ -21,7 +22,7 @@ Checked on 2026-05-25:
 
 - `npm run check` — 0 errors / 0 warnings.
 - `npm run build` — completed successfully.
-- Local HTTP probes — `/`, `/support`, and `/blog/shopfloor` returned 200.
+- Local HTTP probes — `/`, `/support`, `/blog/shopfloor`, and `/blog/a11y` returned 200.
 
 ## Next Best Action
 
