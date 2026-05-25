@@ -40,11 +40,13 @@ export const projects = [
   {
     slug: 'shopfloor',
     name: 'ShopFloor',
-    type: 'tooling',
-    status: 'needs audit',
+    type: 'mutual aid',
+    status: 'alpha build',
     statusTone: 'warn',
-    summary: 'Inventory and operations tooling from earlier work. Could become proof after cleanup.',
-    notes: 'Do not promise it publicly until reviewed.'
+    summary: 'Neighborhood repair time bank for tools, practical help, and local know-how.',
+    href: '/blog/shopfloor',
+    actionLabel: 'read the lane',
+    notes: 'Free to use; sustainability ask lives on belt.works, one page away from the help flow.'
   },
   {
     slug: 'hosp-or-not',
@@ -74,4 +76,4 @@ export const projects = [
   }
 ];
 
-export const featuredProjects = projects.filter((project) => ['belt-works', 'rooms', 'towpath', 'hosp-or-not'].includes(project.slug));
+export const featuredProjects = projects.filter((project) => ['belt-works', 'shopfloor', 'rooms', 'towpath'].includes(project.slug));
