@@ -42,3 +42,11 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - File/path/link: `content/posts/a11y.md`.
 - Verification: `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully; local HTTP probe returned 200 for `/blog/a11y` and confirmed the rendered page contains `Accessibility as Community Service`, `At belt.works, we don’t do locked doors.`, and `Every morning at 4:00 AM`.
 - Checked by: Egon
+
+## 2026-05-27 — A11y audit tests MWP structure created
+
+- Command/source: inspected `.stack/manifest.yaml`, `PROJECT_CHARTER.md`, `STATE.md`, `package.json`, `content/posts/a11y.md`, `docs/EVIDENCE.md`, and existing `work/` task cards; ran `/Users/kn8/.hermes/stack-os/stackctl.py audit /Users/kn8/projects/belt-works`.
+- Result: Stack OS structure was present; A11y audit context, MWP plan, and inbox task card were created without installing dependencies or modifying runtime code.
+- File/path/link: `docs/context/a11y-audit-tests-context.md`, `docs/plans/2026-05-27-a11y-audit-tests-mwp.md`, `work/inbox/2026-05-27-a11y-audit-tests-mwp.md`, `STATE.md`.
+- Verification: `stackctl audit` reported `OK: structure present`; `git status --short` shows intended new A11y docs/task plus pre-existing untracked `docs/briefs/`.
+- Checked by: Egon
