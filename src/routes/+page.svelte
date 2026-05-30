@@ -139,7 +139,7 @@
       </p>
       <div class="actions">
         <a class="button" href="/contact">Start an intake</a>
-        <a class="button secondary" href="/support">Support the work</a>
+        <a class="button secondary" href="/donate">Support the work</a>
       </div>
     </article>
   </div>

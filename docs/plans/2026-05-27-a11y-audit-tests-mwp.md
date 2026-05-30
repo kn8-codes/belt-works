@@ -77,7 +77,7 @@ export const a11yRoutes = [
   { path: '/', name: 'home' },
   { path: '/blog/a11y', name: 'a11y-post' },
   { path: '/blog/shopfloor', name: 'shopfloor-post' },
-  { path: '/support', name: 'support' },
+  { path: '/donate', name: 'donate' },
   { path: '/contact', name: 'contact' },
   { path: '/rooms', name: 'rooms' }
 ] as const;
