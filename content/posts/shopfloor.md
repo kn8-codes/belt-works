@@ -24,7 +24,7 @@ ShopFloor is free to use because barriers to help are bugs.
 
 That does not mean the infrastructure costs nothing. Hosting, maintenance, support, spam control, design work, and the dull edge-case labor all cost time and money. The ask belongs on belt.works, one page away from the help flow, because the help flow should not feel like a checkout lane.
 
-If this kind of local infrastructure matters, [support the work](/support). If you need the app, use it when it is ready.
+If this kind of local infrastructure matters, [support the work](/donate). If you need the app, use it when it is ready.
 
 ## What it is not
 

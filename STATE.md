@@ -9,16 +9,16 @@ Open a focused donate-page PR for belt.works, then return to the A11y audit MWP 
 The Belt.works repo now contains first-pass ShopFloor support framing:
 
 - `content/posts/shopfloor.md` no longer has placeholder copy.
-- `/support` exists as a Belt.works sustainability page.
-- The homepage final CTA includes `Support the work` as a secondary action.
-- The footer links to `/support` gently.
+- `/support` and `/donate` are merged into a single page at `/donate`: the sustainability framing Nate liked plus the Cash App QR embedded in the "Direct support" card. `/support` now 308-redirects to `/donate`.
+- The homepage final CTA includes `Support the work` (now → `/donate`) as a secondary action.
+- The footer links to `/donate` gently ("Support the work.").
 - The homepage current-work cards now include ShopFloor and point to `/blog/shopfloor`.
-- The key line is live in both `/support` and `/blog/shopfloor`: “ShopFloor is free to use because barriers to help are bugs.”
+- The key line is live in both `/donate` and `/blog/shopfloor`: “ShopFloor is free to use because barriers to help are bugs.”
 - `content/posts/a11y.md` now contains Nate's final A11y post, rendered at `/blog/a11y`.
 - A11y audit test context is now documented at `docs/context/a11y-audit-tests-context.md`.
 - A first MWP implementation plan exists at `docs/plans/2026-05-27-a11y-audit-tests-mwp.md`.
 - The task card for implementation exists at `work/inbox/2026-05-27-a11y-audit-tests-mwp.md`.
-- The `kn8-codes/add-donate-page` branch adds `/donate` with the Cash App QR, links it from the primary nav, and points `/support` direct support to `/donate`.
+- The `kn8-codes/add-donate-page` branch adds `/donate` with the Cash App QR, links it from the primary nav, merges the `/support` page into `/donate`, and redirects `/support` → `/donate`. The shop-floor post, footer, and homepage CTA now link to `/donate`.
 - `package-lock.json` was restored to `origin/main` so the donate PR stays scoped to page, nav, support copy, evidence, and state changes.
 
 ## Verification

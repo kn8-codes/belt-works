@@ -59,3 +59,12 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Verification: `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully and included `entries/pages/donate/_page.svelte.js`; `cmp -s static/donate/cashapp-qr.png .context/attachments/DnvOQ6/CashApp-Kn800-QR.png` exited 0.
 - Known issue: `npm run lint` still fails on pre-existing `src/routes/ally/+page.svelte:37:14` unused `err` (`no-unused-vars`), outside the donate-page diff.
 - Checked by: Codex at 2026-05-29 21:26:43 EDT
+
+## 2026-05-29 — /support merged into /donate
+
+- Command/source: rebuilt `/donate` from the `/support` structure (warm hero, "What support pays for" 3-card grid, "How to help" row), embedded the Cash App QR in the "Direct support" card, converted `/support` to a 308 redirect, and repointed the footer, homepage CTA, and shop-floor post to `/donate`.
+- Result: one polished page at `/donate` carries both the sustainability framing and the payment rail; `/support` 308-redirects to `/donate`; no `/support` links remain in `src`/`content` except the redirect route itself.
+- File/path/link: `src/routes/donate/+page.svelte`, `src/routes/support/+page.js` (new redirect), `src/routes/support/+page.svelte` (stub), `src/lib/components/SiteFooter.svelte`, `src/routes/+page.svelte`, `content/posts/shopfloor.md`, plus docs (`STATE.md`, a11y plan/context route lists).
+- Verification: `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully; `grep -rn "/support" src content` returns only the redirect route's own comments.
+- Known issue: `npm run lint` still fails on pre-existing `src/routes/ally/+page.svelte:37:14` unused `err` (`no-unused-vars`), outside this diff.
+- Checked by: Claude at 2026-05-29

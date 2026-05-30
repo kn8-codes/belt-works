@@ -18,7 +18,7 @@ This context doc defines the first Minimum Workable Pass: prove that the belt.wo
 - Existing public A11y copy: `content/posts/a11y.md`
 - Existing generated routes of interest:
   - `/`
-  - `/support`
+  - `/donate`
   - `/blog/a11y`
   - `/blog/shopfloor`
   - `/rooms`
@@ -44,11 +44,11 @@ Local routes for the first pass:
 - `/`
 - `/blog/a11y`
 - `/blog/shopfloor`
-- `/support`
+- `/donate`
 - `/contact`
 - `/rooms`
 
-Rationale: homepage, A11y claim page, ShopFloor claim page, support/sustainability page, contact/intake page, and public operator-room proof surface.
+Rationale: homepage, A11y claim page, ShopFloor claim page, donate/sustainability page, contact/intake page, and public operator-room proof surface.
 
 ## Recommended implementation shape
 
