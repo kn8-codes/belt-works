@@ -50,3 +50,12 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - File/path/link: `docs/context/a11y-audit-tests-context.md`, `docs/plans/2026-05-27-a11y-audit-tests-mwp.md`, `work/inbox/2026-05-27-a11y-audit-tests-mwp.md`, `STATE.md`.
 - Verification: `stackctl audit` reported `OK: structure present`; `git status --short` shows intended new A11y docs/task plus pre-existing untracked `docs/briefs/`.
 - Checked by: Egon
+
+## 2026-05-29 — Donate page PR prepared
+
+- Command/source: inspected `.stack/manifest.yaml`, `PROJECT_CHARTER.md`, `STATE.md`, `work/active/2026-05-25-shopfloor-support-page.md`, `.context/plans/add-a-donate-page-with-cash-app-qr.md`, and the donate/support/header diff; restored `package-lock.json` from `origin/main` to remove unrelated lockfile metadata churn.
+- Result: `/donate` exists with the Cash App QR image only, the primary nav links to `/donate`, and `/support` now points direct support to the donate page while keeping `/contact` as the secondary path.
+- File/path/link: `src/routes/donate/+page.svelte`, `static/donate/cashapp-qr.png`, `src/lib/components/SiteHeader.svelte`, `src/routes/support/+page.svelte`.
+- Verification: `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully and included `entries/pages/donate/_page.svelte.js`; `cmp -s static/donate/cashapp-qr.png .context/attachments/DnvOQ6/CashApp-Kn800-QR.png` exited 0.
+- Known issue: `npm run lint` still fails on pre-existing `src/routes/ally/+page.svelte:37:14` unused `err` (`no-unused-vars`), outside the donate-page diff.
+- Checked by: Codex at 2026-05-29 21:26:43 EDT

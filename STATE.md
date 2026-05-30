@@ -2,7 +2,7 @@
 
 ## Active Goal
 
-Make the A11y audit promise testable with a small MWP lane before expanding to external Akron resource sites.
+Open a focused donate-page PR for belt.works, then return to the A11y audit MWP lane.
 
 ## Right Now
 
@@ -18,34 +18,39 @@ The Belt.works repo now contains first-pass ShopFloor support framing:
 - A11y audit test context is now documented at `docs/context/a11y-audit-tests-context.md`.
 - A first MWP implementation plan exists at `docs/plans/2026-05-27-a11y-audit-tests-mwp.md`.
 - The task card for implementation exists at `work/inbox/2026-05-27-a11y-audit-tests-mwp.md`.
+- The `kn8-codes/add-donate-page` branch adds `/donate` with the Cash App QR, links it from the primary nav, and points `/support` direct support to `/donate`.
+- `package-lock.json` was restored to `origin/main` so the donate PR stays scoped to page, nav, support copy, evidence, and state changes.
 
 ## Verification
 
-Checked on 2026-05-25:
+Checked on 2026-05-29:
 
 - `npm run check` — 0 errors / 0 warnings.
 - `npm run build` — completed successfully.
-- Local HTTP probes — `/`, `/support`, `/blog/shopfloor`, and `/blog/a11y` returned 200.
+- `npm run lint` — fails on pre-existing `src/routes/ally/+page.svelte:37:14` unused `err`, outside the donate-page diff.
+- `cmp -s static/donate/cashapp-qr.png .context/attachments/DnvOQ6/CashApp-Kn800-QR.png` — exited 0.
 
 ## Next Best Action
 
-Decide the first A11y audit blocking policy, then activate `work/inbox/2026-05-27-a11y-audit-tests-mwp.md` and implement the local route audit lane.
+Review and merge the donate-page PR when ready.
+
+Then decide the first A11y audit blocking policy, activate `work/inbox/2026-05-27-a11y-audit-tests-mwp.md`, and implement the local route audit lane.
 
 For ShopFloor app deployment, continue with preview deployment before wiring `shopfloor.belt.works`.
 
 ## Blockers
 
+- `npm run lint` is blocked by pre-existing `src/routes/ally/+page.svelte:37:14` unused `err`.
 - No A11y audit blocking policy chosen yet: fail on serious/critical immediately, or collect a baseline first.
-- No payment/support provider chosen yet. Intentionally deferred.
 - No DNS/deployment changes made.
 
 ## Open Questions for Nate
 
 - Should first-pass A11y audits fail on serious/critical violations immediately, or collect a baseline first?
 - Should first-pass scope stay local to belt.works routes, or include one external Akron resource site as a non-blocking smoke target?
-- Should `/support` stay “talk first” for now, or should it later point to Ko-fi, GitHub Sponsors, Stripe, Open Collective, or another support rail?
-- Should ShopFloor be linked from the main nav, or is homepage/footer/current-work enough for the alpha period?
+- Should the pre-existing Ally lint issue be fixed in its own cleanup PR?
+- Should `/donate` stay Cash App only, or later add Ko-fi, GitHub Sponsors, Stripe, Open Collective, or another support rail?
 
 ## Last Verified
 
-2026-05-27
+2026-05-29
