@@ -110,26 +110,36 @@ def main():
     or_key = os.environ.get("OPENROUTER_API_KEY", "")
     kimi_key = os.environ.get("KIMI_API_KEY", "")
 
-    codex_token = ""
+    codex_tokens = []
     auth_path = os.path.expanduser("~/.hermes/auth.json")
     if os.path.exists(auth_path):
         try:
             with open(auth_path) as f:
                 auth_data = json.load(f)
-            codex_token = (
+            # Primary account (kn8.codes@pm.me)
+            primary = (
                 auth_data.get("providers", {})
                 .get("openai-codex", {})
                 .get("tokens", {})
                 .get("access_token", "")
             )
+            if primary:
+                codex_tokens.append(("primary (kn8.codes@pm.me)", primary))
+            # Secondary account — check if stored separately or add manually
+            # TODO: store secondary token in auth.json or separate file
         except Exception:
             pass
+
+    # Secondary Codex account (0x0sec@gmail.com) — manually tracked
+    secondary_token = os.environ.get("CODEX_SECONDARY_TOKEN", "")
+    if secondary_token:
+        codex_tokens.append(("secondary (0x0sec@gmail.com)", secondary_token))
 
     report = {
         "timestamp": now_iso(),
         "openrouter": fetch_openrouter(or_key),
         "kimi": fetch_kimi(kimi_key),
-        "codex": fetch_codex(codex_token),
+        "codex": {label: fetch_codex(tok) for label, tok in codex_tokens} if codex_tokens else {"error": "no tokens"},
     }
 
     json_out = json.dumps(report, indent=2, default=str)
