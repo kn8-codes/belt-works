@@ -3,8 +3,8 @@
   let submitting = $state(false);
   let error = $state('');
 
-  // Formspree endpoint — replace with your actual form ID after signing up at formspree.io
-  const FORMSPREE_ID = 'YOUR_FORM_ID';
+  // Formspree endpoint — ally intake form
+  const FORMSPREE_ID = 'xnjrrojq';
 
   async function handleSubmit(/** @type {SubmitEvent} */ e) {
     e.preventDefault();
