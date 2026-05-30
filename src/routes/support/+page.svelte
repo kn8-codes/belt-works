@@ -68,18 +68,18 @@
 <section class="section" aria-label="How to help">
   <div class="wrap grid two">
     <article class="card large">
-      <p class="eyebrow">For now</p>
-      <h2>Talk first.</h2>
+      <p class="eyebrow">Direct support</p>
+      <h2>Send support.</h2>
       <p class="lead">
-        The payment rails are intentionally not wired into this page yet. That comes after the ask is clear,
-        the language is honest, and the mechanism does not poison the project.
+        Ready to donate? Scan the Cash App QR on the donate page — no account or conversation required.
       </p>
       <p>
-        If you want to support ShopFloor or belt.works, send a note. Say what you want to help sustain:
-        local mutual aid, accessibility work, software services, or the whole messy shop.
+        Or reach out first. Say what you want to help sustain: local mutual aid, accessibility work,
+        software services, or the whole messy shop.
       </p>
       <div class="actions">
-        <a class="button" href="/contact">Contact belt.works</a>
+        <a class="button" href="/donate">Donate via Cash App</a>
+        <a class="button secondary" href="/contact">Contact belt.works</a>
       </div>
     </article>
 
