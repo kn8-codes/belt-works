@@ -7,6 +7,7 @@
       <a href="/blog">blog</a>
       <a href="/services">services</a>
       <a href="/ally">ally</a>
+      <a href="/donate">donate</a>
       <a href="/contact">bring a problem</a>
     </nav>
   </div>
