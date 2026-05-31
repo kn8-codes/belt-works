@@ -68,3 +68,12 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Verification: `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully; `grep -rn "/support" src content` returns only the redirect route's own comments.
 - Known issue: `npm run lint` still fails on pre-existing `src/routes/ally/+page.svelte:37:14` unused `err` (`no-unused-vars`), outside this diff.
 - Checked by: Claude at 2026-05-29
+
+
+## 2026-05-31 — Donate page progress tracker added
+
+- Command/source: read `AGENTS.md`, `.stack/manifest.yaml`, `PROJECT_CHARTER.md`, `STATE.md`, `docs/EVIDENCE.md`, `package.json`, and existing `/donate` route before editing; created branch `feat/donate-progress-bar`; Nate reviewed and approved the support section copy.
+- Result: `/donate` now has an honest manual monthly support progress tracker showing `$0 / $100` with a public `$100/month` starting target. The tracker uses an accessible `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, and `aria-valuemax`.
+- File/path/link: `src/routes/donate/+page.svelte`
+- Verification: `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully; `npm run test:a11y` reported 7 passed at 2026-05-31 09:45 EDT.
+- Checked by: Egon
