@@ -34,7 +34,7 @@
         const body = await res.json().catch(() => ({}));
         error = body.error || 'Something went wrong. Try again or email us directly.';
       }
-    } catch (err) {
+    } catch {
       error = 'Network error. Check your connection and try again.';
     } finally {
       submitting = false;

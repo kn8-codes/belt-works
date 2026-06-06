@@ -137,6 +137,10 @@
         />
       </div>
       <p class="qr-instruction">Scan with your phone camera or Cash App.</p>
+      <div class="eth-support" aria-label="Ethereum support option">
+        <p class="meta">Ethereum / ENS</p>
+        <code>TheeCodePoet.eth</code>
+      </div>
       <div class="actions">
         <a class="button secondary" href="/contact">Contact belt.works</a>
       </div>
@@ -290,6 +294,21 @@
   .qr-instruction {
     color: var(--muted);
     font-size: 0.875rem;
+  }
+
+  .eth-support {
+    border-top: 1px solid var(--line);
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+  }
+
+  .eth-support code {
+    display: inline-block;
+    border: 1px solid var(--line);
+    background: #050504;
+    color: var(--text);
+    padding: 0.45rem 0.6rem;
+    overflow-wrap: anywhere;
   }
 
   @media (max-width: 820px) {

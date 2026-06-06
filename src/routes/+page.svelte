@@ -51,7 +51,7 @@
         Bring the mess. We turn it into narrow scope and build the useful part first.
       </p>
       <div class="actions">
-        <a class="button" href="/contact">Bring a problem</a>
+        <a class="button" href="/ask">What’s on your mind?</a>
         <a class="button secondary" href="#services">See services</a>
       </div>
     </div>
@@ -138,7 +138,7 @@
         building first.
       </p>
       <div class="actions">
-        <a class="button" href="/contact">Start an intake</a>
+        <a class="button" href="/ask">Share what’s on your mind</a>
         <a class="button secondary" href="/donate">Support the work</a>
       </div>
     </article>

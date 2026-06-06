@@ -29,7 +29,7 @@
 <div class="site-shell">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <SiteHeader />
-  <main class="site-main" id="main-content">
+  <main class="site-main" id="main-content" tabindex="-1">
     {@render children()}
   </main>
   <SiteFooter />

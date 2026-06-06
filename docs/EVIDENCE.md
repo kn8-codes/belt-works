@@ -77,3 +77,19 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - File/path/link: `src/routes/donate/+page.svelte`
 - Verification: `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully; `npm run test:a11y` reported 7 passed at 2026-05-31 09:45 EDT.
 - Checked by: Egon
+
+## 2026-06-06 — Ask page, blog posts, and ETH support prepared
+
+- Command/source: read `AGENTS.md`, `.stack/manifest.yaml`, `PROJECT_CHARTER.md`, `STATE.md`, `work/active/2026-05-25-shopfloor-support-page.md`, existing blog/contact/donate routes, and the board copy packet for `What’s on your mind?` before editing.
+- Result: added `/ask` broad-entry help-loop page, added `content/posts/what-is-on-your-mind.md`, included current untracked blog posts in the commit scope, linked `/ask` from the header/homepage, added `TheeCodePoet.eth` as optional support below the ask form and on `/donate`, and fixed the pre-existing `src/routes/ally/+page.svelte` unused catch binding so lint can pass.
+- File/path/link: `src/routes/ask/+page.svelte`, `content/posts/what-is-on-your-mind.md`, `content/posts/durable-mesh.md`, `content/posts/shopfloor-who-has-the-damn-tool.md`, `src/lib/components/SiteHeader.svelte`, `src/routes/+page.svelte`, `src/routes/donate/+page.svelte`, `src/routes/ally/+page.svelte`, `static/social/`.
+- Verification: `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully; `npm run lint` completed successfully; local preview HTTP probes returned 200 for `/ask`, `/blog/what-is-on-your-mind`, `/blog/durable-mesh`, `/blog/shopfloor-who-has-the-damn-tool`, and `/donate`; probes confirmed `TheeCodePoet.eth` appears on `/ask` and `/donate`.
+- Checked by: Egon at 2026-06-06 17:45 EDT
+
+## 2026-06-06 — Ask/blog/ETH branch accessibility pass
+
+- Command/source: production build + local preview on `127.0.0.1:4173`, then ephemeral `npx --yes pa11y` WCAG2AA audits for the public route set. Manual keyboard check verified the skip link moves focus to `main#main-content`.
+- Result: fixed invalid autocomplete/type pairings on `/ask` and `/contact`, fixed low-contrast room-card metadata on `/rooms`, and made the skip-link target focusable with `tabindex="-1"`.
+- File/path/link: `src/routes/ask/+page.svelte`, `src/routes/contact/+page.svelte`, `src/app.css`, `src/routes/+layout.svelte`, `.gitignore`.
+- Verification: `npm run check`, `npm run build`, and `npm run lint` completed successfully. Pa11y WCAG2AA reported 0 issues for `/`, `/ask`, `/contact`, `/donate`, `/blog/a11y`, `/blog/what-is-on-your-mind`, `/blog/durable-mesh`, `/blog/shopfloor-who-has-the-damn-tool`, and `/rooms`.
+- Checked by: Egon
