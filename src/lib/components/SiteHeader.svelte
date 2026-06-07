@@ -5,6 +5,7 @@
       <a href="/work">work</a>
       <a href="/method">method</a>
       <a href="/blog">blog</a>
+      <a href="/ask">ask</a>
       <a href="/services">services</a>
       <a href="/ally">ally</a>
       <a href="/donate">donate</a>

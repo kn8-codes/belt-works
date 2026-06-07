@@ -1,3 +1,9 @@
+<script>
+  const monthlyTarget = 100;
+  const currentMonthlySupport = 0;
+  const supportPercent = Math.min(100, Math.round((currentMonthlySupport / monthlyTarget) * 100));
+</script>
+
 <svelte:head>
   <title>Support the work | belt.works</title>
   <meta
@@ -38,29 +44,77 @@
   <div class="wrap section-head">
     <div>
       <p class="eyebrow">What support pays for</p>
-      <h2>Boring costs. Real ones.</h2>
+      <h2>What support actually pays for.</h2>
     </div>
     <p class="lead">
       The goal is not startup theater. The goal is durable local software that does not vanish
-      the first time rent, hosting, or a broken auth flow shows its teeth.
+      the first time hosting, email, browser automation, or a broken auth flow shows its teeth.
     </p>
   </div>
 
-  <div class="wrap grid three">
+  <div class="wrap cost-panel card large">
+    <div>
+      <p class="eyebrow">Current support target</p>
+      <h3>$100/month keeps the work easier to carry.</h3>
+      <p>
+        This is not rent, groceries, or personal bills. It is the public operating cost of
+        keeping belt.works useful: the tools that let us run accessibility checks, maintain
+        community outreach infrastructure, test pages in real browsers, and keep the mesh online.
+      </p>
+    </div>
+    <div class="target-box" aria-label="Monthly support target">
+      <span>{monthlyTarget}</span>
+      <small>monthly goal</small>
+    </div>
+  </div>
+
+  <div class="wrap support-progress card large" aria-label="Monthly support progress">
+    <div class="support-progress__header">
+      <div>
+        <p class="eyebrow">Public progress</p>
+        <h3>{currentMonthlySupport} / {monthlyTarget} this month</h3>
+      </div>
+      <p class="support-progress__percent">{supportPercent}%</p>
+    </div>
+    <div
+      class="support-progress__bar"
+      role="progressbar"
+      aria-label="Monthly support progress toward $100 target"
+      aria-valuenow={currentMonthlySupport}
+      aria-valuemin={0}
+      aria-valuemax={monthlyTarget}
+    >
+      <span style={`width: ${supportPercent}%`}></span>
+    </div>
+    <p class="form-note">
+      Updated manually for now. If the number is stale, assume the page is honest but not automated yet.
+    </p>
+  </div>
+
+  <div class="wrap grid three cost-grid">
     <article class="card large">
       <p class="meta">01</p>
-      <h3>Infrastructure</h3>
-      <p>Hosting, domains, email, backups, monitoring, and the other pipes nobody praises until they burst.</p>
+      <h3>Inference and agent work</h3>
+      <p>
+        Coding, review, research, long-document reading, and the agent coordination that lets a
+        small project do more than one tired human can do after a shift.
+      </p>
     </article>
     <article class="card large">
       <p class="meta">02</p>
-      <h3>Maintenance</h3>
-      <p>Bug fixes, accessibility cleanup, spam control, user support, and the endless war against entropy.</p>
+      <h3>Accessibility audits</h3>
+      <p>
+        Browser testing, scraping, page capture, and reporting tools that help Akron community
+        programs find broken forms, unreadable pages, and blocked access before residents run into them.
+      </p>
     </article>
     <article class="card large">
       <p class="meta">03</p>
-      <h3>Local capacity</h3>
-      <p>Time to build with Akron first: tools, documentation, outreach, and the pieces that make help easier to find.</p>
+      <h3>Web infrastructure</h3>
+      <p>
+        Domains, hosting, email, forms, backups, monitoring, and the pipes nobody praises until
+        they burst at the worst possible time.
+      </p>
     </article>
   </div>
 </section>
@@ -83,6 +137,10 @@
         />
       </div>
       <p class="qr-instruction">Scan with your phone camera or Cash App.</p>
+      <div class="eth-support" aria-label="Ethereum support option">
+        <p class="meta">Ethereum / ENS</p>
+        <code>TheeCodePoet.eth</code>
+      </div>
       <div class="actions">
         <a class="button secondary" href="/contact">Contact belt.works</a>
       </div>
@@ -129,6 +187,91 @@
     scroll-margin-top: 6rem;
   }
 
+  .cost-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(140px, 220px);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+    margin-bottom: clamp(1.25rem, 3vw, 2rem);
+    background:
+      radial-gradient(circle at 100% 0%, rgba(255, 184, 77, 0.14), transparent 16rem),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  }
+
+  .cost-panel h3 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+  }
+
+  .cost-panel p {
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .target-box {
+    display: grid;
+    place-items: center;
+    min-height: 150px;
+    border: 1px solid rgba(255, 184, 77, 0.28);
+    background: rgba(255, 184, 77, 0.08);
+    text-align: center;
+  }
+
+  .target-box span {
+    display: block;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.08em;
+    color: var(--text);
+  }
+
+  .target-box small {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .cost-grid {
+    margin-top: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .support-progress {
+    margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .support-progress__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: end;
+  }
+
+  .support-progress__header h3 {
+    margin-bottom: 0;
+  }
+
+  .support-progress__percent {
+    color: var(--accent);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    margin-bottom: 0;
+  }
+
+  .support-progress__bar {
+    height: 0.85rem;
+    border: 1px solid var(--line);
+    background: #050504;
+    margin: 1rem 0 0.65rem;
+    overflow: hidden;
+  }
+
+  .support-progress__bar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  }
+
   .qr-label {
     margin-top: 0.5rem;
   }
@@ -153,10 +296,30 @@
     font-size: 0.875rem;
   }
 
+  .eth-support {
+    border-top: 1px solid var(--line);
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+  }
+
+  .eth-support code {
+    display: inline-block;
+    border: 1px solid var(--line);
+    background: #050504;
+    color: var(--text);
+    padding: 0.45rem 0.6rem;
+    overflow-wrap: anywhere;
+  }
+
   @media (max-width: 820px) {
-    .support-hero__grid {
+    .support-hero__grid,
+    .cost-panel {
       grid-template-columns: 1fr;
       align-items: start;
+    }
+
+    .target-box {
+      min-height: 120px;
     }
   }
 </style>

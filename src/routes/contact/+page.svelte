@@ -63,7 +63,7 @@
         <form onsubmit={handleSubmit}>
           <label>Name<input bind:value={form.name} maxlength="200" required /></label>
           <label>Email<input bind:value={form.email} type="email" autocomplete="email" maxlength="200" required /></label>
-          <label>Phone<input bind:value={form.phone} autocomplete="tel" maxlength="200" /></label>
+          <label>Phone<input bind:value={form.phone} type="tel" autocomplete="tel" maxlength="200" /></label>
           <label>Message<textarea bind:value={form.message} rows="6" maxlength="5000" required></textarea></label>
 
           <!-- Honeypot: hidden from humans, tempting to bots. Server rejects if filled. -->

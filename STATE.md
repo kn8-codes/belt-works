@@ -2,55 +2,68 @@
 
 ## Active Goal
 
-Open a focused donate-page PR for belt.works, then return to the A11y audit MWP lane.
+Get the broad Belt.works ask loop, current blog posts, and optional support rail committed so the site has visible current activity and can be edited live if needed.
 
 ## Right Now
 
-The Belt.works repo now contains first-pass ShopFloor support framing:
+The repo is on branch:
 
-- `content/posts/shopfloor.md` no longer has placeholder copy.
-- `/support` and `/donate` are merged into a single page at `/donate`: the sustainability framing Nate liked plus the Cash App QR embedded in the "Direct support" card. `/support` now 308-redirects to `/donate`.
-- The homepage final CTA includes `Support the work` (now → `/donate`) as a secondary action.
-- The footer links to `/donate` gently ("Support the work.").
-- The homepage current-work cards now include ShopFloor and point to `/blog/shopfloor`.
-- The key line is live in both `/donate` and `/blog/shopfloor`: “ShopFloor is free to use because barriers to help are bugs.”
-- `content/posts/a11y.md` now contains Nate's final A11y post, rendered at `/blog/a11y`.
-- A11y audit test context is now documented at `docs/context/a11y-audit-tests-context.md`.
-- A first MWP implementation plan exists at `docs/plans/2026-05-27-a11y-audit-tests-mwp.md`.
-- The task card for implementation exists at `work/inbox/2026-05-27-a11y-audit-tests-mwp.md`.
-- The `kn8-codes/add-donate-page` branch adds `/donate` with the Cash App QR, links it from the primary nav, merges the `/support` page into `/donate`, and redirects `/support` → `/donate`. The shop-floor post, footer, and homepage CTA now link to `/donate`.
-- `package-lock.json` was restored to `origin/main` so the donate PR stays scoped to page, nav, support copy, evidence, and state changes.
+```text
+feat/ask-blog-eth-support
+```
+
+This branch is based on the previous donate progress branch and includes:
+
+- `/donate` with the manual `$0 / $100` monthly support tracker.
+- `/donate` with Cash App QR and `TheeCodePoet.eth` as an optional ENS support rail.
+- New `/ask` page for the broad-entry `What’s on your mind?` help loop.
+- `/ask` reuses the existing Supabase-backed `/api/contact` path by submitting with `type: What’s on your mind?`.
+- `/ask` keeps the emergency/privacy disclaimer visible.
+- `/ask` places optional support below the form only, never as a gate.
+- Header and homepage now link to `/ask`.
+- Flat-file blog now includes current posts:
+  - `content/posts/what-is-on-your-mind.md`
+  - `content/posts/durable-mesh.md`
+  - `content/posts/shopfloor-who-has-the-damn-tool.md`
+  - existing `content/posts/shopfloor.md`
+  - existing `content/posts/a11y.md`
+  - existing `content/posts/boommates.md`
+- `static/social/` contains current belt.works social/avatar images.
+- Pre-existing `/ally` lint issue was fixed by removing an unused catch binding.
 
 ## Verification
 
-Checked on 2026-05-29:
+Checked on 2026-06-06 17:45 EDT:
 
 - `npm run check` — 0 errors / 0 warnings.
 - `npm run build` — completed successfully.
-- `npm run lint` — fails on pre-existing `src/routes/ally/+page.svelte:37:14` unused `err`, outside the donate-page diff.
-- `cmp -s static/donate/cashapp-qr.png .context/attachments/DnvOQ6/CashApp-Kn800-QR.png` — exited 0.
+- `npm run lint` — completed successfully.
+- Pa11y WCAG2AA local preview audit — 0 issues on `/`, `/ask`, `/contact`, `/donate`, `/blog/a11y`, `/blog/what-is-on-your-mind`, `/blog/durable-mesh`, `/blog/shopfloor-who-has-the-damn-tool`, and `/rooms`.
+- Local preview probes returned 200 for:
+  - `/ask`
+  - `/blog/what-is-on-your-mind`
+  - `/blog/durable-mesh`
+  - `/blog/shopfloor-who-has-the-damn-tool`
+  - `/donate`
+- Local preview probes confirmed `TheeCodePoet.eth` appears on `/ask` and `/donate`.
 
 ## Next Best Action
 
-Review and merge the donate-page PR when ready.
-
-Then decide the first A11y audit blocking policy, activate `work/inbox/2026-05-27-a11y-audit-tests-mwp.md`, and implement the local route audit lane.
-
-For ShopFloor app deployment, continue with preview deployment before wiring `shopfloor.belt.works`.
+1. Push the current branch and open a PR.
+2. If production deployment is Git-backed, verify whether merging to `main` triggers deployment before doing it.
+3. If Nate wants to keep Supabase from pausing, verify actual Supabase project status separately; a static commit alone may not count as database activity unless the deployed form receives a real submission.
 
 ## Blockers
 
-- `npm run lint` is blocked by pre-existing `src/routes/ally/+page.svelte:37:14` unused `err`.
-- No A11y audit blocking policy chosen yet: fail on serious/critical immediately, or collect a baseline first.
-- No DNS/deployment changes made.
+- No deploy command has been run.
+- No Supabase dashboard/API status has been checked in this pass.
+- No production form submission has been made.
 
 ## Open Questions for Nate
 
-- Should first-pass A11y audits fail on serious/critical violations immediately, or collect a baseline first?
-- Should first-pass scope stay local to belt.works routes, or include one external Akron resource site as a non-blocking smoke target?
-- Should the pre-existing Ally lint issue be fixed in its own cleanup PR?
-- Should `/donate` stay Cash App only, or later add Ko-fi, GitHub Sponsors, Stripe, Open Collective, or another support rail?
+- Should it be merged to `main` if the site deploys from `main`?
+- Should we make one real production `/ask` test submission after deployment to exercise Supabase?
 
 ## Last Verified
 
-2026-05-29
+2026-06-06 17:45 EDT

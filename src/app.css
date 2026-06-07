@@ -158,7 +158,8 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 
 
 /* The room SVG art inside a wall card. Currently static `<img>`; later this should become inline SVG for animation. */
 .room-wall-card img { width: 100%; align-self: center; border: 1px solid rgba(255,255,255,.06); background: rgba(255,255,255,.02); }
-.room-open-hint { color: var(--dim); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
+.room-wall-card .meta,
+.room-open-hint { color: var(--text); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
 
 /* Selected-room drill-down panel below the wall. */
 .room-drilldown { border: 1px solid var(--accent); background: linear-gradient(180deg, rgba(215,255,99,.055), rgba(255,255,255,.015)); }
