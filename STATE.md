@@ -1,5 +1,16 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-07-14 — Current blog-install lane
+
+- Active goal: add the completed “Coding agents need egress receipts” post to the flat-file Belt.works blog without publishing it.
+- Current state: the repo is on `main`; `content/posts/coding-agents-need-egress-receipts.md` is installed locally with the staging copy's title, slug, description, and date preserved.
+- Next best action: review the local diff, then decide separately whether to commit/push/deploy.
+- Blockers: none for local review. Egon later installed dependencies with `npm ci`; `npm run check` and `npm run build` passed. Dependency audit still reports 7 vulnerabilities; no `npm audit fix` was run because dependency mutation is a separate approval gate.
+- Open questions for Nate: none for installation; commit, push, deploy, and public posting remain explicit gates.
+- Last verified: 2026-07-14 11:43 EDT by Venkman.
+
+## Prior active goal (2026-06-06 snapshot)
+
 ## Active Goal
 
 Get the broad Belt.works ask loop, current blog posts, and optional support rail committed so the site has visible current activity and can be edited live if needed.

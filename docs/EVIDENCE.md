@@ -93,3 +93,22 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - File/path/link: `src/routes/ask/+page.svelte`, `src/routes/contact/+page.svelte`, `src/app.css`, `src/routes/+layout.svelte`, `.gitignore`.
 - Verification: `npm run check`, `npm run build`, and `npm run lint` completed successfully. Pa11y WCAG2AA reported 0 issues for `/`, `/ask`, `/contact`, `/donate`, `/blog/a11y`, `/blog/what-is-on-your-mind`, `/blog/durable-mesh`, `/blog/shopfloor-who-has-the-damn-tool`, and `/rooms`.
 - Checked by: Egon
+
+## 2026-07-14 — Coding-agent egress-receipts blog installed locally
+
+- Command/source: copied `/Users/kn8/MESH_BOARD/projects/writing/venkman/2026-07-14__coding-agents-need-egress-receipts-blog-v2.md` into the repo's flat-file post directory after reading repo instructions and blog loader conventions.
+- Result: `content/posts/coding-agents-need-egress-receipts.md` exists with the staging title, slug, description, date, and body unchanged.
+- File/path/link: `content/posts/coding-agents-need-egress-receipts.md`.
+- Verification: source and destination SHA-256 both `d3144c98c280d16f1c04095937329722a987ac989a9e7b970a8c740c28605297`; dependency-free frontmatter/slug check reported `frontmatter=ok slug_unique=ok body=nonempty posts=7`.
+- Build/check boundary: `node_modules/` is absent. Per task scope, packages were not installed, so `npm run check` and `npm run build` were not run.
+- Guardrails: no commit, push, deploy, public posting/scheduling, credential access, deletion, or reset.
+- Checked by: Venkman at 2026-07-14 11:43 EDT
+
+## 2026-07-14 — M4 dependency/check/build verification for egress-receipts post
+
+- Command/source: `npm ci`, `npm run check`, and `npm run build` from `/Users/kn8/projects/belt-works` after the local blog install.
+- Result: dependency install passed; `svelte-check` reported 0 errors and 0 warnings; Vite/SvelteKit production build completed successfully.
+- File/path/link: `content/posts/coding-agents-need-egress-receipts.md`.
+- Audit note: `npm ci` reported 7 vulnerabilities (1 low, 3 moderate, 3 high). No `npm audit fix` was run because dependency mutation is a separate approval gate.
+- Guardrails: no commit, push, deploy, public posting/scheduling, credential access, deletion, or reset.
+- Checked by: Egon at 2026-07-14 11:52 EDT.
