@@ -1,5 +1,14 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-07-22 — OpenAI/Hugging Face incident blog local assembly
+
+- Active goal: preserve the reviewed OpenAI/Hugging Face incident blog as a committed Belt.works branch without pushing, merging, deploying, or publishing.
+- Current state: isolated worktree `/Users/kn8/projects/belt-works-openai-blog` is on `feat/openai-huggingface-incident-blog`; `content/posts/ai-hacker-objective-misrouting.md` exists and renders as the flat-file Belt.works blog route `/blog/ai-hacker-objective-misrouting`.
+- Next best action: push/open PR only if Nate approves; deploy/publish/social remain separate gates.
+- Blockers: no push, PR, merge, deploy, or publish approval in this step. Dependency audit still reports vulnerabilities; no `npm audit fix` was run because dependency mutation is separate approval.
+- Open questions for Nate: whether to push the branch, open a PR, deploy after review, and/or prepare social copy later.
+- Last verified: 2026-07-22 07:40 EDT by Egon; `npm run check` and `npm run build` passed.
+
 ## 2026-07-14 — Current blog-install lane
 
 - Active goal: add the completed “Coding agents need egress receipts” post to the flat-file Belt.works blog without publishing it.

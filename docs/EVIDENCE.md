@@ -112,3 +112,13 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Audit note: `npm ci` reported 7 vulnerabilities (1 low, 3 moderate, 3 high). No `npm audit fix` was run because dependency mutation is a separate approval gate.
 - Guardrails: no commit, push, deploy, public posting/scheduling, credential access, deletion, or reset.
 - Checked by: Egon at 2026-07-14 11:52 EDT.
+
+## 2026-07-22 — OpenAI/Hugging Face incident blog installed locally
+
+- Command/source: created isolated worktree `/Users/kn8/projects/belt-works-openai-blog` from `origin/main` on branch `feat/openai-huggingface-incident-blog`; copied reviewed draft from `/Users/kn8/MESH_BOARD/20_PLANS/writing/tiktok-matt-ai-hacker-20260721/blog-draft.md` into flat-file blog format.
+- Result: `content/posts/ai-hacker-objective-misrouting.md` exists with Belt.works blog frontmatter and the reviewed article body. Applied the source/risk hedges: first OpenAI reference says `preliminary`, and bottom-line wording says `compromised part of a real third-party platform’s production infrastructure`.
+- File/path/link: `content/posts/ai-hacker-objective-misrouting.md`; local route `/blog/ai-hacker-objective-misrouting`.
+- Verification: `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` completed successfully; earlier local preview on `127.0.0.1:4177` returned 200 for `/blog` and `/blog/ai-hacker-objective-misrouting`; route HTML contained `The AI Hacker Didn`, `objective misrouting`, `OpenAI`, `Hugging Face`, and `receipts and boundaries`; blog index contained `The AI Hacker Didn`. Commit preflight on 2026-07-22 07:40 EDT reran `npm run check`, `npm run build`, and `git diff --check` successfully before staging.
+- Audit note: `npm ci` reported 7 vulnerabilities (1 low, 2 moderate, 4 high). No `npm audit fix` was run because dependency mutation is a separate approval gate.
+- Guardrails: commit approved by Nate; no push, deploy, merge to `main`, public posting/scheduling, credential access, deletion, or reset.
+- Checked by: Egon at 2026-07-22 07:40 EDT.
