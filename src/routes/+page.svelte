@@ -51,7 +51,8 @@
         Bring the mess. We turn it into narrow scope and build the useful part first.
       </p>
       <div class="actions">
-        <a class="button" href="/ask">What’s on your mind?</a>
+        <a class="button" href="/admin-workflow-audit">$495 Admin Workflow Audit</a>
+        <a class="button secondary" href="/ask">What’s on your mind?</a>
         <a class="button secondary" href="#services">See services</a>
       </div>
     </div>

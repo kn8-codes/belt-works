@@ -2,6 +2,14 @@
 
 Record receipts here. Agent narration is not evidence. Pretty words are how bugs wear cologne.
 
+## 2026-07-22 — Admin Workflow Audit offer page
+
+- Command/source: created isolated worktree `feat/admin-workflow-audit-offer` from `origin/main`; added `/admin-workflow-audit` and one homepage CTA after inspecting the existing `/contact` intake endpoint.
+- Result: a public-facing, fixed-scope `$495` Admin Workflow Audit offer is available for HVAC, plumbing, and electrical shops. The page states the 90-minute session, written follow-up, concrete deliverables, good-fit conditions, and explicit exclusions. It uses the existing contact path; no new lead system, payment rail, or outbound contact was added.
+- File/path/link: `src/routes/admin-workflow-audit/+page.svelte`, `src/routes/+page.svelte`.
+- Verification: `npm ci`; `npm run check` (0 errors / 0 warnings); `npm run lint`; `npm run build`; local production preview returned `200` for `/`, `/admin-workflow-audit`, and `/contact`; browser smoke confirmed title, offer terms, deliverables, and contact CTA render on the new route.
+- Checked by: Egon, 2026-07-22.
+
 ## Format
 
 ```md
