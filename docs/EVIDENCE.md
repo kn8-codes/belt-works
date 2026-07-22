@@ -10,6 +10,14 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Verification: `npm ci`; `npm run check` (0 errors / 0 warnings); `npm run lint`; `npm run build`; local production preview returned `200` for `/`, `/admin-workflow-audit`, and `/contact`; browser smoke confirmed title, offer terms, deliverables, and contact CTA render on the new route.
 - Checked by: Egon, 2026-07-22.
 
+## 2026-07-22 — Admin Workflow Audit attribution and demand-test packet
+
+- Command/source: added a query-to-intake attribution handoff to the existing `/contact` form and created a bounded Google Search launch packet.
+- Result: direct offer CTAs submit as `Admin Workflow Audit · Direct`; a future Search campaign can use `Admin Workflow Audit · Google Search` without a new tracker, cookie, or table. The launch packet specifies a `$10/day × 10 days = $100` hard cap and fails closed without an inspectable account/billing surface.
+- File/path/link: `src/routes/contact/+page.svelte`, `src/routes/admin-workflow-audit/+page.svelte`, `/mesh/20_PLANS/2026-07-22__belt-admin-workflow-audit-demand-test-launch-packet.md`.
+- Verification: `npm run check` (0 errors / 0 warnings), `npm run lint`, and `npm run build` completed successfully.
+- Checked by: Egon, 2026-07-22.
+
 ## Format
 
 ```md

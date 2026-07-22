@@ -22,7 +22,7 @@
         around dispatch, estimates, scheduling, follow-up, and getting paid — then cut a practical next scope.
       </p>
       <div class="actions">
-        <a class="button" href="/contact">Ask about the $495 audit</a>
+        <a class="button" href="/contact?type=Admin%20Workflow%20Audit%20%C2%B7%20Direct">Ask about the $495 audit</a>
         <a class="button secondary" href="#what-you-get">See the deliverable</a>
       </div>
       <p class="microcopy">No obligation to hire belt.works after the session. The output is yours.</p>
@@ -105,7 +105,7 @@
         sticky notes, texts, or a second round of data entry. We will tell you directly whether the audit is a fit.
       </p>
       <div class="actions">
-        <a class="button" href="/contact">Ask about the $495 Admin Workflow Audit</a>
+        <a class="button" href="/contact?type=Admin%20Workflow%20Audit%20%C2%B7%20Direct">Ask about the $495 Admin Workflow Audit</a>
       </div>
       <p class="microcopy">No credentials, customer lists, or live systems required for the first conversation.</p>
     </article>

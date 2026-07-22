@@ -1,12 +1,12 @@
 # Current State — ShopFloor / belt.works
 
-## 2026-07-22 — Admin Workflow Audit offer page
+## 2026-07-22 — Admin Workflow Audit offer and demand-test readiness
 
-- Active goal: publish the narrow `$495` Paid Admin Workflow Audit offer for Akron HVAC, plumbing, and electrical shops without altering the existing dirty feature branch.
-- Current state: isolated worktree `/Users/kn8/projects/belt-works-admin-workflow-audit` is on `feat/admin-workflow-audit-offer`, based on `origin/main`; `/admin-workflow-audit` and its homepage CTA have passed local check/lint/build and browser smoke.
-- Next best action: commit the bounded route/copy/evidence/state changes, push the dedicated branch, fast-forward `main`, and verify the Vercel production alias.
-- Blockers: no technical blocker. Demand-test spend remains a separate account/budget verification gate.
-- Open questions for Nate: whether the first local-demand test should use Google Search, Meta, or a non-ad local channel once a spend-capped account is confirmed.
+- Active goal: run the first bounded market test for the `$495` Admin Workflow Audit without broad social/outreach theater or unbounded ad spend.
+- Current state: `https://www.belt.works/admin-workflow-audit` is live from `main` commit `66069c5`; direct CTAs now record `Admin Workflow Audit · Direct` in the existing contact intake. A Search-campaign destination is ready to record `Admin Workflow Audit · Google Search`.
+- Next best action: inspect or sign into the intended ad account, prove the account/billing identity and a hard `$10/day`, 10-day/$100 maximum, then launch only the launch-packet scope.
+- Blockers: no accessible authenticated Google/Meta campaign account or billing surface was found; no campaign was created.
+- Open questions for Nate: which existing account should be used if one exists; otherwise whether to create a new Google Ads account manually.
 - Last verified: 2026-07-22 by Egon.
 
 ## 2026-07-22 — OpenAI/Hugging Face incident blog local assembly

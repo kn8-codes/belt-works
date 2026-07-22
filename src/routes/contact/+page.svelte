@@ -1,10 +1,19 @@
 <script>
+  import { onMount } from 'svelte';
+
   // Single public intake form for belt.works.
   // This replaces the old named intake process and keeps the CTA plain: bring a problem.
   let form = $state({ name: '', email: '', phone: '', type: 'Problem / project', message: '', website: '' });
   let isSubmitting = $state(false);
   let success = $state(false);
   let error = $state('');
+
+  onMount(() => {
+    // Campaign links may set a short, human-readable intake type. It remains server-validated and
+    // keeps attribution in the existing contact record instead of adding another tracker.
+    const type = new URLSearchParams(window.location.search).get('type');
+    if (type && type.length <= 200) form.type = type;
+  });
 
   /** @param {SubmitEvent} event */
   async function handleSubmit(event) {
