@@ -4,53 +4,35 @@ export const services = [
     name: 'Custom software',
     type: 'service',
     status: 'available by scope',
-    summary: 'Small systems for real business problems. Intake first. Scope second. Build third.',
+    summary: 'A narrow tool for a real job your existing software does not handle well. Start with the useful part.',
     href: '/contact',
-    actionLabel: 'start intake'
+    actionLabel: 'bring the problem'
   },
   {
     slug: 'automation',
-    name: 'AI workflows and automation',
+    name: 'Workflow automation',
     type: 'service',
     status: 'available by scope',
-    summary: 'Agent workflows, internal tools, and boring automation where it saves time or money.',
+    summary: 'Remove repeat manual steps, connect the tools already in use, and make handoffs easier to follow.',
     href: '/contact',
-    actionLabel: 'start intake'
+    actionLabel: 'bring the problem'
   },
   {
-    slug: 'ecommerce',
-    name: 'Ecommerce funnels',
+    slug: 'data-shaping',
+    name: 'Data shaping',
     type: 'service',
-    status: 'first client lane',
-    summary: 'Catalog, upload, proofing, Stripe checkout, and an admin path that does not become a monster.',
+    status: 'available by scope',
+    summary: 'Turn scattered, duplicated, or messy information into records, exports, and systems people can use.',
     href: '/contact',
-    actionLabel: 'start intake'
+    actionLabel: 'bring the problem'
   },
   {
-    slug: 'data',
-    name: 'data.belt.works',
-    type: 'property',
-    status: 'candidate service',
-    summary: 'Scrape messy sources, normalize them, expose something useful. One dataset at a time.',
-    href: '/data',
-    actionLabel: 'view property'
-  },
-  {
-    slug: 'intel',
-    name: 'intel.belt.works',
-    type: 'property',
-    status: 'research lane',
-    summary: 'OSINT and threat-intel research. Useful if it produces structured outputs, not noise.',
-    href: '/intel',
-    actionLabel: 'view property'
-  },
-  {
-    slug: 'ioc',
-    name: 'ioc.belt.works',
-    type: 'property',
-    status: 'output layer',
-    summary: 'Indicators, actor profiles, and security data. Should follow intel work, not become a separate burden.',
-    href: '/ioc',
-    actionLabel: 'view property'
+    slug: 'web-systems',
+    name: 'Web systems',
+    type: 'service',
+    status: 'available by scope',
+    summary: 'Websites and lightweight applications that explain the work, collect the right information, and do a useful job.',
+    href: '/contact',
+    actionLabel: 'bring the problem'
   }
 ];

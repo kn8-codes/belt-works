@@ -2,23 +2,23 @@
   <title>How We Work | belt.works</title>
   <meta
     name="description"
-    content="How belt.works uses model-agnostic agent harnesses, local machines, and boring verification to ship software."
+    content="Belt.works starts with the real work, makes a useful first version, tests it, and leaves the handoff clearer than it found it."
   />
 </svelte:head>
 
 <section class="route-title">
   <div class="wrap">
     <p class="eyebrow">Method</p>
-    <h1>We don’t hire models. We build harnesses.</h1>
+    <h1>Start with the work. Leave it easier to run.</h1>
     <p class="lead">
-      belt.works is an AI-native shop: small machines, specialized agents, local repos, real checks, and human judgment at the
-      seams. The model is not the product. The harness is.
+      Good software is not a performance of complexity. It is a useful answer to a real problem, checked
+      against the way people actually work and documented well enough that the next person can use it.
     </p>
     <div class="kicker-row" aria-label="Operating principles">
-      <span class="pill">model agnostic</span>
-      <span class="pill">smallest useful model</span>
-      <span class="pill">tooling over theater</span>
-      <span class="pill">diffs or it didn’t happen</span>
+      <span class="pill">real problems first</span>
+      <span class="pill">first useful version</span>
+      <span class="pill">clear handoffs</span>
+      <span class="pill">evidence over theater</span>
     </div>
   </div>
 </section>
@@ -26,27 +26,27 @@
 <section class="section">
   <div class="wrap grid">
     <article class="card large">
-      <div class="meta">1 / model agnostic</div>
-      <h3>The harness outlives the model.</h3>
+      <div class="meta">1 / understand the work</div>
+      <h3>Name the friction plainly.</h3>
       <p>
-        We route work to whatever can do it cleanly: large models for hard reasoning, smaller models for repetitive passes,
-        scripts for things machines should not be philosophizing about.
+        What has to happen? Where does it break down? Who is doing the extra work? What gets lost,
+        repeated, delayed, or left unclear? A useful build starts with those answers.
       </p>
     </article>
     <article class="card large">
-      <div class="meta">2 / right-sized compute</div>
-      <h3>Use the smallest thing that works.</h3>
+      <div class="meta">2 / make the useful part</div>
+      <h3>Build the first answer that can carry weight.</h3>
       <p>
-        Expensive intelligence is saved for expensive uncertainty. Most software work is reading, shaping, testing, and
-        checking. Paying a giant model to count files is how civilization ends: slowly, then on an invoice.
+        That may be a small tool, an automation, a cleaner dataset, or a web system with one clear job.
+        The aim is not a bigger roadmap. It is a working improvement people can feel.
       </p>
     </article>
     <article class="card large">
-      <div class="meta">3 / verified shipping</div>
-      <h3>The output has to survive contact with git.</h3>
+      <div class="meta">3 / check the handoff</div>
+      <h3>Make the change legible.</h3>
       <p>
-        Agent sessions produce branches, diffs, commits, checks, and reviewable handoffs. If it cannot be inspected, tested,
-        or rolled back, it is not finished.
+        Test the work against the job. Keep the status visible. Leave enough notes and evidence that the
+        system is easier to maintain, improve, or hand to someone else.
       </p>
     </article>
   </div>
@@ -55,19 +55,19 @@
 <section class="section">
   <div class="wrap grid two">
     <article class="card large">
-      <p class="eyebrow">Mesh roles</p>
-      <h2>Operators, not mascots.</h2>
+      <p class="eyebrow">What stays behind the scenes</p>
+      <h2>Tools are there to serve the work.</h2>
       <p>
-        Janine routes and coordinates. Peter handles implementation passes. Egon plans, reviews, and does technical cleanup.
-        The point is not pretending agents are magic employees. The point is giving each worker a narrow lane and a hard stop.
+        Belt.works uses code, automation, research, and careful checks where they help. The technology is
+        not the point. The point is a system that makes a real task easier to do and easier to trust.
       </p>
     </article>
     <article class="mono-panel">
-      <p><strong>Input:</strong> messy goal, stale context, existing code</p>
-      <p><strong>Harness:</strong> scoped prompts, local tools, git branches, tests</p>
-      <p><strong>Workers:</strong> model-specific sessions with narrow responsibilities</p>
-      <p><strong>Output:</strong> pull requests, deployable changes, documented decisions</p>
-      <p><strong>Rule:</strong> no demo theater where a checklist would do.</p>
+      <p><strong>Input:</strong> a real task, burden, or broken handoff</p>
+      <p><strong>Work:</strong> a useful tool, automation, dataset, or web system</p>
+      <p><strong>Check:</strong> does it work in the job it was meant to help?</p>
+      <p><strong>Handoff:</strong> clear status, notes, and evidence of what changed</p>
+      <p><strong>Rule:</strong> no performance of complexity where a useful answer will do.</p>
     </article>
   </div>
 </section>
@@ -75,15 +75,18 @@
 <section class="section">
   <div class="wrap grid two">
     <article class="card large">
-      <p class="eyebrow">Operating rule</p>
-      <h2>One money project. One proof project. One infrastructure project.</h2>
-      <p>Everything else waits unless it earns its way back.</p>
+      <p class="eyebrow">A practical standard</p>
+      <h2>If it helps, it should hold up.</h2>
+      <p>
+        The work has to be useful to the person carrying it—not merely interesting in a demo, impressive
+        in a proposal, or expensive enough to feel official.
+      </p>
     </article>
     <article class="mono-panel">
-      <p><strong>Money:</strong> client work / intake</p>
-      <p><strong>Proof:</strong> belt.works / public evidence</p>
-      <p><strong>Infrastructure:</strong> mesh status / tooling</p>
-      <p><strong>Rule:</strong> if it does not support survival, evidence, or method, it is drift.</p>
+      <p><strong>Useful:</strong> removes friction from a real task</p>
+      <p><strong>Bounded:</strong> has a clear first job</p>
+      <p><strong>Checked:</strong> tested against the work it supports</p>
+      <p><strong>Durable:</strong> easier for the next person to understand</p>
     </article>
   </div>
 </section>

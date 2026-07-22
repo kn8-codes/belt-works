@@ -5,14 +5,17 @@
 
 <svelte:head>
   <title>Work | belt.works</title>
-  <meta name="description" content="Projects, proof, and honest status labels from belt.works." />
+  <meta name="description" content="Current work, shipped proof, and honest status labels from belt.works." />
 </svelte:head>
 
 <section class="route-title">
   <div class="wrap">
     <p class="eyebrow">Work</p>
-    <h1>Proof, not pitch.</h1>
-    <p class="lead">This is the project registry. Some things are active. Some are parked. The status label does the talking.</p>
+    <h1>Useful work should be able to show its work.</h1>
+    <p class="lead">
+      This is an honest project registry. Some things are active, some are reference material, and some
+      are parked. The status label is there so the page does not pretend otherwise.
+    </p>
   </div>
 </section>
 

@@ -2,31 +2,51 @@ export const projects = [
   {
     slug: 'belt-works',
     name: 'belt.works',
-    type: 'proof',
-    status: 'active rebuild',
-    summary: 'The public face of the lab. Research, proof, services, and intake all point through here.',
+    type: 'practical software shop',
+    status: 'active',
+    summary: 'The public front door for small working systems: practical services, honest proof, and a clear way to bring a problem.',
     href: '/',
     actionLabel: 'view site',
     github: 'https://github.com/kn8-codes/belt-works',
-    notes: 'Current priority. Voice is locked. Structure is being rebuilt.'
+    notes: 'The shop should make the work easier to understand and easier to start.'
   },
   {
-    slug: 'rooms',
-    name: 'ROOMS',
-    type: 'proof',
-    status: 'mock data',
-    summary: 'A public, sanitized cockpit for the agent mesh. Status first. Control later.',
-    href: '/rooms',
-    actionLabel: 'view rooms',
-    notes: 'Good proof because it makes the work visible.'
+    slug: 'shopfloor',
+    name: 'ShopFloor',
+    type: 'public-interest work',
+    status: 'private alpha build',
+    statusTone: 'warn',
+    summary: 'Akron-first local repair and mutual-aid infrastructure built around trust instead of extraction.',
+    href: '/blog/shopfloor',
+    actionLabel: 'read the project',
+    notes: 'Community members are not leads, inventory, or gig workers. Public release remains closed.'
   },
   {
     slug: 'towpath',
     name: 'Towpath',
     type: 'infrastructure',
     status: 'working predecessor',
-    summary: 'Dispatch, ledger, and handoff layer for work across Jeep, M1, and M4.',
-    notes: 'Not the product by itself. It matters when it ships visible work.'
+    summary: 'Dispatch, ledger, and handoff infrastructure for work that needs to move between machines without losing the thread.',
+    notes: 'Useful because it makes follow-through more reliable, not because infrastructure is a product by itself.'
+  },
+  {
+    slug: 'hosp-or-not',
+    name: 'hosp-or-not',
+    type: 'shipped proof',
+    status: 'shipped',
+    summary: 'A small, bounded proof that useful software does not need to become an empire to count.',
+    notes: 'Keep it honest, keep it useful.'
+  },
+  {
+    slug: 'rooms',
+    name: 'ROOMS',
+    type: 'reference demo',
+    status: 'historical / reference',
+    statusTone: 'warn',
+    summary: 'A sanitized operator-cockpit reference for making system status visible without leaking private work.',
+    href: '/rooms',
+    actionLabel: 'view reference',
+    notes: 'Useful context, not the public definition of the shop.'
   },
   {
     slug: 'boommates',
@@ -36,25 +56,6 @@ export const projects = [
     statusTone: 'warn',
     summary: 'Housing and civic coordination idea tied to Akron work. Worthy, but scope can eat the shop.',
     notes: 'Bring back when there is a narrow first use case.'
-  },
-  {
-    slug: 'shopfloor',
-    name: 'ShopFloor',
-    type: 'mutual aid',
-    status: 'alpha build',
-    statusTone: 'warn',
-    summary: 'Neighborhood repair time bank for tools, practical help, and local know-how.',
-    href: '/blog/shopfloor',
-    actionLabel: 'read the lane',
-    notes: 'Free to use; sustainability ask lives on belt.works, one page away from the help flow.'
-  },
-  {
-    slug: 'hosp-or-not',
-    name: 'hosp-or-not',
-    type: 'proof artifact',
-    status: 'shipped',
-    summary: 'Small shipped proof. Useful as evidence if it stays honest and bounded.',
-    notes: 'Do not turn it into an empire.'
   },
   {
     slug: 'obdsidian',
@@ -76,4 +77,6 @@ export const projects = [
   }
 ];
 
-export const featuredProjects = projects.filter((project) => ['belt-works', 'shopfloor', 'rooms', 'towpath'].includes(project.slug));
+export const featuredProjects = projects.filter((project) =>
+  ['belt-works', 'shopfloor', 'towpath', 'hosp-or-not'].includes(project.slug)
+);

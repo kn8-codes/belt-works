@@ -2,6 +2,15 @@
 
 Record receipts here. Agent narration is not evidence. Pretty words are how bugs wear cologne.
 
+## 2026-07-22 — Practical software shop copy-system pass
+
+- Command/source: created isolated worktree `/Users/kn8/projects/belt-works-copy-system` on `feat/belt-copy-system` from `origin/main` commit `6122cd1`; read existing visitor routes/content, the approved review draft, and repo instructions before editing.
+- Result: Belt.works now has one public identity across its primary visitor path: a practical software shop making small working systems for real work. The service vocabulary is custom software, workflow automation, data shaping, and web systems. Homepage proof removes ROOMS while leaving its route intact; ShopFloor is framed as protected public-interest work built around trust instead of extraction, with no public-release or lead-funnel claim.
+- File/path/link: `src/routes/+page.svelte`, `src/routes/services/+page.svelte`, `src/routes/method/+page.svelte`, `src/routes/about/+page.svelte`, `src/routes/work/+page.svelte`, `src/routes/data/+page.svelte`, `src/routes/vision/+page.svelte`, `src/routes/+layout.svelte`, `src/lib/content/{services,projects}.js`, `src/lib/components/SiteFooter.svelte`, `docs/plans/2026-07-22__practical-software-shop-copy-system.md`.
+- Verification: source drift scan returned no matches for removed `scope hard`/funnel/AI-harness framing; `npm ci` installed the existing lockfile only; `npm run check` reported 0 errors / 0 warnings; `npm run lint` and `npm run build` passed. Local production preview route probes returned 200 for `/`, `/services`, `/method`, `/about`, `/work`, `/data`, `/admin-workflow-audit`, `/contact`, and `/ask`. Browser smoke verified `/`, `/services`, `/method`, and `/data` render the new hierarchy and four lanes without form submission.
+- Audit note: `npm ci` reported 7 vulnerabilities (1 low, 2 moderate, 4 high). No `npm audit fix` was run because dependency changes are out of scope.
+- Checked by: Egon, 2026-07-22.
+
 ## 2026-07-22 — Admin Workflow Audit offer page
 
 - Command/source: created isolated worktree `feat/admin-workflow-audit-offer` from `origin/main`; added `/admin-workflow-audit` and one homepage CTA after inspecting the existing `/contact` intake endpoint.

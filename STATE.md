@@ -1,5 +1,14 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-07-22 — Practical software shop copy-system pass
+
+- Active goal: make Belt.works’ public visitor path coherently describe the practical software shop: small working systems for real work.
+- Current state: isolated `feat/belt-copy-system` rewrites the homepage, primary visitor routes, shared metadata/footer, service vocabulary, and proof framing around custom software, workflow automation, data shaping, and web systems. ShopFloor is explicitly public-interest work built around trust instead of extraction; ROOMS remains reachable but is no longer primary homepage proof.
+- Next best action: commit/push the verified bounded copy pass and confirm the Git-backed production deployment renders the new public copy.
+- Blockers: none for source verification. `npm ci` reports 7 dependency vulnerabilities (1 low, 2 moderate, 4 high); no `npm audit fix` is in scope.
+- Open questions for Nate: none for this authorized copy pass; later review can refine individual phrases against live use.
+- Last verified: 2026-07-22 by Egon: `npm run check` (0 errors / 0 warnings), `npm run lint`, `npm run build`, local route probes, and browser smoke.
+
 ## 2026-07-22 — Admin Workflow Audit offer and demand-test readiness
 
 - Active goal: run the first bounded market test for the `$495` Admin Workflow Audit without broad social/outreach theater or unbounded ad spend.

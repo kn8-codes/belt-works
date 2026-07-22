@@ -15,14 +15,14 @@
 
   <meta property="og:site_name" content="belt.works" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="belt.works" />
-  <meta property="og:description" content="We build software that works. You bring the problem." />
+  <meta property="og:title" content="belt.works — Software that earns its keep." />
+  <meta property="og:description" content="Small working systems for real work. Bring the broken workflow." />
   <meta property="og:image" content="https://belt.works/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="belt.works" />
-  <meta name="twitter:description" content="We build software that works. You bring the problem." />
+  <meta name="twitter:title" content="belt.works — Software that earns its keep." />
+  <meta name="twitter:description" content="Small working systems for real work. Bring the broken workflow." />
   <meta name="twitter:image" content="https://belt.works/og.png" />
 </svelte:head>
 
