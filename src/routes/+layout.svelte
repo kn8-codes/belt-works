@@ -6,6 +6,7 @@
   import IocHeader from '$lib/components/IocHeader.svelte';
   import SiteHeader from '$lib/components/SiteHeader.svelte';
   import SiteFooter from '$lib/components/SiteFooter.svelte';
+  import AnalyticsConsent from '$lib/components/AnalyticsConsent.svelte';
 
   let { children } = $props();
 
@@ -43,4 +44,5 @@
   {:else}
     <SiteFooter />
   {/if}
+  <AnalyticsConsent />
 </div>

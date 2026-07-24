@@ -134,6 +134,12 @@ h3 { font-size: 1.15rem; line-height: 1.15; margin-bottom: .6rem; }
 .site-footer { border-top: 1px solid var(--line); padding: 2rem 0; color: var(--dim); font-size: .85rem; }
 .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
 
+/* Optional analytics remains absent until the explicit deploy gate is configured. */
+.analytics-choices { position: fixed; right: 1rem; bottom: 1rem; z-index: 20; width: min(34rem, calc(100vw - 2rem)); border: 1px solid var(--line); background: #090907; box-shadow: 0 14px 48px rgba(0,0,0,.45); padding: 1rem; }
+.analytics-choices__copy p:not(.eyebrow) { color: var(--muted); line-height: 1.5; }
+.analytics-choices__actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.analytics-choices__toggle { border: 0; background: transparent; color: var(--muted); cursor: pointer; padding: .25rem 0; text-decoration: underline; text-underline-offset: .2rem; }
+
 form { display: grid; gap: 1rem; }
 label { display: grid; gap: .35rem; color: var(--muted); }
 input, textarea { width: 100%; border: 1px solid var(--line); background: #0f0f0c; color: var(--text); padding: .85rem; }
