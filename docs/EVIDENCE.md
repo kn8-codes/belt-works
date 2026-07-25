@@ -2,6 +2,77 @@
 
 Record receipts here. Agent narration is not evidence. Pretty words are how bugs wear cologne.
 
+## 2026-07-25 — Problem Map hybrid visual synthesis (bake-off lanes A/B/C)
+
+- Command/source: plan `docs/plans/2026-07-25__problem-map-hybrid-bakeoff-synthesis.md`. Nate approval via Telegram 2026-07-25 ~05:20 ("take the best parts of all three, get them implemented, and give me something to look at"). Base = Lane A (Opus 5) sibling-recede architecture; donor = Lane C (Kimi 3) answer-panel dt small-caps index labels; Lane B (Fable 5) donated no code (animated dash grammar rejected as busywork). Camera recentering and mobile redesign explicitly deferred.
+- Result: `src/routes/problem-map/+page.svelte` only. Sibling categories now stay mounted when a branch opens — they recede (recede factor 1.06, `far` force kind at strength .105, weaker links), dim via `.receded`, and leave the tab order/a11y tree via `inert` + `tabindex={-1}`. CSS: single center-weighted light source over fine grain, breathing central haze (38s), three legible tiers (fluid root, semibold categories, amber-edged leaves), real `:focus-visible` accent outlines (all `outline:none` removed), answer heading capped to sentence scale with a 1180px two-column step, `.constellation__hint` visible at .66 when branch open, mobile type floor .66/.7rem, dt small-caps index labels, full `prefers-reduced-transparency` solid fallback and `forced-colors:active` system-color branch.
+- Verification: `npm run check` → `svelte-check found 0 errors and 0 warnings`; `npm run build` → passed (1.41s); `git diff --check` → clean. Fresh preview `http://127.0.0.1:4181/problem-map` exercised in isolated Browser Harness Chrome at 1280×900 and emulated 390×844: root shows 7 categories on the ring; branch open shows exactly 6 `.receded` + 6 `[inert]` siblings with faint terminating links and 3 amber leaves; mobile branch fits with no leaf overlap. Keyboard smoke: root focus outline `2px rgb(215,255,99)`, group focus outline 2px, exactly 5 focusable nodes with branch open (root+active+3 leaves), Enter on leaf moves focus to `#answer-title`. Captures: `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/hybrid2-{desk-1-root,desk-2-branch,desk-3-leaf,desk-4-answer,mob-1-root,mob-2-branch}.png`.
+- Guardrails: no commit, push, PR, deploy, backend/analytics/contact-flow change, or camera-behavior implementation. Working-tree only on `feat/problem-map-drilldown`.
+- Approval: Nate visual pass completed 2026-07-25 morning; exact Telegram text: "that preview looks great. everything is approved. you go ahead and commit, push to main." Committed and pushed to `main` same morning (SHA in git log).
+- File/path/link: `src/routes/problem-map/+page.svelte`; local review route `http://127.0.0.1:4181/problem-map` (preview process running, proc_36dbc988561e).
+- Checked by: Egon, 2026-07-25 05:38 EDT.
+
+## 2026-07-24 — Problem Map five-card Data-Belt authored expansion
+
+- Command/source: read `.stack/manifest.yaml`, `PROJECT_CHARTER.md`, `STATE.md`, `work/active/2026-07-23-problem-map-drilldown-v2.md`, the card plan `docs/plans/2026-07-24__problem-map-data-belt-six-leaf-cards.md`, and the existing selected-answer data map. Per the Kanban clarification, authored only the five current leaves—not a nonexistent sixth—by changing only `authoredLeafCards` in `src/routes/problem-map/+page.svelte`.
+- Result: preserved both pilot cards byte-for-byte and added six-field local, read-only cards for `information-scattered-files`, `information-scattered-history`, `takes-too-long-copying`, `takes-too-long-reports`, and `takes-too-long-paper`. Together, the map now has seven authored cards; all other leaves retain the labelled neutral fallback. No selected-answer link, form control, submission, or network-facing behavior was added.
+- Verification: `npm run check` → `svelte-check found 0 errors and 0 warnings`; `npm run build` → passed; `git diff --check` → passed. Fresh Vite preview at `http://127.0.0.1:4180/problem-map` was tested in isolated Browser Harness Chrome. Desktop selection exercised all seven authored cards and each returned its expected heading, six `dt` fields, `fallback=false`, `links=0`, and `formControls=0`. CDP mobile selection of `Files or forms are hard to find` at exactly `390×844` returned the same six fields with `fallback=false`, `links=0`, `formControls=0`, and a `358px` answer-panel width. Visual captures: `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/problem-map-authored-public-desktop-4180.png` and `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/problem-map-authored-files-mobile-cdp-390x844-4180.png`.
+- Guardrails: no linear-route markup/CSS/behavior, graph tier, geometry, force configuration, dependency, backend/Supabase, PostHog, analytics, contact link/endpoint, network submission, account, credential, commit, push, or deployment change.
+- File/path/link: `src/routes/problem-map/+page.svelte`; local review route `http://127.0.0.1:4180/problem-map`.
+- Checked by: Egon, 2026-07-24 08:29 EDT.
+
+## 2026-07-24 — Problem Map two authored leaf-card pilot
+
+- Command/source: read the approved local staging packets `~/MESH_BOARD/20_PLANS/2026-07-24__problem-map-content-model-and-page-simplification.md` and `~/MESH_BOARD/20_PLANS/2026-07-24__problem-map-leaf-card-copy-v1.md`, then changed only the selected-leaf data derivation and selected-answer panel in `src/routes/problem-map/+page.svelte`.
+- Result: exactly two leaves have authored six-field guidance: scene, consequence, one useful question, small first move, possible Belt path, and optional human handoff. All other leaves use a visibly labelled `Neutral fallback` and explicitly state that no Belt path is suggested yet. The selected panel is read-only/local and contains no contact link or submission control.
+- Verification: `npm run check` → `svelte-check found 0 errors and 0 warnings`; `npm run build` → passed; `git diff --check` → passed. Isolated Browser Harness Chrome at `http://127.0.0.1:4179/problem-map` verified desktop root (`selected=false`, 7 group buttons), records branch open (3 leaves), keyboard Enter selection of `Different records disagree` with focus moved to `#answer-title`, six labelled fields, and zero selected-panel links. It also verified the public-information card at desktop and 390×844 mobile, plus the labelled neutral fallback. Visual captures: `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/problem-map-authored-root-desktop.png`, `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/problem-map-authored-records-open-desktop.png`, `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/problem-map-authored-records-desktop.png`, `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/problem-map-authored-public-mobile.png`.
+- Guardrails: no graph tier, force, geometry, linear-route, dependency, backend/Supabase, PostHog, analytics, contact endpoint, network submission, account, credential, commit, push, or deployment change.
+- File/path/link: `src/routes/problem-map/+page.svelte`; local verification route `http://127.0.0.1:4179/problem-map`.
+- Checked by: Egon, 2026-07-24 07:50 EDT.
+
+## 2026-07-24 — Problem Map V2 local preview recovery and cleanup
+
+- Command/source: inspected the failed preview report, confirmed its referenced hashed CSS asset was absent, then ran `npm run check && npm run build && git diff --check` in `/Users/kn8/projects/belt-works-problem-map-drilldown`; started a fresh `npm run preview -- --host 127.0.0.1 --port 4178` from the resulting output and probed `/problem-map`.
+- Result: `svelte-check` reported 0 errors / 0 warnings; Vite production build passed; diff whitespace check passed. Fresh output contains coherent current hashed assets, replacing the stale missing reference. `http://127.0.0.1:4178/problem-map` returned `HTTP 200 bytes=13748`; response contains the Problem Map marker; preview is listening on `127.0.0.1:4178`.
+- File/path/link: local review route `src/routes/problem-map/+page.svelte`; fresh preview `http://127.0.0.1:4178/problem-map`.
+- Guardrails: no source reset, cache deletion, commit, push, deployment, backend/Supabase/PostHog change, analytics collection, credential access, or public action.
+- Checked by: Egon, 2026-07-24.
+
+## 2026-07-24 — Problem Map atmospheric seam repair
+
+- Command/source: inspected Nate’s screenshot and the map field CSS. The broad vertical/rectangular tonal boundary came from the large rotated `.constellation::before` element using `filter:blur(34px)` over the dark layered field. Replaced only that element with a continuous large radial-gradient layer painted directly in `.constellation`’s background; retained the intended orbit and graph links.
+- Result: fresh local browser inspection shows no visible broad vertical/rectangular atmospheric seam. Faint connection lines and the elliptical orbit remain as intentional graph structure.
+- Verification: `npm run check` → 0 errors / 0 warnings; `npm run build` → passed; `git diff --check` → passed; fresh `vite preview` at `http://127.0.0.1:4178/problem-map` visually inspected.
+- Guardrails: CSS-only local review change in `src/routes/problem-map/+page.svelte`; no reset, commit, push, deploy, backend/Supabase/PostHog change, analytics collection, credential access, or public action.
+- Checked by: Egon, 2026-07-24.
+
+## 2026-07-23 — Problem-map visual language pass: hard-line blue field
+
+- Command/source: inspected a fresh production preview, then changed only map-scoped CSS in `src/routes/problem-map/+page.svelte`.
+- Result: converted the map from lime/amber orbital diagram to a midnight-blue thinking field: diffuse cyan glow, angular/hard-cut root and node geometry, cyan link halos, and lime limited to active selection. Content, controls, D3/camera motion, accessibility route, and data contract were not changed.
+- Verification: `npm run check` → 0 errors / 0 warnings; `npm run build` → passed; `git diff --check` → passed. Screenshot visually reviewed: `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/problem-map-blue-hardline.png`. Production-preview rect probes across every group at `1280×900` and `390×844`: all results returned `leafCount=3`, `overlap=false`, `clipped=false`.
+- Guardrails: local visual review only. No commit, push, deploy, public action, analytics, consent intake, Supabase mutation, Plaud configuration, or credential access.
+- Checked by: Egon, 2026-07-23 23:14 EDT.
+
+## 2026-07-23 — Adaptive problem-map leaf-spacing review pass
+
+- Command/source: read the local visual handoff, live route geometry, D3 motion plan, repo state, and attached Plaud capability assessment; changed only the local review route's leaf-layout coordinates after preserving the current root/camera/physics contract.
+- Result: opened desktop branches now use authored direction-aware layouts: shallow corner arcs for top/bottom paths and vertical stacks for left/right paths. The 390px layout is parent-relative: top/side branches stack below their centered category; bottom branches stack above it. This avoids capsule overlap and camera-induced edge clipping without adding problem content or replacing the continuous field.
+- File/path/link: `src/routes/problem-map/+page.svelte`; Plaud assessment receipt: `/Users/kn8/MESH_BOARD/30_RECEIPTS/egon/2026-07-23__plaud-conversational-gateway-capability-assessment.md`; consent-backend design packet: `/Users/kn8/MESH_BOARD/20_PLANS/2026-07-23__problem-map-consent-backend-and-next-question-packet.md`.
+- Verification: `npm run check` — 0 errors / 0 warnings; `npm run build` — passed; `git diff --check` — passed. Fresh preview `http://127.0.0.1:4178/problem-map` was tested with isolated Chrome/CDP after build. Rect-based checks across all 7 desktop branches and all 7 branches at a 390×844 viewport each reported `leafCount=3`, `overlap=false`, `clipped=false`. Local screenshot: `/Users/kn8/sandbox/browser-harness-spike/bh-tmp/problem-map-mobile-spacing.png`.
+- Guardrails: local review only. No commit, push, PR, deploy, public copy change, analytics, contact submission, Supabase mutation, Plaud configuration, credential access, or Apple enrollment action.
+- Checked by: Egon, 2026-07-23 23:14 EDT.
+
+## 2026-07-23 — Problem map drill-down V2 local review build
+
+- Command/source: created isolated worktree `/Users/kn8/projects/belt-works-problem-map-drilldown` on `feat/problem-map-drilldown` from `origin/main` commit `9868f45`; read project manifest/charter/state/instructions, the original problem-map project-start packet, and the V1 route before writing the V2 plan and code.
+- Result: V2 explicitly models map depth instead of rendering every authored node at rest. The browser starts with root + four broad groups. Selecting `Work keeps getting stuck` exposes exactly three matching leaves and its orientation card; selecting `The same work happens twice` activates that leaf, preserves the `Map root / Work keeps getting stuck / leaf` breadcrumb, renders the lower answer panel, and exposes its `Bring the repeat` CTA. A text-first route uses the same tree.
+- File/path/link: `src/routes/problem-map/+page.svelte`, `docs/plans/2026-07-23__problem-map-drilldown-v2.md`, `work/active/2026-07-23-problem-map-drilldown-v2.md`, `STATE.md`.
+- Verification: after `npm ci` installed the existing lockfile, `npm run check` reported 0 errors / 0 warnings; `npm run build` passed; `git diff --check` passed. A local production preview at `http://127.0.0.1:4175/problem-map` was inspected in root, opened-branch, and selected-leaf states. Browser DOM proof: opened branch had `open=3` and title `Follow the work itself first.`; leaf proof had active leaf `The same work happens twice`, answer `The repeat is taking time away from the actual work.`, CTA `Bring the repeat`, correct breadcrumb, and `linearLeaves=3`. Desktop visual review found a coherent local-branch drill-down with no observed label collision/clipping.
+- Guardrails: local review only. No commit, push, PR, deployment, published copy change, analytics, contact-flow change, dependency version change, or data collection was performed. `npm ci` reported 7 existing dependency vulnerabilities (1 low, 2 moderate, 4 high); no audit fix was attempted.
+- Checked by: Egon, 2026-07-23.
+
+
 ## 2026-07-22 — Practical software shop copy-system pass
 
 - Command/source: created isolated worktree `/Users/kn8/projects/belt-works-copy-system` on `feat/belt-copy-system` from `origin/main` commit `6122cd1`; read existing visitor routes/content, the approved review draft, and repo instructions before editing.

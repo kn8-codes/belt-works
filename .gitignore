@@ -26,3 +26,4 @@ vite.config.ts.timestamp-*
 artifacts/a11y/*.json
 playwright-report/
 test-results/
+.gstack/
