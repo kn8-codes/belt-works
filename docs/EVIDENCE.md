@@ -228,3 +228,14 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Known issue: `npm run lint` fails on `src/routes/problem-map/+page.svelte:284`, where `cameraFrame` is never assigned. The same line exists at `origin/main`; it is outside this article-only diff and was not changed.
 - Approval: Nate explicitly approved commit, merge to `main`, push, and production deployment on 2026-08-06.
 - Checked by: Egon, 2026-08-06.
+
+## 2026-08-06 — We Speak Software blog release preflight
+
+- Command/source: created isolated worktree `/Users/kn8/projects/belt-works-software-fluency` from `origin/main` on `publish/software-fluency`; installed Nate-approved article as `content/posts/we-speak-software.md` with required flat-file frontmatter.
+- Result: local route `/blog/we-speak-software` rendered “We Speak Software,” “Code is becoming cheaper. Translation is not.,” “This is what we bring to the table,” and “The goal is shared capacity”; `/blog` listed the new post.
+- File/path/link: `content/posts/we-speak-software.md`, `work/active/2026-08-06-we-speak-software-blog.md`, `STATE.md`; target public route `https://www.belt.works/blog/we-speak-software`.
+- Verification: frontmatter/slug/body check passed (`slug=we-speak-software`, body 6,991 characters, 10 posts); `git diff --check` passed; `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` completed; local `vite preview` returned 200 for post and index.
+- Audit note: `npm ci` reported 8 vulnerabilities (1 low, 2 moderate, 5 high). No `npm audit fix` was run because dependency mutation is out of scope.
+- Known issue: `npm run lint` fails on the pre-existing `origin/main` `src/routes/problem-map/+page.svelte:284` `cameraFrame` assignment error; it is outside this content-only diff.
+- Approval: Nate explicitly approved commit, push to `main`, and production deployment on 2026-08-06.
+- Checked by: Egon, 2026-08-06.

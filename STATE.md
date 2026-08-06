@@ -1,5 +1,14 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-08-06 — We Speak Software publication release
+
+- Active goal: publish the approved Belt.works essay explaining our software and technological fluency offering without mixing it with unrelated product, analytics, or historical branch work.
+- Current state: clean isolated branch `publish/software-fluency` is based on `origin/main` commit `b416286`. The new post renders in a local production preview at `/blog/we-speak-software` and appears in `/blog`.
+- Verification: frontmatter/slug/body check passed; `git diff --check` passed; `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` passed; local production preview returned 200 and contained the title, translation section, offer section, and shared-capacity conclusion. `npm run lint` remains blocked by the pre-existing `origin/main` error at `src/routes/problem-map/+page.svelte:284` (`cameraFrame` is never assigned); no unrelated repair is included.
+- Next best action: commit the article-only release, fast-forward `main`, push, then verify the Git-backed Vercel production deployment and public route.
+- Blockers: none for the approved publication scope; baseline lint is a separate code-repair lane.
+- Last verified: 2026-08-06 by Egon.
+
 ## 2026-08-06 — The Work Before the Work publication release
 
 - Active goal: publish the approved Belt.works essay, “The Work Before the Work,” as a flat-file blog post without mixing in unrelated analytics, problem-map, or old feature-branch work.
