@@ -218,3 +218,13 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Audit note: `npm ci` reported 7 vulnerabilities (1 low, 2 moderate, 4 high). No `npm audit fix` was run because dependency mutation is a separate approval gate.
 - Guardrails: commit approved by Nate; no push, deploy, merge to `main`, public posting/scheduling, credential access, deletion, or reset.
 - Checked by: Egon at 2026-07-22 07:40 EDT.
+## 2026-08-06 — The Work Before the Work blog release preflight
+
+- Command/source: created isolated worktree `/Users/kn8/projects/belt-works-work-before-work` from `origin/main` on `publish/work-before-the-work`; installed Nate-approved article as `content/posts/the-work-before-the-work.md` with the repository-required flat-file frontmatter.
+- Result: local route `/blog/the-work-before-the-work` rendered “The Work Before the Work,” the article’s problem-selection question, and “Build metabolism, not just motion”; `/blog` listed the new post.
+- File/path/link: `content/posts/the-work-before-the-work.md`, `work/active/2026-08-06-the-work-before-the-work-blog.md`, `STATE.md`; target public route `https://belt-works.vercel.app/blog/the-work-before-the-work`.
+- Verification: frontmatter/slug/body check passed (`slug=the-work-before-the-work`, body 7,369 characters, 9 posts); `git diff --check` passed; `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` completed; local `vite preview` returned 200 for the post and index.
+- Audit note: `npm ci` reported 8 vulnerabilities (1 low, 2 moderate, 5 high). No `npm audit fix` was run because dependency mutation is out of scope.
+- Known issue: `npm run lint` fails on `src/routes/problem-map/+page.svelte:284`, where `cameraFrame` is never assigned. The same line exists at `origin/main`; it is outside this article-only diff and was not changed.
+- Approval: Nate explicitly approved commit, merge to `main`, push, and production deployment on 2026-08-06.
+- Checked by: Egon, 2026-08-06.

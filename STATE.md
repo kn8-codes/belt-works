@@ -1,5 +1,14 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-08-06 — The Work Before the Work publication release
+
+- Active goal: publish the approved Belt.works essay, “The Work Before the Work,” as a flat-file blog post without mixing in unrelated analytics, problem-map, or old feature-branch work.
+- Current state: clean isolated branch `publish/work-before-the-work` is based on `origin/main` commit `cf61175`. The post renders in a local production preview at `/blog/the-work-before-the-work` and appears in `/blog`.
+- Verification: dependency-free frontmatter/slug/body check passed; `git diff --check` passed; `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` passed; local production preview returned 200 and contained the title, problem-selection question, and metabolism section. `npm run lint` is blocked by a pre-existing `origin/main` error at `src/routes/problem-map/+page.svelte:284` (`cameraFrame` is never assigned); no unrelated code repair is included in this content release.
+- Next best action: commit the article-only release, fast-forward `main`, push, then verify the Git-backed Vercel production deployment and public route.
+- Blockers: none for the approved publication scope; baseline lint remains a separate code-repair lane.
+- Last verified: 2026-08-06 by Egon.
+
 ## 2026-07-25 — Problem Map hybrid visual synthesis awaiting Nate visual pass
 
 - Active goal: Nate visually reviews the hybrid bake-off synthesis (Opus sibling-recede base + Kimi dt-eyebrow donor) in the local preview and decides the commit boundary.
