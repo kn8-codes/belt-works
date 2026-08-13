@@ -1,5 +1,17 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-08-12 — IOC.Belt synthetic V0 authorized for production launch
+
+- Active goal: publish the authorized synthetic IOC.Belt methodology/playbook surface at `ioc.belt.works` while keeping real intake, data collection, accounts, APIs, feeds, analytics, and attribution closed.
+- Current state: isolated worktree `/Users/kn8/projects/belt-works-ioc-v0` on staged branch `feat/ioc-belt-synthetic-v0`, based on `origin/main` commit `76ed204`. `/ioc` is the compatibility overview; `/ioc/method` explains claim/evidence/lifecycle/privacy boundaries; `/ioc/playbooks/impersonation/protect-your-money` renders wholly synthetic `SYN-001`. Clean IOC-host paths and server-side hostname containment are implemented and locally verified; commit/deploy/domain/DNS remain pending final review.
+- Verification: after independent-review remediation and production changes, `npm run check` → 0 errors / 0 warnings; targeted production-scope eslint → pass; `npm run build` → pass; staged `git diff --check` and secret scan → pass. Six desktop/mobile content checks had `failedCount=0`. Host-header smoke passed clean subdomain paths and canonical URLs. Fresh Chrome/CDP loaded only project-owned font resources with zero external/Google requests, zero forms, and zero overflow. Semantic failures and public-boundary flags are zero. Full-page screenshots and metrics remain local under ignored `artifacts/ioc-v0/`.
+- Review history: the pre-authorization local re-review passed with `local_review_ready=true` and `public_deploy_ready=false` because Google Fonts remained a gated blocker. After Nate authorized publication, the font blocker and hostname-containment findings were remediated. The latest production re-review found only stale current-state documentation; this section reconciles that final documentation gate.
+- Next best action: obtain a documentation-only re-review PASS, commit the scoped branch, fast-forward production `main`, push, verify the Vercel deployment, attach `ioc.belt.works`, configure DNS if needed, then verify public TLS and routes.
+- Production update: Nate authorized GitHub, Vercel, DNS, and public launch. The Google Fonts privacy blocker is resolved through self-hosted IBM Plex Mono with retained license; clean `ioc.belt.works` host reroutes pass locally. Full repo lint still has the pre-existing unrelated `src/routes/problem-map/+page.svelte:284` `cameraFrame` error; targeted production-scope lint passes.
+- Production containment: the first production pre-commit review correctly rejected the permissive hostname boundary and stale launch copy. `src/hooks.server.js` now enforces an IOC-only page/static allowlist, blocks APIs and non-read methods with 404 before shared handlers, and redirects unrelated read-only pages to the IOC root. Dedicated IOC header/footer components remove shared intake navigation. SSR and real-browser hostname tests pass while ordinary Belt routes retain existing behavior.
+- Open questions for Nate: none for the authorized publication lane; stop only for provider access, ownership conflict, unsafe history operation, or failed verification.
+- Last verified: 2026-08-12 by Egon/default. Full receipt in `docs/EVIDENCE.md`.
+
 ## 2026-08-06 — We Speak Software publication release
 
 - Active goal: publish the approved Belt.works essay explaining our software and technological fluency offering without mixing it with unrelated product, analytics, or historical branch work.

@@ -24,6 +24,7 @@ vite.config.ts.timestamp-*
 
 # Generated accessibility audit artifacts
 artifacts/a11y/*.json
+artifacts/ioc-v0/
 playwright-report/
 test-results/
 .gstack/

@@ -1,17 +1,19 @@
 <script>
   import '../app.css';
   import favicon from '$lib/assets/favicon.svg';
+  import { page } from '$app/state';
+  import IocFooter from '$lib/components/IocFooter.svelte';
+  import IocHeader from '$lib/components/IocHeader.svelte';
   import SiteHeader from '$lib/components/SiteHeader.svelte';
   import SiteFooter from '$lib/components/SiteFooter.svelte';
 
   let { children } = $props();
+
+  let isIoc = $derived(page.url.hostname === 'ioc.belt.works' || page.url.pathname.startsWith('/ioc'));
 </script>
 
 <svelte:head>
   <link rel="icon" href={favicon} />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <meta property="og:site_name" content="belt.works" />
   <meta property="og:type" content="website" />
@@ -28,9 +30,17 @@
 
 <div class="site-shell">
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <SiteHeader />
+  {#if isIoc}
+    <IocHeader />
+  {:else}
+    <SiteHeader />
+  {/if}
   <main class="site-main" id="main-content" tabindex="-1">
     {@render children()}
   </main>
-  <SiteFooter />
+  {#if isIoc}
+    <IocFooter />
+  {:else}
+    <SiteFooter />
+  {/if}
 </div>
