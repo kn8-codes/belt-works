@@ -33,3 +33,5 @@ Nate explicitly approved blog publication, commit, push to `main`, deployment/re
 ## Done
 
 `/blog/deepseek-harness-cordis-plugin-first-agents` is publicly live, appears in `/blog`, and contains the verified title, kernel distinction, reversibility boundary, and source links.
+
+Completed on 2026-08-16 via release commit `5d94076890b958be233ad01ad2f79b645fea1bd2` and successful Vercel deployment `5930072351`.

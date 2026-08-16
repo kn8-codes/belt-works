@@ -11,6 +11,9 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Audit note: `npm ci` reported 9 vulnerabilities (1 low, 2 moderate, 6 high). No `npm audit fix` was run because dependency mutation is outside the article release.
 - Known issue: `npm run lint` fails on the pre-existing `origin/main` `src/routes/problem-map/+page.svelte:284` `cameraFrame` error; the content-only release does not touch that file.
 - Approval: Nate explicitly approved publication, commit, push to `main`, deployment/redeployment, and live verification on 2026-08-16.
+- Publication: release commit `5d94076890b958be233ad01ad2f79b645fea1bd2` was pushed to GitHub `main`; remote `refs/heads/main` matched the local SHA. GitHub/Vercel deployment `5930072351` reported `success` with description `Deployment has completed`.
+- Live verification: `https://www.belt.works/blog` and `https://www.belt.works/blog/deepseek-harness-cordis-plugin-first-agents` returned HTTP 200. The index contains the article slug. The live article contains the title, plugin thesis, revertible-effect section, model-visible logging rule, Cordis paper link, all three sources, and the closing kernel statement; no TODO or internal publication markers were present.
+- Browser note: the configured cloud browser returned no CDP endpoint, and Playwright is not a dependency in the clean production worktree. No package was added for this check; direct production HTTP plus independent rendered-content extraction passed.
 - Checked by: Egon/default, 2026-08-16.
 
 ## 2026-08-12 — IOC.Belt synthetic V0 local proof

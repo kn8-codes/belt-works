@@ -1,12 +1,12 @@
 # Current State — ShopFloor / belt.works
 
-## 2026-08-16 — Cordis / DeepSeek Harness blog authorized for publication
+## 2026-08-16 — Cordis / DeepSeek Harness blog publicly live
 
-- Active goal: publish the approved Belt.works technical field note, “The Kernel Is the Constitution,” from a clean article-only worktree and verify it all the way through the Git-backed Vercel production route.
-- Current state: isolated worktree `/Users/kn8/projects/belt-works-cordis-publish` on `publish/cordis-harness`, based on `origin/main` commit `1c76a7d`. The production-format article is installed at `content/posts/deepseek-harness-cordis-plugin-first-agents.md`; a local production preview renders it at `/blog/deepseek-harness-cordis-plugin-first-agents` and lists it on `/blog`.
-- Verification: frontmatter and unique slug passed; public-boundary and placeholder scans returned zero matches; `git diff --check` passed; `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` passed; local article and blog index returned HTTP 200 with required argument/source markers. Full-repo lint retains the pre-existing unrelated `src/routes/problem-map/+page.svelte:284` `cameraFrame` error.
-- Next best action: commit the bounded article/work-card/state/evidence release, push the exact commit to `main`, poll the GitHub/Vercel deployment, then verify the public article and blog index.
-- Blockers: none for the explicitly approved publication lane. Stop for remote divergence, failed production deployment, or public content mismatch.
+- Active goal: completed — publish and verify the approved Belt.works technical field note, “The Kernel Is the Constitution.”
+- Current state: release commit `5d94076890b958be233ad01ad2f79b645fea1bd2` is on GitHub `main`. Vercel deployment `5930072351` completed successfully. The article is publicly live at `https://www.belt.works/blog/deepseek-harness-cordis-plugin-first-agents` and appears on the blog index.
+- Verification: frontmatter and unique slug passed; public-boundary and placeholder scans returned zero matches; `git diff --check` passed; `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` passed; local and public article/index routes returned HTTP 200 with required argument/source markers. Live extracted content contains all three sources and the closing kernel statement. Full-repo lint retains the pre-existing unrelated `src/routes/problem-map/+page.svelte:284` `cameraFrame` error.
+- Next best action: none for this release. Use the new `accountable-plugin-composition` skill when the Hosting Manager or another capability bundle reaches architecture review.
+- Blockers: none.
 - Last verified: 2026-08-16 by Egon/default.
 
 ## 2026-08-12 — IOC.Belt synthetic V0 authorized for production launch
