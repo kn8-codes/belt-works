@@ -1,5 +1,14 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-08-16 — Cordis / DeepSeek Harness blog authorized for publication
+
+- Active goal: publish the approved Belt.works technical field note, “The Kernel Is the Constitution,” from a clean article-only worktree and verify it all the way through the Git-backed Vercel production route.
+- Current state: isolated worktree `/Users/kn8/projects/belt-works-cordis-publish` on `publish/cordis-harness`, based on `origin/main` commit `1c76a7d`. The production-format article is installed at `content/posts/deepseek-harness-cordis-plugin-first-agents.md`; a local production preview renders it at `/blog/deepseek-harness-cordis-plugin-first-agents` and lists it on `/blog`.
+- Verification: frontmatter and unique slug passed; public-boundary and placeholder scans returned zero matches; `git diff --check` passed; `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` passed; local article and blog index returned HTTP 200 with required argument/source markers. Full-repo lint retains the pre-existing unrelated `src/routes/problem-map/+page.svelte:284` `cameraFrame` error.
+- Next best action: commit the bounded article/work-card/state/evidence release, push the exact commit to `main`, poll the GitHub/Vercel deployment, then verify the public article and blog index.
+- Blockers: none for the explicitly approved publication lane. Stop for remote divergence, failed production deployment, or public content mismatch.
+- Last verified: 2026-08-16 by Egon/default.
+
 ## 2026-08-12 — IOC.Belt synthetic V0 authorized for production launch
 
 - Active goal: publish the authorized synthetic IOC.Belt methodology/playbook surface at `ioc.belt.works` while keeping real intake, data collection, accounts, APIs, feeds, analytics, and attribution closed.

@@ -2,6 +2,17 @@
 
 Record receipts here. Agent narration is not evidence. Pretty words are how bugs wear cologne.
 
+## 2026-08-16 — Cordis / DeepSeek Harness blog release preflight
+
+- Command/source: read the Cordis preprint in full; inspected DeepSeek Harness architecture and Cordis primer at repository commit `47f943859bef60e4160492346772ded9b24f765a`; created isolated worktree `/Users/kn8/projects/belt-works-cordis-publish` from `origin/main` commit `1c76a7d`; adapted the approved draft to the flat-file renderer without unsupported tables or blockquotes.
+- Result: local route `/blog/deepseek-harness-cordis-plugin-first-agents` renders “The Kernel Is the Constitution,” the “everything is a plugin” distinction, revertible effects, the model-visible logging rule, the external-emission boundary, Belt.works operating patterns, and all three direct source links; `/blog` lists the post.
+- File/path/link: `content/posts/deepseek-harness-cordis-plugin-first-agents.md`, `work/active/2026-08-16-cordis-harness-blog.md`, `STATE.md`; target public route `https://www.belt.works/blog/deepseek-harness-cordis-plugin-first-agents`.
+- Verification: frontmatter/slug/body check passed (`slug=deepseek-harness-cordis-plugin-first-agents`, body 11,955 characters, 11 posts); public-boundary and placeholder scans returned zero matches; `git diff --check` passed; `npm ci` completed; `npm run check` reported 0 errors / 0 warnings; `npm run build` passed; local production preview returned HTTP 200 for article and index and confirmed required markers with no unsupported rendering artifacts.
+- Audit note: `npm ci` reported 9 vulnerabilities (1 low, 2 moderate, 6 high). No `npm audit fix` was run because dependency mutation is outside the article release.
+- Known issue: `npm run lint` fails on the pre-existing `origin/main` `src/routes/problem-map/+page.svelte:284` `cameraFrame` error; the content-only release does not touch that file.
+- Approval: Nate explicitly approved publication, commit, push to `main`, deployment/redeployment, and live verification on 2026-08-16.
+- Checked by: Egon/default, 2026-08-16.
+
 ## 2026-08-12 — IOC.Belt synthetic V0 local proof
 
 - Approval/scope: Nate said, “okay i want you to get started on ioc.belt.works.” Interpreted as Phase 1 local synthetic proof only. No commit, push, PR, DNS, deploy, publication, intake, backend, account, API, feed, search, database, or real evidence.
