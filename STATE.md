@@ -1,5 +1,16 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-08-25 — Claude Code course evidence page private implementation
+
+- Active goal: build the GSD Phase 04A private course-page slice for `Claude Code: Beyond the Chat Window` without publishing, collecting email, showing price, activating checkout, changing shared navigation, repairing the sitemap in this branch, or touching another worktree.
+- Current state: isolated route `/courses/claude-code-beyond-chat-window` exists on `feat/claude-code-course-sales-page`. It leads with the verified fictional one-file fixture, named check and explicit check limitation; presents the locked six-module curriculum, prerequisites, separate Claude Code burden, fit/no-fit boundary, delivered/planned asset states, real Belt.works proof links and an inactive purpose-specific update-list contract. Metadata is `noindex,nofollow`; there is no form, price or purchase control.
+- Verification: `npm run check` returned 0 errors / 0 warnings; `npm run build` passed; scoped ESLint and `git diff --check` passed. Local production preview returned HTTP 200. Browser Harness at 1280×900 and 390×844 found no horizontal overflow, heading skips, forms, fields, empty/broken links or external resources. Keyboard order reached page CTAs and FAQ summaries; the corrected CTA focus style is 2px Belt-lime with 3px offset. Desktop and phone screenshots were visually inspected with no blocking hierarchy, clipping, credibility or false-enrollment defect. Requirement/claim scan passed 15/15.
+- Dependency note: `npm ci` installed the unchanged lockfile and reported 9 existing vulnerabilities (1 low, 2 moderate, 6 high). No `npm audit fix` or dependency mutation was performed.
+- Next best action: Nate reviews the local visual/copy direction. Independent pre-publication review, shared-site sitemap/canonical repair, consent provider/lifecycle and exact publication boundary remain separate gates.
+- Blockers: no blocker for local review. No commit, push, deploy, navigation link, public indexing, email collection, provider/account, analytics, price, checkout or public availability is authorized.
+- Open questions for Nate: approve, amend or reject the route-level visual/copy direction; no commerce decision is required for this review.
+- Last verified: 2026-08-25 by Egon/default.
+
 ## 2026-08-16 — Cordis / DeepSeek Harness blog publicly live
 
 - Active goal: completed — publish and verify the approved Belt.works technical field note, “The Kernel Is the Constitution.”
