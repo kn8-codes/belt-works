@@ -10,6 +10,8 @@
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+		"test:commerce": "node --test tests/commerce/*.test.js",
+		"test:course-evidence": "node --test tests/course-evidence/*.test.js",
 		"lint": "eslint ."
 	},
 	"devDependencies": {
@@ -29,6 +31,10 @@
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.104.0",
-		"d3-force": "^3.0.0"
+		"d3-force": "^3.0.0",
+		"stripe": "^22.5.0"
+	},
+	"overrides": {
+		"ws": "8.21.3"
 	}
 }

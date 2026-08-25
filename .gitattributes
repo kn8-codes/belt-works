@@ -1,0 +1,2 @@
+# Unified diff context blank lines intentionally contain one space.
+static/course-evidence/claude-code-beyond-chat-window/FAQ.starter-to-completed.diff whitespace=-blank-at-eol

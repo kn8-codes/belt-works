@@ -1,4 +1,8 @@
 <script>
+  import { fixtureDiff } from '$lib/content/course-evidence.js';
+
+  let { data, form } = $props();
+
   const modules = [
     {
       number: '01',
@@ -120,7 +124,7 @@
       <dl>
         <div>
           <dt>Format</dt>
-          <dd>Six short recorded modules</dd>
+          <dd>Six short, self-paced recorded modules</dd>
         </div>
         <div>
           <dt>Target length</dt>
@@ -133,6 +137,10 @@
         <div>
           <dt>Hands-on burden</dt>
           <dd>Computer, internet and separate Claude Code access</dd>
+        </div>
+        <div>
+          <dt>Language</dt>
+          <dd>English master; captions and transcript planned</dd>
         </div>
         <div>
           <dt>Current state</dt>
@@ -211,6 +219,9 @@
           <dd>Invent contact, accessibility, registration, transit, food or weather details.</dd>
         </div>
       </dl>
+      <p class="proof-link">
+        <a href="/course-evidence/claude-code-beyond-chat-window/TASK_PACKET.md">Open the complete task packet</a>
+      </p>
     </article>
 
     <div class="evidence-stack">
@@ -220,13 +231,32 @@
         <p class="evidence-line"><strong>Confirmed:</strong> Summit Lake Community Center</p>
         <p class="evidence-line evidence-line--open"><strong>Open:</strong> free admission or a $5 suggested donation</p>
         <p class="evidence-line evidence-line--open"><strong>Open:</strong> south-lot parking is mentioned but unconfirmed</p>
+        <p class="proof-link">
+          <a href="/course-evidence/claude-code-beyond-chat-window/EVENT_NOTES.md">Inspect the fictional source notes</a>
+        </p>
+      </article>
+
+      <article class="card large diff-card">
+        <p class="meta">Literal starter → reviewed unified diff</p>
+        <pre aria-label="FAQ starter to reviewed unified diff"><code>{fixtureDiff}</code></pre>
+        <p class="proof-link proof-link--pair">
+          <a href="/course-evidence/claude-code-beyond-chat-window/fixtures/FAQ.starter.md">Open starter</a>
+          <a href="/course-evidence/claude-code-beyond-chat-window/fixtures/FAQ.completed.md">Open reviewed result</a>
+          <a href="/course-evidence/claude-code-beyond-chat-window/FAQ.starter-to-completed.diff">Open literal diff</a>
+        </p>
       </article>
 
       <article class="card large check-card">
         <p class="meta">Named check · verified fixture</p>
         <pre><code>python3 tests/check_faq.py \
   --file fixtures/FAQ.completed.md</code></pre>
-        <p class="check-result"><span aria-hidden="true">✓</span> Reviewed fixture passes the named conditions.</p>
+        <pre class="check-output"><code>CHECK PASS: fixtures/FAQ.completed.md
+Confirmed facts are present; admission and parking remain explicit open questions.
+LIMIT: this check does not prove completeness, publication approval, or real-world accuracy.</code></pre>
+        <p class="proof-link proof-link--pair">
+          <a href="/course-evidence/claude-code-beyond-chat-window/tests/check_faq.py">Inspect the named check</a>
+          <a href="/course-evidence/claude-code-beyond-chat-window/README.md">Open the evidence README</a>
+        </p>
       </article>
     </div>
   </div>
@@ -284,7 +314,7 @@
         <div class="module-copy">
           <div class="module-heading">
             <h3>{module.title}</h3>
-            {#if module.featured}<span class="status">Representative sample</span>{/if}
+            {#if module.featured}<span class="status">Sample in private production</span>{/if}
           </div>
           <p>{module.description}</p>
         </div>
@@ -450,6 +480,29 @@
         Enrollment stays closed until the representative sample, complete course, captions and transcript,
         price/refund/access terms and purchase-to-access smoke all pass review.
       </p>
+      {#if data.commerce?.checkoutEnabled}
+        <aside class="commerce-test" aria-label="Private Stripe test checkout">
+          <div class="status-row">
+            <span class="status status-working">Stripe test mode</span>
+            <span class="status status-neutral">No live payment</span>
+          </div>
+          <h3>Exercise the payment transport.</h3>
+          <p>
+            Test price: <strong>{data.commerce.displayPrice}</strong>. {data.commerce.accessDescription}
+            This verifies Stripe transport and receipt handling only; no learner access is granted.
+          </p>
+          <p class="microcopy">
+            Review the <a href={data.commerce.termsUrl}>test terms</a> and
+            <a href={data.commerce.refundPolicyUrl}>test refund policy</a> before continuing.
+          </p>
+          <form method="POST" action="?/checkout">
+            <button class="button" type="submit">Open Stripe test checkout</button>
+          </form>
+          {#if form?.checkoutError}
+            <p class="form-error" role="alert">{form.checkoutError}</p>
+          {/if}
+        </aside>
+      {/if}
       <div class="actions">
         <a class="button" href="#proof">Inspect the fixture proof</a>
         <a class="button secondary" href="/blog/the-work-before-the-work">Read the build philosophy</a>
@@ -517,7 +570,7 @@
   }
 
   dt {
-    color: var(--dim);
+    color: var(--muted);
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -531,7 +584,7 @@
   }
 
   .microcopy {
-    color: var(--dim);
+    color: var(--muted);
     font-size: 0.84rem;
     line-height: 1.55;
     margin: 1rem 0 0;
@@ -569,6 +622,12 @@
     gap: 1rem;
   }
 
+  .proof-layout > *,
+  .evidence-stack,
+  .evidence-stack > * {
+    min-width: 0;
+  }
+
   .task-panel h3 {
     color: var(--text);
     font-size: clamp(1.5rem, 4vw, 2.5rem);
@@ -588,6 +647,36 @@
     border-left-color: var(--accent-2);
   }
 
+  .proof-link {
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+  }
+
+  .proof-link--pair {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .proof-link a {
+    color: var(--accent);
+    text-underline-offset: 0.2em;
+  }
+
+  .diff-card pre {
+    overflow-x: auto;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    background: #050504;
+    color: var(--text);
+    font-size: 0.78rem;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+
   .check-card pre {
     overflow-x: auto;
     margin: 1rem 0;
@@ -596,11 +685,8 @@
     background: #050504;
     color: var(--accent);
     line-height: 1.6;
-  }
-
-  .check-result {
-    color: var(--accent);
-    margin-bottom: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
   }
 
   .limit-panel {
@@ -680,7 +766,7 @@
 
   .module-number,
   .module-time {
-    color: var(--dim);
+    color: var(--muted);
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -769,7 +855,7 @@
   }
 
   .status-planned {
-    color: var(--dim);
+    color: var(--muted);
   }
 
   .trust-section {
@@ -856,11 +942,42 @@
     max-width: 850px;
   }
 
+  .commerce-test {
+    max-width: 850px;
+    margin: 1.5rem 0;
+    padding: 1.25rem;
+    border: 1px solid var(--accent-2);
+    background: #090907;
+  }
+
+  .commerce-test h3 {
+    margin-bottom: 0.6rem;
+  }
+
+  .commerce-test p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .commerce-test form {
+    margin-top: 1rem;
+  }
+
+  .form-error {
+    color: var(--accent-2);
+    font-weight: 800;
+  }
+
+  :global(main button:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
   @media (max-width: 900px) {
     .course-hero__grid,
     .proof-layout,
     .update-panel {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       align-items: start;
     }
 

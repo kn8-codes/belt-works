@@ -1,5 +1,15 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-08-25 — Claude Code Stripe transport private implementation
+
+- Active goal: make the course page technically ready for a Stripe test-mode purchase smoke without enabling live payments, choosing buyer access by implication, applying provider migrations, or opening checkout.
+- Current state: isolated child branch `feat/claude-code-course-stripe-readiness` is based on pushed course-page commit `805a971`. In addition to Stripe transport, it now contains the course-page review remediation: seven public fictional evidence artifacts, a visible starter→reviewed diff, literal named-check output/links, higher-contrast small text and bounded proof-panel overflow. It includes Stripe Node SDK 22.5.0, server-owned Product/Price validation, a hosted Checkout action, raw-body signature-verified webhook, delayed-payment handling, data-minimized idempotent Stripe event/order receipts, a server-only Supabase migration, honest unverified/cancel states and a config-driven test-only panel. Default configuration renders no form, button or price. Live mode is structurally rejected with `live_fulfillment_adapter_not_installed`.
+- Verification: 26/26 Node commerce boundary tests passed; seven public fixture artifacts matched their intended reviewed/public contents; starter check exited expected 1 and completed check exited 0; the course route plus seven artifact URLs returned HTTP 200; `npm run check` reported 0 errors / 0 warnings; production build, scoped ESLint and `git diff --check` passed; full-repo lint retains one inherited unrelated `problem-map` `cameraFrame` failure. `ws` was overridden from vulnerable 8.20.0 to 8.21.3; production audit is zero while the dev-inclusive toolchain audit retains 8 findings. Compiled default-path smokes passed: course HTTP 200 with zero checkout controls, disabled action refusal, unsigned webhook HTTP 400, invented return unverified/no access, and cancel page with no purchase claim.
+- Privacy/safety: no card handling, email persistence, purchase-to-marketing enrollment, secret values, account connection, database mutation or provider call. Logs contain error class names only.
+- Next best action: commit and push this reviewed private successor branch, then stop at the owner/access/credential gate.
+- Blockers: real test purchase requires Nate's immediate-access choice plus Stripe test credentials/Product/Price/webhook configuration and approval to apply the Supabase migration. Live activation additionally requires approved price/refund/tax/support/terms and a verified fulfillment adapter.
+- Last verified: 2026-08-25 by Egon/default.
+
 ## 2026-08-25 — Claude Code course evidence page private implementation
 
 - Active goal: build the GSD Phase 04A private course-page slice for `Claude Code: Beyond the Chat Window` without publishing, collecting email, showing price, activating checkout, changing shared navigation, repairing the sitemap in this branch, or touching another worktree.
