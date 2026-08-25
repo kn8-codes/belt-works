@@ -2,6 +2,19 @@
 
 Record receipts here. Agent narration is not evidence. Pretty words are how bugs wear cologne.
 
+## 2026-08-25 — Sitemap and robots repair local proof
+
+- Scope/authority: Nate directed Egon to continue useful reversible work until an owner/desk gate. The live `https://www.belt.works/sitemap.xml` returned 404. Existing dirty worktree `/Users/kn8/projects/belt-works-seo-foundation` was inspected read-only and preserved; its June implementation bundles unapproved service/case-study/schema work and was not continued.
+- Isolation: created `/Users/kn8/projects/belt-works-sitemap-repair` on `fix/sitemap-robots-canonical` from current `origin/main` `8e6aed2`.
+- Code classification: `code_lifecycle=maintained_public`; `ponytail_mode=off`; shared crawl/index infrastructure. Reused current route/blog architecture and treated the old sitemap/robots files as prior art only.
+- Result: `src/routes/sitemap.xml/+server.js` explicitly lists reviewed core routes and derives current blog slugs/dates from `$lib/content/blog.js`. Entries are de-duplicated and sorted; static pages have no false per-request `lastmod`; blog entries use frontmatter dates. `static/robots.txt` advertises the canonical sitemap. The unmerged course route is intentionally absent.
+- Canonical proof: `https://belt.works/` and apex robots/sitemap requests redirect once to `https://www.belt.works`; www is therefore the observed canonical host. Pre-repair www sitemap returned 404.
+- Verification: unchanged-lockfile `npm ci`; `npm run check` → 0 errors / 0 warnings; `npm run build` → pass; `npx eslint src/routes/sitemap.xml/+server.js` → pass; `git diff --check` → pass. No audit fix was run; npm reports 9 existing vulnerabilities (1 low, 2 moderate, 6 high).
+- Runtime: production preview `/sitemap.xml` returned HTTP 200 and `application/xml; charset=utf-8`. Independent XML parse passed. It emitted 22 unique, sorted www URLs; all 22 corresponding local paths returned HTTP 200. Robots declaration and course exclusion checks passed.
+- Guardrails: no stale SEO worktree edit, service page, case study, JSON-LD, navigation, course code, dependency, account, Search Console, Bing, commit to main, merge, deployment, DNS or public mutation.
+- Work card: `work/active/2026-08-25-sitemap-robots-repair.md`.
+- Checked by: Egon/default, 2026-08-25.
+
 ## 2026-08-16 — Cordis / DeepSeek Harness blog release preflight
 
 - Command/source: read the Cordis preprint in full; inspected DeepSeek Harness architecture and Cordis primer at repository commit `47f943859bef60e4160492346772ded9b24f765a`; created isolated worktree `/Users/kn8/projects/belt-works-cordis-publish` from `origin/main` commit `1c76a7d`; adapted the approved draft to the flat-file renderer without unsupported tables or blockquotes.

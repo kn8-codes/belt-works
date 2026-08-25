@@ -1,5 +1,15 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-08-25 — Sitemap and robots repair isolated and verified
+
+- Active goal: replace the public `/sitemap.xml` 404 with a current, bounded crawl baseline without importing the stale June SEO lane's unapproved service pages, case study, schema, or navigation changes.
+- Current state: isolated worktree `/Users/kn8/projects/belt-works-sitemap-repair` on `fix/sitemap-robots-canonical`, based on `origin/main` `8e6aed2`. `src/routes/sitemap.xml/+server.js` emits reviewed core routes plus current blog slugs from the existing content loader. Static routes omit invented modification dates; blog routes use frontmatter dates. `static/robots.txt` advertises `https://www.belt.works/sitemap.xml`, matching the live apex-to-www redirect.
+- Verification: `npm run check` → 0 errors / 0 warnings; `npm run build` → pass; scoped ESLint and `git diff --check` → pass. Production preview returned XML HTTP 200 with 22 unique, sorted `https://www.belt.works` URLs; all 22 local routes returned 200; XML parse, robots declaration and unmerged-course exclusion passed.
+- Dependency note: unchanged lockfile install reports 9 existing vulnerabilities (1 low, 2 moderate, 6 high); no audit fix or dependency mutation.
+- Next best action: commit and push this isolated branch for review. Merge/deployment and Search Console/Bing submission remain separate gates.
+- Blockers: none for branch commit/push. No production change is authorized by this state entry.
+- Last verified: 2026-08-25 by Egon/default.
+
 ## 2026-08-16 — Cordis / DeepSeek Harness blog publicly live
 
 - Active goal: completed — publish and verify the approved Belt.works technical field note, “The Kernel Is the Constitution.”
