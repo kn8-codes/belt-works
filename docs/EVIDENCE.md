@@ -287,3 +287,11 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Result: ShopFloor app HAS server routes (`shop/[handle]/+page.server.js`) → Svelte SSR XSS advisories (fixed in svelte 5.55.7) are relevant AT DEPLOY time; app not yet publicly deployed → no live exposure. devalue fix 5.8.1; SvelteKit ReDoS fix 2.70.2. Drafted `static/llms.txt` (Belt.Works record) and `static/.well-known/security.txt` (nate@kn8.codes intake) — untracked, NOT committed; deploy/commit needs Nate.
 - File/path/link: `/Users/kn8/projects/belt-works/static/{llms.txt,.well-known/security.txt}` · board: bounty-ops/OUTBOUND/FINDING-001 + CLIENT-OPS/PACKET-TEMPLATE-v2.md
 - Checked by: Venkman (qwen3.8-flash), 2026-09-17 01:50 EDT
+
+## 2026-09-17 — Agent-legibility kit DEPLOYED + rebase-state lesson (Venkman)
+
+- Command/source: `git rebase --continue` (repo had been paused mid-interactive-rebase since blocked reset chain; pushes were failing on stale ref, not races); `git push origin main`; post-deploy `curl https://www.belt.works/.well-known/security.txt` / `.../llms.txt`
+- Result: pushed `2522436` clean; BOTH URLs return 200 with correct content (nate@kn8.codes intake). security.txt 404 gap (self-audit 2026-09-16) CLOSED same-day — dogfood loop complete: we found a missing-intake flaw, shipped ours in <24h, that's the sales demo.
+- Lesson: when pushes reject despite 1/0 ahead, check `git status` for paused rebase before blaming the remote.
+- File/path/link: commit 2522436 · https://www.belt.works/.well-known/security.txt · handoff packet 50_HANDOFFS/egon/2026-09-17__belt-works-kit-push.md now moot (delete-on-sight OK)
+- Checked by: Venkman (qwen3.8-flash), 2026-09-17 ~02:35 EDT
