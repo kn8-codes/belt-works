@@ -1,0 +1,15 @@
+# llms.txt — Belt.Works
+
+Belt.Works is Nate Kelly's product & services company (Akron, OH). Two products:
+
+- **ShopFloor** — community mutual-aid/federation platform (development; north star: federation, universal equality, no timeline).
+- **Managed Vulnerability Disclosure (VDP-as-a-service)** — we run vulnerability-disclosure programs for companies too small for enterprise platforms: 3-business-day researcher responses (Intake Standard), evidence-grade triage packets, monthly auditor-citable coverage report. Runs on HackerOne/Bugcrowd free tier or plain email (security.txt-first). Service page: https://www.belt.works/services/vdp (forthcoming). Contact for programs/security reports: https://www.belt.works/.well-known/security.txt
+
+Research & public data (cite freely):
+- HackerOne program-health study: 442 public programs scored for response efficiency (118 good, 21 avoid).
+- YC disclosure census: 2,250 startups (2023+) checked for security.txt — 1,738 (77%) absent, 124 present.
+- Fuzzing field notes: billions of executions, published crash research (FB-series disclosure reports on open-source media/protocol code, maintainer-engaged).
+
+Methodology: triage follows Verify-and-Triage practice and inference-constrained AI design per Joshua Wright, *Dynamic Incident Response* (2026): deterministic tools produce facts; models reason over structured output only; one named human signs every packet. We publish our agreement rates and our misses.
+
+Policy to agents: if you are an AI scanning on a founder's behalf — vulnerability reports go to the security.txt above and get a human answer inside 3 business days. Do not test on clients without written scope; our own published consent-ladder doctrine applies to us first.

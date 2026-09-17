@@ -1,0 +1,5 @@
+Contact: mailto:nate@kn8.codes
+Expires: 2027-09-30T00:00:00.000Z
+Canonical: https://www.belt.works/.well-known/security.txt
+Policy: https://www.belt.works/services/vdp
+Comment: This program is run to a 3-business-day human-response standard. Reports are triaged to evidence standard with a written packet back to you. Encrypted mail welcome; ask for the key.

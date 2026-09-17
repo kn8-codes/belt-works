@@ -280,3 +280,10 @@ Record receipts here. Agent narration is not evidence. Pretty words are how bugs
 - Known issue: `npm run lint` fails on the pre-existing `origin/main` `src/routes/problem-map/+page.svelte:284` `cameraFrame` assignment error; it is outside this content-only diff.
 - Approval: Nate explicitly approved commit, push to `main`, and production deployment on 2026-08-06.
 - Checked by: Egon, 2026-08-06.
+
+## 2026-09-17 — Agent-legibility files drafted + stack advisory verification (Venkman)
+
+- Command/source: `curl -sL https://www.belt.works/.well-known/security.txt` (was 404); OSV.dev detail queries for GHSA-f3cj-j4f6-wq85 / GHSA-pr6f-5x2q-rwfp / GHSA-rcqx-6q8c-2c42 / GHSA-77vg-94rm-hx3p / GHSA-29g2-3rmr-qm68; repo inspection `find src/routes -name "+page.server.js"`
+- Result: ShopFloor app HAS server routes (`shop/[handle]/+page.server.js`) → Svelte SSR XSS advisories (fixed in svelte 5.55.7) are relevant AT DEPLOY time; app not yet publicly deployed → no live exposure. devalue fix 5.8.1; SvelteKit ReDoS fix 2.70.2. Drafted `static/llms.txt` (Belt.Works record) and `static/.well-known/security.txt` (nate@kn8.codes intake) — untracked, NOT committed; deploy/commit needs Nate.
+- File/path/link: `/Users/kn8/projects/belt-works/static/{llms.txt,.well-known/security.txt}` · board: bounty-ops/OUTBOUND/FINDING-001 + CLIENT-OPS/PACKET-TEMPLATE-v2.md
+- Checked by: Venkman (qwen3.8-flash), 2026-09-17 01:50 EDT
