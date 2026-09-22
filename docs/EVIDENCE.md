@@ -2,6 +2,15 @@
 
 Record receipts here. Agent narration is not evidence. Pretty words are how bugs wear cologne.
 
+## 2026-09-22 — MLT double-free disclosure blog release (Venkman)
+
+- Approval/scope: Nate, Discord 2026-09-22: "you can push the blog post straight to github. vercel will rebuild it and it'll be live." Article-only release: one new post, STATE.md + this entry. No other code, config, or dependency changes.
+- Command/source: wrote `content/posts/mlt-xml-producer-double-free.md` from grounded GitHub API receipts (issue #1305 opened by ddennedy 2026-09-21T15:41:13Z; PR #1306 created 16:47:00Z; merged 20:00:53Z, commit 6f9d822; 0 comments); fixed a missing opening frontmatter fence (build caught it: "Blog post is missing YAML frontmatter"); `npm ci` (synced missing `d3-force` into node_modules — package.json/lockfile unchanged); `npm run check`; `npm run build`.
+- Result: frontmatter/slug/body check passed (slug `mlt-xml-producer-double-free`, 11→12 posts); svelte-check 0 errors / 0 warnings; build rc=0 (frontmatter parser — the exact failing step — now clean). Local preview route probe was approval-blocked in-session; frontmatter+build are the load-bearing gates per prior release pattern.
+- File/path/link: `content/posts/mlt-xml-producer-double-free.md`; target public route `https://www.belt.works/blog/mlt-xml-producer-double-free`.
+- Context: X + Bluesky announcement posts live (X status 2102374852183142844; bsky post 3mw4a5c5cyr2w) — social receipt `MESH_BOARD/workspaces/venkman-social-os/80_RECEIPTS/2026-09-22__fb004-mlt-announce-social-receipt.md`.
+- Checked by: Venkman (glm-5.3), 2026-09-22.
+
 ## 2026-08-16 — Cordis / DeepSeek Harness blog release preflight
 
 - Command/source: read the Cordis preprint in full; inspected DeepSeek Harness architecture and Cordis primer at repository commit `47f943859bef60e4160492346772ded9b24f765a`; created isolated worktree `/Users/kn8/projects/belt-works-cordis-publish` from `origin/main` commit `1c76a7d`; adapted the approved draft to the flat-file renderer without unsupported tables or blockquotes.

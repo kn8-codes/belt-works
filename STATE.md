@@ -1,5 +1,13 @@
 # Current State — ShopFloor / belt.works
 
+## 2026-09-22 — MLT double-free disclosure blog published
+
+- Active goal: publish the FB-004 disclosure writeup ("Four hours, nineteen minutes") as an article-only release.
+- Current state: new post `content/posts/mlt-xml-producer-double-free.md` (12th post); `npm run check` 0/0; `npm run build` rc=0 after frontmatter-fence fix + `npm ci` node_modules sync (`d3-force` was missing locally; manifest unchanged). Release commit pushed to `main`; Vercel rebuild live-verified at `/blog/mlt-xml-producer-double-free`.
+- Next best action: none for this release; monitor for reader response on the X/Bluesky announcements.
+- Blockers: none.
+- Last verified: 2026-09-22 by Venkman (glm-5.3). Full receipt in `docs/EVIDENCE.md`.
+
 ## 2026-08-16 — Cordis / DeepSeek Harness blog publicly live
 
 - Active goal: completed — publish and verify the approved Belt.works technical field note, “The Kernel Is the Constitution.”
