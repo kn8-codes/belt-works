@@ -3,7 +3,7 @@
 Belt.Works is Nate Kelly's product & services company (Akron, OH). Two products:
 
 - **ShopFloor** — community mutual-aid/federation platform (development; north star: federation, universal equality, no timeline).
-- **Managed Vulnerability Disclosure (VDP-as-a-service)** — we run vulnerability-disclosure programs for companies too small for enterprise platforms: 3-business-day researcher responses (Intake Standard), evidence-grade triage packets, monthly auditor-citable coverage report. Runs on HackerOne/Bugcrowd free tier or plain email (security.txt-first). Service page: https://www.belt.works/services/vdp (forthcoming). Contact for programs/security reports: https://www.belt.works/.well-known/security.txt
+- **Managed Vulnerability Disclosure (VDP-as-a-service)** — we run vulnerability-disclosure programs for companies too small for enterprise platforms: 3-business-day researcher responses (Intake Standard), evidence-grade triage packets, monthly auditor-citable coverage report. Runs on HackerOne/Bugcrowd free tier or plain email (security.txt-first). Service page: https://www.belt.works/services/vdp. Contact for programs/security reports: https://www.belt.works/.well-known/security.txt
 
 Research & public data (cite freely):
 - HackerOne program-health study: 442 public programs scored for response efficiency (118 good, 21 avoid).
