@@ -9,14 +9,17 @@
 </script>
 
 <svelte:head>
-  <title>{post.title} (draft structure) | Civic Desk draft</title>
+  <title>{post.title} | Towpath Civic</title>
   <meta name="description" content={post.summary} />
-  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href={articlePath} />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content={`${post.title} (draft structure)`} />
+  <meta property="og:title" content={post.title} />
   <meta property="og:description" content={post.summary} />
-  <meta property="og:site_name" content="Belt.Works Civic Desk draft" />
+  <meta property="og:url" content={articlePath} />
+  <meta property="og:site_name" content="Towpath Civic" />
+  <meta property="article:published_time" content={post.publishedDate} />
+  <meta property="article:modified_time" content={post.reviewedDate || post.publishedDate} />
   <meta name="twitter:card" content="summary" />
   <script type="application/ld+json">{JSON.stringify(data.schema)}</script>
 </svelte:head>
@@ -33,13 +36,13 @@
       {/each}
     </nav>
 
-    <p class="eyebrow">{post.city} · {post.topic} · draft structure</p>
+    <p class="eyebrow">{post.city} · {post.topic} · Published {post.publishedDate} · Reviewed {post.reviewedDate}</p>
     <h1>{post.title}</h1>
     <p class="lead">{post.summary}</p>
 
     <div class="status-row">
-      <span class="status warn">structure sample · not a live news claim</span>
-      <Share url={articlePath} title={`${post.title} — civic announcement summary draft`} variant="compact" />
+      <span class="status">Verified summary of an official public record</span>
+      <Share url={articlePath} title={`${post.title} — Towpath Civic summary`} variant="compact" />
     </div>
 
     <section class="grid two">

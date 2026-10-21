@@ -7,15 +7,15 @@
 </script>
 
 <svelte:head>
-  <title>Civic information project draft | Belt.Works</title>
-  <meta name="description" content="Draft structure for a neutral, source-linked civic information project covering Akron and surrounding Northeast Ohio communities." />
-  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Towpath Civic — the public record, made usable</title>
+  <meta name="description" content="Neutral, source-linked summaries of what local government announces and decides in Akron and surrounding Northeast Ohio communities. Original summaries, official backlinks, corrections-first." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href={`${path}/`} />
 </svelte:head>
 
 <section class="civic-hero">
   <div class="wrap">
-    <p class="eyebrow">Belt.Works · structure draft · name TBD</p>
+    <p class="eyebrow">Towpath Civic · a Belt.Works project</p>
     <div class="hero-grid">
       <div>
         <h1>The public record, made usable.</h1>
@@ -37,7 +37,7 @@
         <p class="meta">working premise</p>
         <h2>Speed without pretending to be the source.</h2>
         <p>Watch public release pages and press feeds. Verify the facts. Publish an original summary with a prominent link to the official announcement.</p>
-        <p class="draft-note">This is a private draft. Branding, domain, subdomain, and live indexing remain undecided.</p>
+        <p class="draft-note">Early public draft, operated in the open: coverage starts with Akron's official release feed; every record links to its primary source and follows the visible corrections policy.</p>
       </aside>
     </div>
   </div>
@@ -69,7 +69,7 @@
       <p class="eyebrow">Announcement desk</p>
       <h2>Fast summaries. Clear receipts.</h2>
     </div>
-    <p class="lead">Sample cards only. The live version will ingest a verified public release, write a distinct summary, and preserve the official link.</p>
+    <p class="lead">Live records from official release feeds: original summaries, key facts, resident impact, and the official link preserved. First beat: Akron public safety, police accountability, and city services.</p>
   </div>
   <div class="wrap release-list">
     {#each posts as post (post.id)}
@@ -80,8 +80,8 @@
           <p>{post.summary}</p>
         </div>
         <div class="release-foot">
-          <span class="status warn">sample structure</span>
-          <a href={`/civic-desk/announcements/${post.slug}`}>Draft page →</a>
+          <span class="status">verified summary</span>
+          <a href={`/civic-desk/announcements/${post.slug}`}>Read →</a>
           <a href={post.officialSourceUrl} target="_blank" rel="noopener noreferrer nofollow">{post.officialSourceLabel} ↗</a>
         </div>
       </article>
@@ -104,10 +104,10 @@
       </ul>
     </article>
     <article class="card large">
-      <p class="eyebrow">Next build gate</p>
-      <h2>Ready for a name later.</h2>
-      <p>The structure does not assume Civic Desk, Akron, Summit, or any final subdomain. When the identity is chosen, the placeholder label, metadata, route prefix, and social cards can be changed in one pass.</p>
-      <div class="actions"><a class="button secondary" href="/contact">Belt.Works contact</a></div>
+      <p class="eyebrow">About</p>
+      <h2>What Towpath Civic is.</h2>
+      <p>A neutral, fact-based civic information desk covering Akron and ten surrounding communities — named for the Ohio &amp; Erie Canal Towpath that connects the region. Every record is an original summary of an official public release, linked to its source, with published and reviewed timestamps and a visible corrections policy. A Belt.Works project: evidence-first, show the work.</p>
+      <div class="actions"><a class="button secondary" href="/civic-desk/corrections/">Corrections policy</a><a class="button secondary" href="/contact">Contact</a></div>
     </article>
   </div>
 </section>

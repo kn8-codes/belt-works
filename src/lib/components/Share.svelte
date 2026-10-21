@@ -1,4 +1,5 @@
 <script>
+  /** @type {{ url: string, title: string, variant?: string, label?: string }} */
   let { url, title, variant = 'primary', label = 'Share this summary' } = $props();
 
   const links = $derived.by(() => {

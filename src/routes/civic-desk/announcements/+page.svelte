@@ -6,17 +6,17 @@
 </script>
 
 <svelte:head>
-  <title>Announcement summaries (draft) | Civic Desk draft</title>
-  <meta name="description" content="Draft structure for neutral, source-linked local government announcement summaries." />
-  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Announcement desk | Towpath Civic</title>
+  <meta name="description" content="Neutral, source-linked summaries of local government announcements for Akron and surrounding Northeast Ohio communities." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href={`${path}/`} />
 </svelte:head>
 
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow">Announcement desk · private draft</p>
+    <p class="eyebrow">Announcement desk</p>
     <h1>Verified release summaries</h1>
-    <p class="lead">Each future announcement page will contain an original summary, resident impact, key facts, FAQ, official source link, corrections path, and share links. No sample below is a live news claim.</p>
+    <p class="lead">Every announcement page contains an original summary, resident impact, key facts, FAQ, official source link, corrections path, and share links. Records are sourced from official public releases.</p>
 
     <div class="list">
       {#each posts as post (post.id)}
@@ -26,7 +26,7 @@
             <h2><a href="/civic-desk/announcements/{post.slug}">{post.title}</a></h2>
             <p>{post.summary}</p>
           </div>
-          <a class="button secondary" href="/civic-desk/announcements/{post.slug}">View draft</a>
+          <a class="button secondary" href="/civic-desk/announcements/{post.slug}">Read summary</a>
         </article>
       {/each}
     </div>

@@ -8,16 +8,16 @@
 </script>
 
 <svelte:head>
-  <title>{city.name} civic desk (draft) | Civic Desk draft</title>
-  <meta name="description" content={`Draft hub for verified ${city.name} civic announcements, official sources, and resident information.`} />
-  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>{city.name} | Towpath Civic</title>
+  <meta name="description" content={`${city.name} civic hub: verified announcements, official sources, and resident information.`} />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href={cityPath} />
 </svelte:head>
 
 <section class="section">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/civic-desk/">Civic Desk draft</a> › <a href="/civic-desk/cities/">Cities</a> › {city.name}</nav>
-    <p class="eyebrow">{city.county} · city hub draft</p>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/civic-desk/">Towpath Civic</a> › <a href="/civic-desk/cities/">Cities</a> › {city.name}</nav>
+    <p class="eyebrow">{city.county} · city hub</p>
     <h1>{city.name}</h1>
     <p class="lead">{city.focus}</p>
 
@@ -83,7 +83,7 @@
               <h3><a href={`/civic-desk/announcements/${post.slug}`}>{post.title}</a></h3>
               <p>{post.summary}</p>
             </div>
-            <a class="button secondary" href={`/civic-desk/announcements/${post.slug}`}>View draft</a>
+            <a class="button secondary" href={`/civic-desk/announcements/${post.slug}`}>Read summary</a>
           </article>
         {/each}
       </div>

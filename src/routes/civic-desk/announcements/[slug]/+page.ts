@@ -6,10 +6,10 @@ export async function load({ params }) {
   const post = posts.find((entry) => entry.slug === params.slug);
   if (!post) error(404, 'Announcement not found');
 
-  const articlePath = `${page.url.pathname}/`;
+  const articlePath = `${page.url.origin}${page.url.pathname}/`;
 
   const breadcrumbs = [
-    { name: 'Civic Desk draft', path: '/civic-desk/' },
+    { name: 'Towpath Civic', path: '/civic-desk/' },
     { name: 'Announcements', path: '/civic-desk/announcements/' },
     { name: post.city, path: `/civic-desk/cities/${post.cityId}/` },
     { name: post.title, path: articlePath }
@@ -24,6 +24,11 @@ export async function load({ params }) {
         description: post.summary,
         articleSection: post.topic,
         about: post.city,
+        datePublished: post.publishedDate,
+        dateModified: post.reviewedDate || post.publishedDate,
+        author: { '@type': 'Organization', name: 'Towpath Civic', url: page.url.origin },
+        publisher: { '@type': 'Organization', name: 'Towpath Civic (a Belt.Works project)', url: page.url.origin },
+        mainEntityOfPage: articlePath,
         isBasedOn: {
           '@type': 'WebPage',
           name: post.officialSourceLabel,

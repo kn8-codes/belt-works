@@ -1,15 +1,15 @@
 <svelte:head>
-  <title>Source ledger (draft) | Civic Desk draft</title>
-  <meta name="description" content="Private draft source ledger structure for verified civic announcements." />
-  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Source ledger | Towpath Civic</title>
+  <meta name="description" content="Verification record for every Towpath Civic summary: sources, retrieval dates, reviews, corrections." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 </svelte:head>
 
 <section class="section">
   <div class="wrap policy">
-    <nav class="crumbs"><a href="/civic-desk/">Civic Desk draft</a> › Source ledger</nav>
-    <p class="eyebrow">Verification · private draft</p>
+    <nav class="crumbs"><a href="/civic-desk/">Towpath Civic</a> › Source ledger</nav>
+    <p class="eyebrow">Verification</p>
     <h1>Source ledger</h1>
-    <p class="lead">Every summary needs a durable verification record. This is the structural placeholder for that record; real entries begin only after Nate approves the first beat and public launch.</p>
+    <p class="lead">Every summary carries a durable verification record: the official source, its publication date, our retrieval and review timestamps, and any correction history. First beat, live now: Akron public safety and police accountability plus city services, sourced from official City of Akron releases.</p>
 
     <article class="card large">
       <h2>Ledger fields</h2>

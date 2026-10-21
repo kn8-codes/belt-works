@@ -12,15 +12,15 @@
 </script>
 
 <svelte:head>
-  <title>Cities (draft) | Civic Desk draft</title>
-  <meta name="description" content="Draft city hub structure for Northeast Ohio civic announcements." />
-  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>City hubs | Towpath Civic</title>
+  <meta name="description" content="City hubs for Northeast Ohio civic announcements — verified releases, official sources, and resident information." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href={`${path}/`} />
 </svelte:head>
 
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow">Regional city desk · private draft</p>
+    <p class="eyebrow">Regional city desk</p>
     <h1>Eleven city hubs</h1>
     <p class="lead">Each city page will become a hub for verified announcements, meeting information, official sources, and useful resident services. The current route keeps the final subdomain and brand open.</p>
 
@@ -31,7 +31,7 @@
           <h2><a href={`/civic-desk/cities/${city.id}`}>{city.name}</a></h2>
           <p>{city.focus}</p>
           <p class="meta">Official site · <a href={city.officialSite} target="_blank" rel="noopener noreferrer nofollow">{displayHost(city.officialSite)}</a></p>
-          <p class="status warn">{grouped[city.id].length} sample structure pages</p>
+          <p class="status warn">{grouped[city.id].length} source-linked records</p>
         </article>
       {/each}
     </div>

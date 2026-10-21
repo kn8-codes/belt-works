@@ -1,13 +1,13 @@
 <svelte:head>
-  <title>Corrections policy (draft) | Civic Desk draft</title>
-  <meta name="description" content="Draft corrections and review policy for source-linked civic announcement summaries." />
-  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Corrections policy | Towpath Civic</title>
+  <meta name="description" content="Corrections and review policy for source-linked civic announcement summaries." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 </svelte:head>
 
 <section class="section">
   <div class="wrap policy">
-    <nav class="crumbs"><a href="/civic-desk/">Civic Desk draft</a> › Corrections</nav>
-    <p class="eyebrow">Accuracy · private draft</p>
+    <nav class="crumbs"><a href="/civic-desk/">Towpath Civic</a> › Corrections</nav>
+    <p class="eyebrow">Accuracy</p>
     <h1>Corrections and source policy</h1>
     <p class="lead">Official government records remain primary. This project summarizes, links, and organizes public information; it does not replace the source, invent details, or publish rumor.</p>
 
