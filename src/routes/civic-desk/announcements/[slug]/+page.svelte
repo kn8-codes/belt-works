@@ -21,7 +21,7 @@
   <meta property="article:published_time" content={post.publishedDate} />
   <meta property="article:modified_time" content={post.reviewedDate || post.publishedDate} />
   <meta name="twitter:card" content="summary" />
-  <script type="application/ld+json">{JSON.stringify(data.schema)}</script>
+  {@html `<script type="application/ld+json">${JSON.stringify(data.schema).replace(/</g, '\\u003c')}</script>`}
 </svelte:head>
 
 <article class="article">

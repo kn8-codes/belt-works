@@ -1,7 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { page } from '$app/state';
 
-export async function load({ params }) {
+export async function load({ url, params }) {
   const [{ default: cities }, { default: posts }] = await Promise.all([
     import('$lib/data/civic-cities.js'),
     import('$lib/data/civic-posts.js')
@@ -10,7 +9,7 @@ export async function load({ params }) {
   if (!city) error(404, 'City not found');
 
   const cityPosts = posts.filter((post) => post.cityId === city.id);
-  const cityPath = `${page.url.pathname}/`;
+  const cityPath = `${url.origin}${url.pathname}/`;
 
-  return { city, posts: cityPosts, path: page.url.pathname, cityPath };
+  return { city, posts: cityPosts, path: url.pathname, cityPath };
 }

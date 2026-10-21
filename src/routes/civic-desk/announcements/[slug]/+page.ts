@@ -1,12 +1,11 @@
 import { error } from '@sveltejs/kit';
-import { page } from '$app/state';
 
-export async function load({ params }) {
+export async function load({ url, params }) {
   const { default: posts } = await import('$lib/data/civic-posts.js');
   const post = posts.find((entry) => entry.slug === params.slug);
   if (!post) error(404, 'Announcement not found');
 
-  const articlePath = `${page.url.origin}${page.url.pathname}/`;
+  const articlePath = `${url.origin}${url.pathname}/`;
 
   const breadcrumbs = [
     { name: 'Towpath Civic', path: '/civic-desk/' },
@@ -26,8 +25,8 @@ export async function load({ params }) {
         about: post.city,
         datePublished: post.publishedDate,
         dateModified: post.reviewedDate || post.publishedDate,
-        author: { '@type': 'Organization', name: 'Towpath Civic', url: page.url.origin },
-        publisher: { '@type': 'Organization', name: 'Towpath Civic (a Belt.Works project)', url: page.url.origin },
+        author: { '@type': 'Organization', name: 'Towpath Civic', url: url.origin },
+        publisher: { '@type': 'Organization', name: 'Towpath Civic (a Belt.Works project)', url: url.origin },
         mainEntityOfPage: articlePath,
         isBasedOn: {
           '@type': 'WebPage',
@@ -60,5 +59,5 @@ export async function load({ params }) {
     ]
   };
 
-  return { post, breadcrumbs, schema, articlePath, path: page.url.pathname };
+  return { post, breadcrumbs, schema, articlePath, path: url.pathname, origin: url.origin };
 }

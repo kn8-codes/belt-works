@@ -10,7 +10,7 @@
   <title>Towpath Civic — the public record, made usable</title>
   <meta name="description" content="Neutral, source-linked summaries of what local government announces and decides in Akron and surrounding Northeast Ohio communities. Original summaries, official backlinks, corrections-first." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-  <link rel="canonical" href={`${path}/`} />
+  <link rel="canonical" href={`${data.origin}${path}/`} />
 </svelte:head>
 
 <section class="civic-hero">

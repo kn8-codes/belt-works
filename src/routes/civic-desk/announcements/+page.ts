@@ -1,7 +1,5 @@
-import { page } from '$app/state';
-import Share from '$lib/components/Share.svelte';
 
-export async function load() {
+export async function load({ url }) {
   const { default: posts } = await import('$lib/data/civic-posts.js');
-  return { posts, path: page.url.pathname };
+  return { posts, path: url.pathname, origin: url.origin };
 }

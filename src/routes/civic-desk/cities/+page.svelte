@@ -15,7 +15,7 @@
   <title>City hubs | Towpath Civic</title>
   <meta name="description" content="City hubs for Northeast Ohio civic announcements — verified releases, official sources, and resident information." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-  <link rel="canonical" href={`${path}/`} />
+  <link rel="canonical" href={`${data.origin}${path}/`} />
 </svelte:head>
 
 <section class="section">

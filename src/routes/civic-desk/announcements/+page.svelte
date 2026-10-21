@@ -9,7 +9,7 @@
   <title>Announcement desk | Towpath Civic</title>
   <meta name="description" content="Neutral, source-linked summaries of local government announcements for Akron and surrounding Northeast Ohio communities." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-  <link rel="canonical" href={`${path}/`} />
+  <link rel="canonical" href={`${data.origin}${path}/`} />
 </svelte:head>
 
 <section class="section">
