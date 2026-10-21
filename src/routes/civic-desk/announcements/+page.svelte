@@ -1,5 +1,5 @@
 <script>
-  /** @type {{ data: { posts: any[], path: string } }} */
+  /** @type {{ data: { posts: any[], path: string, origin: string } }} */
   let { data } = $props();
   const posts = $derived(data.posts);
   const path = $derived(data.path);

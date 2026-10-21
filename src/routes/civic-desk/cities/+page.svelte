@@ -1,5 +1,5 @@
 <script>
-  /** @type {{ data: { cities: any[], grouped: Record<string, any[]>, path: string } }} */
+  /** @type {{ data: { cities: any[], grouped: Record<string, any[]>, path: string, origin: string } }} */
   let { data } = $props();
   const cities = $derived(data.cities);
   const grouped = $derived(data.grouped);
