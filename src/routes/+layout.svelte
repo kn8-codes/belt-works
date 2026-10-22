@@ -1,6 +1,5 @@
 <script>
   import '../app.css';
-  import favicon from '$lib/assets/favicon.svg';
   import { page } from '$app/state';
   import IocFooter from '$lib/components/IocFooter.svelte';
   import IocHeader from '$lib/components/IocHeader.svelte';
@@ -14,7 +13,7 @@
 </script>
 
 <svelte:head>
-  <link rel="icon" href={favicon} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <meta property="og:site_name" content="belt.works" />
   <meta property="og:type" content="website" />
