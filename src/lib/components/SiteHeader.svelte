@@ -2,6 +2,7 @@
   import { page } from '$app/state';
 
   const mainSite = 'https://belt.works';
+  const civicSite = 'https://civics.belt.works';
   let base = $derived(page.url.hostname === 'civics.belt.works' ? mainSite : '');
 </script>
 
@@ -10,6 +11,7 @@
     <a href={`${base}/`} class="brand"><span>belt</span>.works</a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href={`${base}/work`}>work</a>
+      <a href={civicSite}>civics</a>
       <a href={`${base}/method`}>method</a>
       <a href={`${base}/blog`}>blog</a>
       <a href={`${base}/ask`}>ask</a>
