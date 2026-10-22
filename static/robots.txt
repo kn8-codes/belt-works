@@ -1,3 +1,6 @@
 # allow crawling everything by default
 User-agent: *
 Disallow:
+
+Sitemap: https://civics.belt.works/sitemap.xml
+Sitemap: https://civics.belt.works/news-sitemap.xml
