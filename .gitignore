@@ -28,3 +28,4 @@ artifacts/ioc-v0/
 playwright-report/
 test-results/
 .gstack/
+.env*

@@ -260,5 +260,115 @@ export default [
     ],
     officialSourceLabel: 'City of Akron release (Aug. 14, 2026)',
     officialSourceUrl: 'https://www.akronohio.gov/news_detail_T17_R489.php'
+  },
+  {
+    id: 'cuyahoga-falls-community-vigil-sharon-dorn-2026-10-22',
+    city: 'Cuyahoga Falls', cityId: 'cuyahoga-falls', topic: 'Community', status: 'seed',
+    title: 'Cuyahoga Falls announces community vigil honoring Sharon Dorn',
+    slug: 'cuyahoga-falls-community-vigil-sharon-dorn', publishedDate: '2026-10-22', reviewedDate: '2026-10-22',
+    summary: 'The City of Cuyahoga Falls announced a community vigil honoring Sharon Dorn on Thursday, Oct. 22, at 7 p.m. at Church Square. The city described Dorn as a valued colleague and directed residents to a family fundraiser. This summary reports the city announcement and does not add details beyond it.',
+    residentImpact: 'Residents who want to attend can use the city-listed Church Square location near 2nd Street and Stow Avenue. The official page also links to the family fundraiser.',
+    facts: [['Event', 'Thursday, Oct. 22, 2026 at 7 p.m.'], ['Location', 'Church Square, near 2nd Street and Stow Avenue'], ['Source posture', 'City announcement; fundraiser link remains on the official page']],
+    faq: [{ question: 'Is this an official city event?', answer: 'The vigil was announced on the City of Cuyahoga Falls official website.' }, { question: 'Where is the fundraiser?', answer: 'The official announcement links to the fundraiser for Sharon Dorn’s family.' }],
+    officialSourceLabel: 'City of Cuyahoga Falls announcement', officialSourceUrl: 'https://www.cityofcf.com/news/city-cuyahoga-falls-announces-community-vigil-honoring-sharon-dorn'
+  },
+  {
+    id: 'stow-public-hearing-amp-entertainment-district-2026-10-19',
+    city: 'Stow', cityId: 'stow', topic: 'City government', status: 'seed',
+    title: 'Stow schedules public hearing on proposed AMP Entertainment District',
+    slug: 'stow-public-hearing-amp-entertainment-district', publishedDate: '2026-10-19', reviewedDate: '2026-10-22',
+    summary: 'Stow City Council scheduled a public hearing for Oct. 22, 2026, at 5 p.m. in the Council Chambers at Stow City Hall. The notice concerns Ordinance 2026-156, which would create a designated outdoor refreshment area known as the AMP Entertainment District and establish regulations for it.',
+    residentImpact: 'Residents who want to follow or participate in the hearing can use the city’s notice and event link for the location and ordinance context.',
+    facts: [['Hearing', 'Oct. 22, 2026 at 5 p.m.'], ['Location', 'Stow City Hall, 3760 Darrow Road'], ['Ordinance', '2026-156 — proposed AMP Entertainment District outdoor refreshment area']],
+    faq: [{ question: 'Does this page say the district was approved?', answer: 'No. The source is a public hearing notice about a proposed ordinance.' }, { question: 'Where is the hearing?', answer: 'The notice lists the Council Chambers at Stow City Hall.' }],
+    officialSourceLabel: 'City of Stow public hearing notice', officialSourceUrl: 'https://www.stowohio.gov/m/newsflash/Home/Detail/627'
+  },
+  {
+    id: 'hudson-sewer-repair-stow-road-2026-10-08',
+    city: 'Hudson', cityId: 'hudson', topic: 'Infrastructure', status: 'seed',
+    title: 'Hudson says Summit County sewer repair on Stow Road may run through mid-November',
+    slug: 'hudson-stow-road-sewer-repair-update', publishedDate: '2026-10-08', reviewedDate: '2026-10-22',
+    summary: 'Hudson reported that Summit County’s emergency sanitary-sewer repair on Stow Road, south of Middleton Road, was taking longer than first expected. The county expected completion by mid-November, weather permitting. The city noted that the project belongs to Summit County’s Department of Sanitary Sewer Services, not the City of Hudson.',
+    residentImpact: 'Motorists should expect traffic delays near the work. The city’s notice lists county contacts for questions and possible sewer-backup claims.',
+    facts: [['Project owner', 'Summit County Department of Sanitary Sewer Services'], ['Location', 'Stow Road, south of Middleton Road'], ['Expected completion', 'Mid-November, weather permitting'], ['Work depth', 'Approximately 10–15 feet underground']],
+    faq: [{ question: 'Is this a City of Hudson project?', answer: 'No. Hudson’s notice identifies it as a Summit County DSSS project.' }, { question: 'Will traffic be affected?', answer: 'The city says motorists should continue to expect delays.' }],
+    officialSourceLabel: 'City of Hudson update', officialSourceUrl: 'https://www.hudson.oh.us/CivicAlerts.aspx?AID=3900'
+  },
+  {
+    id: 'fairlawn-fall-leaf-pickup-2026',
+    city: 'Fairlawn', cityId: 'fairlawn', topic: 'City services', status: 'seed',
+    title: 'Fairlawn announces free bagged-leaf pickup service',
+    slug: 'fairlawn-fall-leaf-pickup-dates', publishedDate: '2026-10-22', reviewedDate: '2026-10-22',
+    summary: 'Fairlawn announced that the city is again providing bagged-leaf pickup at no charge for residents. The notice says pickups occur on Mondays, with missed Monday collections handled by Tuesday at 3 p.m. The official page contains the year’s pickup dates and directs questions to Public Service.',
+    residentImpact: 'Residents using the service should follow the city’s bagging and pickup-date instructions and contact Public Service with questions.',
+    facts: [['Cost', 'No charge to Fairlawn residents'], ['Schedule', 'Mondays; missed pickups are addressed by Tuesday at 3 p.m.'], ['Contact', 'Fairlawn Department of Public Service, 330-668-9550']],
+    faq: [{ question: 'Who can use the service?', answer: 'The city describes it as a service for Fairlawn residents.' }, { question: 'Where are all dates listed?', answer: 'The official Fairlawn notice contains the pickup-date list.' }],
+    officialSourceLabel: 'City of Fairlawn news flash', officialSourceUrl: 'https://www.fairlawn.us/m/newsflash/Home/Detail/1146'
+  },
+  {
+    id: 'barberton-natural-gas-aggregation-fixed-rate-2026-10-02',
+    city: 'Barberton', cityId: 'barberton', topic: 'Utilities', status: 'seed',
+    title: 'Barberton announces new fixed rate for natural-gas aggregation program',
+    slug: 'barberton-natural-gas-aggregation-fixed-rate', publishedDate: '2026-10-02', reviewedDate: '2026-10-22',
+    summary: 'The City of Barberton announced a new fixed rate for its natural-gas aggregation program. The city said opt-out letters would be mailed on Oct. 9 to current and newly eligible accounts. Residents should use the official notice for the rate, eligibility, and opt-out instructions.',
+    residentImpact: 'Eligible customers should watch for the city’s opt-out mailing and review the official terms before deciding whether to remain in the program.',
+    facts: [['Announcement', 'Oct. 2, 2026'], ['Mailing', 'Opt-out letters scheduled for Oct. 9'], ['Program', 'City natural-gas aggregation']],
+    faq: [{ question: 'Does the city’s page include the fixed rate?', answer: 'Yes; the official release is the source for the rate and program terms.' }, { question: 'What should customers do?', answer: 'Review the official mailing and follow its opt-out instructions if needed.' }],
+    officialSourceLabel: 'City of Barberton press release', officialSourceUrl: 'https://www.cityofbarberton.com/the-city-of-barberton-announces-new-fixed-rate-for-natural-gas-aggregation-program/'
+  },
+  {
+    id: 'twinsburg-board-commission-vacancies-2026-10-20',
+    city: 'Twinsburg', cityId: 'twinsburg', topic: 'Civic participation', status: 'seed',
+    title: 'Twinsburg seeks applicants for open board and commission seats',
+    slug: 'twinsburg-board-commission-vacancies', publishedDate: '2026-10-20', reviewedDate: '2026-10-22',
+    summary: 'Twinsburg opened applications for vacancies on city boards and commissions. The official notice describes an Architectural Review Board opening and says applications for that opening are due Nov. 6, 2026, at 4:30 p.m. It directs applicants to the city application form and lists the Clerk of Council as a contact.',
+    residentImpact: 'Residents interested in serving can review eligibility, meeting information, and the application through the city’s official notice.',
+    facts: [['Deadline', 'Nov. 6, 2026 at 4:30 p.m. for the highlighted opening'], ['Board', 'Architectural Review Board — one opening'], ['Contact', 'Shannon Collins, Clerk of Council']],
+    faq: [{ question: 'Where is the application?', answer: 'The official Twinsburg notice links to the Board and Commission application.' }, { question: 'Is this an elected office?', answer: 'No. The notice concerns appointed boards and commissions.' }],
+    officialSourceLabel: 'City of Twinsburg news flash', officialSourceUrl: 'https://www.mytwinsburg.com/m/newsflash/Home/Detail/572'
+  },
+  {
+    id: 'solon-fall-festival-2026-10-05',
+    city: 'Solon', cityId: 'solon', topic: 'Community', status: 'seed',
+    title: 'Solon schedules Fall Festival and rescheduled fireworks for Oct. 10',
+    slug: 'solon-fall-festival-2026', publishedDate: '2026-10-05', reviewedDate: '2026-10-22',
+    summary: 'Solon announced that its Fall Festival would return to Solon Community Park on Oct. 10, 2026, from 10 a.m. to 4 p.m., followed by a rescheduled fireworks display after the park temporarily closed for preparation. The city described the festival as free, while food, merchandise, and some specialty activities could cost extra.',
+    residentImpact: 'The official notice provides the event schedule, park location, activity list, and the timing of the evening fireworks.',
+    facts: [['Festival', 'Oct. 10, 2026, 10 a.m.–4 p.m.'], ['Location', 'Solon Community Park'], ['Fireworks', 'Rescheduled display after the festival, at dark']],
+    faq: [{ question: 'Was admission charged?', answer: 'The city described admission and many activities as free.' }, { question: 'Where is the full schedule?', answer: 'The city’s official festival page contains the event details.' }],
+    officialSourceLabel: 'City of Solon news flash', officialSourceUrl: 'https://www.solonohio.gov/CivicAlerts.aspx?AID=1352'
+  },
+  {
+    id: 'beachwood-fall-festival-2026-09-23',
+    city: 'Beachwood', cityId: 'beachwood', topic: 'Community', status: 'seed',
+    title: 'Beachwood plans Coast-to-Coast Fall Festival celebration',
+    slug: 'beachwood-coast-to-coast-fall-festival', publishedDate: '2026-09-23', reviewedDate: '2026-10-22',
+    summary: 'Beachwood’s 2026 city-news archive lists a Sept. 23 release announcing a Coast-to-Coast Fall Festival celebration. The release is provided by the city as a PDF; this starter record points residents to that primary document rather than reproducing it.',
+    residentImpact: 'Residents can use the city release for the event’s schedule, location, and participation details.',
+    facts: [['Release date', 'Sept. 23, 2026'], ['Record type', 'City news release PDF'], ['Primary source', 'City of Beachwood City News archive']],
+    faq: [{ question: 'Is the PDF the official record?', answer: 'Yes. The city’s City News page links to the release PDF.' }, { question: 'Are event details reproduced here?', answer: 'No. This seed keeps the summary short and links residents to the primary document.' }],
+    officialSourceLabel: 'City of Beachwood news release archive', officialSourceUrl: 'https://www.beachwoodohio.com/DocumentCenter/View/11999/FallFest_92326'
+  },
+  {
+    id: 'brecksville-national-drug-take-back-day-2026-10-15',
+    city: 'Brecksville', cityId: 'brecksville', topic: 'Public health', status: 'seed',
+    title: 'Brecksville lists National Drug Take Back Day for Oct. 24',
+    slug: 'brecksville-national-drug-take-back-day', publishedDate: '2026-10-15', reviewedDate: '2026-10-22',
+    summary: 'Brecksville’s official news flash lists National Drug Take Back Day for Oct. 24, from 10 a.m. to 2 p.m. The starter record preserves the city’s event notice and links back to the official page for any participation details or updates.',
+    residentImpact: 'Residents should confirm the official page for the current event instructions before attending.',
+    facts: [['Date', 'Oct. 24, 2026'], ['Time', '10 a.m.–2 p.m.'], ['Record type', 'Brecksville News Flash']],
+    faq: [{ question: 'Does this page provide disposal instructions?', answer: 'The seed record does not add instructions; use the official notice for current details.' }, { question: 'Who published the notice?', answer: 'The City of Brecksville official website.' }],
+    officialSourceLabel: 'City of Brecksville news flash', officialSourceUrl: 'https://www.brecksville.oh.us/m/newsflash/Home/Detail/147'
+  },
+  {
+    id: 'norton-chippewa-township-annexation-2026-10',
+    city: 'Norton', cityId: 'norton', topic: 'Local government', status: 'seed',
+    title: 'Norton posts Chippewa Township annexation press release',
+    slug: 'norton-chippewa-township-annexation-press-release', publishedDate: '2026-10-22', reviewedDate: '2026-10-22',
+    summary: 'Norton’s official news flash links to a Chippewa Township press release concerning an annexation matter. This starter record does not infer the legal effect or outcome; residents should read the linked document for the complete record.',
+    residentImpact: 'The primary document is the useful next step for residents who need the boundaries, parties, dates, or legal context.',
+    facts: [['Record', 'Chippewa Township press release'], ['Document', 'Norton-hosted PDF link'], ['Scope', 'Annexation matter; no outcome inferred here']],
+    faq: [{ question: 'What does this page establish?', answer: 'Only that Norton posted a link to the Chippewa Township press release.' }, { question: 'Where are the details?', answer: 'In the PDF linked from the official Norton news flash.' }],
+    officialSourceLabel: 'City of Norton news flash', officialSourceUrl: 'https://cityofnorton.org/m/newsflash/Home/Detail/435'
   }
 ];
